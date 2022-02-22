@@ -5,9 +5,10 @@
 - Порядок выполнения [(.pdf)](http://s.nektools.ru/LabWork_1.pdf)
 - Пример отчёта и контрольные вопросы [(.docx)](http://s.nektools.ru/%D1%81%D0%B5%D1%82%D0%B8%20%D0%BB1%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BE%D1%82%D1%87%D0%B5%D1%82%D0%B0.doc)
 
-## Инструкция по выполнени (от Горшочка)
+## Инструкция по выполнению лабы (от Горшочка)
 
-В случае обнаружения ошибок писать [сюда](https://vk.com/wkeep).
+- В случае обнаружения логических ошибок писать [сюда](https://vk.com/wkeep), открывать [Issues](https://github.com/whitekeep/vpr12/issues) или делать [Pull Requests](https://github.com/whitekeep/vpr12/pulls)
+- При обнаружении орфаграфических или пунктационных ошибок вы можете самостоятельно редктировать инструкцию при наличии доступа
 
 ## Скачиваем образы дистрибутивов
 
@@ -29,73 +30,73 @@
 ## Создание ВМ
 
 - Создадим ВМ
-![create](https://i.imgur.com/On8N8Rf.png)
+- ![create](https://i.imgur.com/On8N8Rf.png)
 - Выбереем версию ОС
-![settings](https://i.imgur.com/2b4xw0r.png)
+- ![settings](https://i.imgur.com/2b4xw0r.png)
 - Оперативную память ставим по умолчанию 1024МБ. После заершения установки мы поменяем кол-во памяти на 512МБ для экономии памяти.
-![settings2](https://i.imgur.com/gnp1p1o.png)
+- ![settings2](https://i.imgur.com/gnp1p1o.png)
 - Создадим виртуальный жёсткий диск
-![fincreate](https://i.imgur.com/uh6r22h.png)
+- ![fincreate](https://i.imgur.com/uh6r22h.png)
 - Далее
-![fin2create](https://i.imgur.com/baFzuR3.png)
+- ![fin2create](https://i.imgur.com/baFzuR3.png)
 - Далее
-![fin3create](https://i.imgur.com/kZmeLQg.png)
+- ![fin3create](https://i.imgur.com/kZmeLQg.png)
 - Далее
-![fin4create](https://i.imgur.com/cLDM4ZZ.png)
+- ![fin4create](https://i.imgur.com/cLDM4ZZ.png)
 - Заходим в настройки ВМ
-![fin5create](https://i.imgur.com/K9wLNgT.png)
+- ![fin5create](https://i.imgur.com/K9wLNgT.png)
 - Стваим галочку возле Сеть в Порядке загрузки
-![settingssetonvm](https://i.imgur.com/ttStJ0b.png)
+- ![settingssetonvm](https://i.imgur.com/ttStJ0b.png)
 
 ## Устанавливаем ОС
 
 ### Выбираем образ
 
 - Запускаем ВМ
-![startvm](https://i.imgur.com/qBeMZ4V.png)
+- ![startvm](https://i.imgur.com/qBeMZ4V.png)
 - Выбираем загрузочный диск
-![choose](https://i.imgur.com/ByXzdhx.png)
+- ![choose](https://i.imgur.com/ByXzdhx.png)
 - Жмём Добавить
-![press](https://i.imgur.com/UsyVGUG.png)
+- ![press](https://i.imgur.com/UsyVGUG.png)
 - Выбираем скачанный обзар в проводнике
-![chooseinexp](https://i.imgur.com/rUnOQ4z.png)
+- ![chooseinexp](https://i.imgur.com/rUnOQ4z.png)
 - Выбираем из списка
-![chosefromlist](https://i.imgur.com/9DI1yQD.png)
+- ![chosefromlist](https://i.imgur.com/9DI1yQD.png)
 - Продолжить
-![next](https://i.imgur.com/hFFN4IV.png)
+- ![next](https://i.imgur.com/hFFN4IV.png)
 
 ### Установка
 
 - Выбираем русския язык. Навигация происходит только с помощь клавиш клавиатуры
-![chrus](https://i.imgur.com/tzGpm9m.png)
+- ![chrus](https://i.imgur.com/tzGpm9m.png)
 - Продолжить без обновления
-![next](https://i.imgur.com/UhXtL3K.png)
+- ![next](https://i.imgur.com/UhXtL3K.png)
 - Готово. Тут мы не мучаемся и выбираем только Английскую раскладку. Из-за этого в убунте мы сможем писать только на английском
-![next](https://i.imgur.com/yTvbTwH.png)
+- ![next](https://i.imgur.com/yTvbTwH.png)
 - Готово
-![next](https://i.imgur.com/Z3yFvOs.png)
+- ![next](https://i.imgur.com/Z3yFvOs.png)
 - Готово
-![next](https://i.imgur.com/83LamPB.png)
+- ![next](https://i.imgur.com/83LamPB.png)
 - Готово
-![next](https://i.imgur.com/QRWdQ1o.png)
+- ![next](https://i.imgur.com/QRWdQ1o.png)
 - Клавишой Вниз идём до Готово и жмём интер
-![next](https://i.imgur.com/erQT5q5.png)
+- ![next](https://i.imgur.com/erQT5q5.png)
 - Готово
-![next](https://i.imgur.com/FRKSoHc.png)
+- ![next](https://i.imgur.com/FRKSoHc.png)
 - Продолжить
-![next](https://i.imgur.com/MNbsFUn.png)
+- ![next](https://i.imgur.com/MNbsFUn.png)
 - Заполняем поля на сувой вкус и цвет. После жмём Готово
-![next](https://i.imgur.com/SRzjaoz.png)
+- ![next](https://i.imgur.com/SRzjaoz.png)
 - Ставим Х возле пункта установки OpenSHH сервера и жмём Готово
-![openssh](https://i.imgur.com/yAIWz5g.png)
+- ![openssh](https://i.imgur.com/yAIWz5g.png)
 - Ничего из этого нам не нужно. Жмём Готово
-![nonepacknext](https://i.imgur.com/iGZkrqs.png)
+- ![nonepacknext](https://i.imgur.com/iGZkrqs.png)
 - Активируем режим ждуна
-![zhdun](https://i.imgur.com/roltcQZ.png)
+- ![zhdun](https://i.imgur.com/roltcQZ.png)
 - Как только появляется вторая строчка жмём клавишу вниз и Отменяем загрузку обновления (нам оно не нужно)
-![noupdate](https://i.imgur.com/rzEJfAA.png)
+- ![noupdate](https://i.imgur.com/rzEJfAA.png)
 - Тут жмём Enter
-![enter](https://i.imgur.com/S8IDKsC.png)
+- ![enter](https://i.imgur.com/S8IDKsC.png)
 
 Готово. Убунту установлена
 
@@ -113,20 +114,20 @@
 ### Настраиваем сеть на ВМ
 
 - Заходим в настройки ВМ
-![gotosettings](https://i.imgur.com/K9wLNgT.png)
+- ![gotosettings](https://i.imgur.com/K9wLNgT.png)
 - Выставляем следующие настроки сети для Адаптера 1
-![setsetiad1](https://i.imgur.com/arAdHp0.png)
+- ![setsetiad1](https://i.imgur.com/arAdHp0.png)
 - И следующие для Адаптера 2 и жмём ОК
-![setsetiad2](https://i.imgur.com/BNwAIOn.png)
+- ![setsetiad2](https://i.imgur.com/BNwAIOn.png)
 
 ### Урезаем кол-во оперативной памяти
 
 Для нашего дистрибутива (без графики) будет достаточно 512МБ оперативной памяти на ВМ
 
 - Заходим в настройки
-![toset](https://i.imgur.com/K9wLNgT.png)
+- ![toset](https://i.imgur.com/K9wLNgT.png)
 - Уменьшаем память
-![minopera](https://i.imgur.com/1yGi9Xf.png)
+- ![minopera](https://i.imgur.com/1yGi9Xf.png)
 - Готово
 
 ### Клонирование ВМ
@@ -134,14 +135,14 @@
 Дважды клонируем нашу ВМ со слежующими параметрами:
 
 - Клонирование
-![cloning](https://i.imgur.com/G1QrL7F.png)
+- ![cloning](https://i.imgur.com/G1QrL7F.png)
 
 - Также выставим название при первом клонировании `Two - Ubuntu` и при втором `Three - Ubuntu`. Это необходимо для удобства различимости их между собой
-![setclon](https://i.imgur.com/d06VaIT.png)
+- ![setclon](https://i.imgur.com/d06VaIT.png)
 - Выбираем Полное копирование
-![set2clon](https://i.imgur.com/oQsY3z1.png)
+- ![set2clon](https://i.imgur.com/oQsY3z1.png)
 - В итоге получаем три ВМ:
-![allvms](https://i.imgur.com/dyJbJeQ.png)
+- ![allvms](https://i.imgur.com/dyJbJeQ.png)
 
 Готово. Первичная настройка завершена
 
