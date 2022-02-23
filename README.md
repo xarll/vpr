@@ -26,3 +26,4 @@
 ## Участники базы знаний
 
 - Горшков Владимир [VK](https://vk.com/wkeep) [GitHub](https://github.com/whitekeep)
+- Боярышников [VK](https://vk.com/jkearnsl) [GitHub](https://github.com/jkearnsl)
