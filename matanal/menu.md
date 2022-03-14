@@ -2,4 +2,4 @@
 
 ## Контрольные работы (они же допуски)
 
-1. [Контрольная работа №1 - Определенные интегралы](https://github.com/whitekeep/vpr12/blob/main/kontr/kr1.md)
+1. [Контрольная работа №1 - Определенные интегралы](https://github.com/whitekeep/vpr12/blob/main/matanal/kontr/kr1.md)
