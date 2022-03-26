@@ -97,6 +97,10 @@ apt-get install mutt
 ```
 
 ```sh
+apt-get install msmtp
+```
+
+```sh
 apt-get install mailutils
 ```
 
