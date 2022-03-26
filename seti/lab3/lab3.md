@@ -230,3 +230,7 @@ Eсли вы укажете не объявленное имя домена то
 - Deferred: mail.ru.: No route to host
 - Deferred: mail.ru.: Network is unreachable
 
+Проверим, что локальный адрес определен, прописав следующее в консоль:
+```sh
+echo -e "Hello world\!" | sendmail root@mail.ru
+```
