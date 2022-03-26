@@ -97,6 +97,10 @@ apt-get install mutt
 ```
 
 ```sh
+apt-get install mailutils
+```
+
+```sh
 apt-get install net-tools
 ```
 ...
@@ -278,3 +282,5 @@ nano /var/mail/root
 где `root` - имя пользователя; получим:
 ![maillist](https://i.imgur.com/Cl7v2rW.png)
 - Это список полученных сообщений у пользователя root
+
+
