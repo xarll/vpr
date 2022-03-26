@@ -35,6 +35,15 @@
 ## Создание ВМ
 
 - Создадим ВМ
-- ![create](https://i.imgur.com/On8N8Rf.png)
+- ![create](https://ibb.co/wyK0yjQ)
 - Выбереем версию ОС
-- ![settings](https://i.imgur.com/2b4xw0r.png)
+- ![create](https://ibb.co/zN23vWS)
+- - Выбереем кол-во ОЗУ и жмем далее
+- ![create](https://ibb.co/crcJ2mh)
+- ![create](https://ibb.co/LQZ0fgT)
+- ![create](https://ibb.co/BB2Ryzz)
+- ![create](https://ibb.co/jbzVTQB)
+- ![create](https://ibb.co/grmZmw7)
+- ![settings](https://ibb.co/grmZmw7)
+- ![settings](https://ibb.co/grmZmw7)
+
