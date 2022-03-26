@@ -38,12 +38,13 @@
 - ![create](https://i.ibb.co/Y2tR2wd/image.png)
 - Выбереем версию ОС
 - ![create](https://i.ibb.co/4JSbrwj/image.png)
-- - Выбереем кол-во ОЗУ и жмем далее
+- Выбереем кол-во ОЗУ и жмем далее
 - ![create](https://i.ibb.co/5RWTs7h/image.png)
 - ![create](https://i.ibb.co/9wrpj4x/image.png)
 - ![create](https://i.ibb.co/x6qQ1CC/image.png)
 - ![create](https://i.ibb.co/MZf8stW/image.png)
 - ![create](https://i.ibb.co/7SjtjVz/image.png)
-- ![settings](https://i.ibb.co/7SjtjVz/image.png)
-- ![settings](https://i.ibb.co/7SjtjVz/image.png)
-
+- Настроим ВМ
+- ![settings](https://i.imgur.com/fxdntyJ.png)
+- Выберем образ Ubuntu или другой unix OS (в моем случае ссылка на файл сохранилась, выбирарю его)
+- ![settings](https://i.imgur.com/PHetOky.png)
