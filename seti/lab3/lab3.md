@@ -205,4 +205,27 @@ make access.db
 ![settings](https://i.imgur.com/M47whUa.png)
 Готово
 
+### Обьявление локальных доменов для ящиков
+Объявляем имя домена, для которого sendmail адреса почтовых ящиков будет считать
+локальными. Эту процедура нужна для того, чтобы занимать "красивые" адреса в локальной сети, типа
+"example@nikita.com"; Введенные доменные имена будут считаться локальными.
+
+- Я выберу для себя доменное имя в локальной сети: "mail.ru"
+
+Для этого пропишу следующие команды:
+```sh
+echo -e "mail.ru\nmail" >local-host-names
+```
+
+```sh
+echo "mail.ru mail" >domaintable
+```
+
+```sh
+make domaintable.db
+```
+- Это должно исключить попытки sendmail осуществить маршрутизацию почты при помощи DNS
+- Eсли вы укажете не объявленное имя домена то возможны такие ответы sendmail:
+-- Deferred: mail.ru.: No route to host
+-- Deferred: mail.ru.: Network is unreachable
 
