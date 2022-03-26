@@ -156,8 +156,9 @@
 
 - `echo "<IP_NET_ADDR> RELAY" >./access`
 - `echo "<IP_NET_ADDR> RELAY" >./access`
-- Где `192.168.56.106` и `192.168.56.107` - ip адреса ВМ mail-client и ВМ mail-client2
+- Где `192.168.56.106` и `192.168.56.107` - ip адреса разрешенных [клиентов](https://github.com/whitekeep/vpr12/blob/main/seti/lab3/lab3.md#%D1%81%D0%B1%D0%BE%D1%80-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8-%D0%BE-%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0%D1%85) (ВМ mail-client и ВМ mail-client2)
 
-- Создадим таблицу разрешенных клиентов:
+- Создадим таблицу разрешенных клиентов, введя в консоль:
 - `make access.db`
+
 ![settings](https://i.imgur.com/nS3kGuJ.png)
