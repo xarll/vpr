@@ -224,8 +224,9 @@ echo "mail.ru mail" >domaintable
 ```sh
 make domaintable.db
 ```
-- Это должно исключить попытки sendmail осуществить маршрутизацию почты при помощи DNS
-- Eсли вы укажете не объявленное имя домена то возможны такие ответы sendmail:
--- Deferred: mail.ru.: No route to host
--- Deferred: mail.ru.: Network is unreachable
+Это должно исключить попытки sendmail осуществить маршрутизацию почты при помощи DNS
+
+Eсли вы укажете не объявленное имя домена то возможны такие ответы sendmail:
+- Deferred: mail.ru.: No route to host
+- Deferred: mail.ru.: Network is unreachable
 
