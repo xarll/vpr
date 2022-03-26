@@ -395,7 +395,11 @@ nano /var/mail/root
 
 
 
-
+- Отправим сообщение из ВМ mail-client в ВМ mail-client2 через MTA mail-server:
+![fromvmonetovmtwo](https://i.imgur.com/NrKAYQr.png)
+- Слева - `mail-client2`; справа - `mail-client`; Отправляем сообщение на адрес client2@mail.ru, как мы уже умеем:
+![imf](https://i.imgur.com/2OvGMRZ.png)
+- Нажимаем `y` для отправки и смотрим:
 
 
 
