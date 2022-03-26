@@ -65,17 +65,29 @@
 
 Для серверной ВМ (в моем случае "mail-server") следует установить следующие компоненты: sendmail, ...
 Чтобы это сделать, пропишите следующее в консоль:
-- `sudo su` - после чего введите пароль
-- `apt-get update`
-- `apt-get install sendmail`
-- ...
+```sh
+sudo su
+```- после чего введите пароль
+```sh
+apt-get update
+```
+```sh
+apt-get install sendmail
+```
+...
 
 Для 2х оставшихся клиентских ВМ (в моем случае "mail-client" и "mail-client2") следует установить следующие компоненты: mutt, ...
 Чтобы это сделать, пропишите следующее в консоль:
-- `sudo su` - после чего введите пароль
-- `apt-get update`
-- `apt-get install mutt`
-- ...
+```sh
+sudo su
+```- после чего введите пароль
+```sh
+apt-get update
+```
+```sh
+apt-get install mutt
+```
+...
 
 
 Но вы столкнетесь с проблемой того, что у Вас не будет доступа к интернету
@@ -122,8 +134,14 @@
 - Далее жмем `Ctrl+O` , далее `Enter` , далее `Ctrl+X`
 - Готово! Мы написали конфиг для ВМ "mail-server", теперь следует его применить:
 
-- Прописываем в консоль: `sudo netplan apply`
-- А далее: `sudo netplan try`
+- Прописываем в консоль:
+```sh
+sudo netplan apply
+```
+- А далее: 
+```sh
+sudo netplan try
+```
 
 - В консоли появилось предупреждение:
 ![ipsettings](https://i.imgur.com/j4ZvI5B.png)
@@ -151,19 +169,27 @@
 
 ### Подготовка начальной конфигурации почтового сервера
 - Откроем директорию `/etc/mail` прописав в консоль:
-`cd /etc/mail`
+```sh
+cd /etc/mail
+```
 ![settings](https://i.imgur.com/nS3kGuJ.png)
 
 - В файле /etc/mail/access устанавливаются права доступа
 - Дадим разрешение на отправку почты от наших клиентов(ВМ "mail-client" и "mail-client2"), прописав
 - их ip адреса в столбик через любой редактор (например nano/vim) или просто введя в консоль:
 
-- `echo "192.168.56.106 RELAY" >./access`
-- `echo "192.168.56.107 RELAY" >./access`
+```sh
+echo "192.168.56.106 RELAY" >./access
+```
+```sh
+echo "192.168.56.107 RELAY" >./access
+```
 - Где `192.168.56.106` и `192.168.56.107` - ip адреса разрешенных [клиентов](https://github.com/whitekeep/vpr12/blob/main/seti/lab3/lab3.md#%D1%81%D0%B1%D0%BE%D1%80-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8-%D0%BE-%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0%D1%85) (ВМ mail-client и ВМ mail-client2)
 
 - Создадим таблицу разрешенных клиентов, введя в консоль:
-- `make access.db`
+```sh
+make access.db
+```
 
 ![settings](https://i.imgur.com/M47whUa.png)
 Готово
