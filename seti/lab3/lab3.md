@@ -48,3 +48,5 @@
 - ![settings](https://i.imgur.com/fxdntyJ.png)
 - Выберем образ Ubuntu или другой unix OS (в моем случае ссылка на файл сохранилась, выбирарю его)
 - ![settings](https://i.imgur.com/PHetOky.png)
+- Далее следует выбрать сеть, в которой будет работать наша почта (я выбрал всеми знакомый "виртуальный хост адаптера")
+- ![settings](https://i.imgur.com/8Xqg57u.png)
