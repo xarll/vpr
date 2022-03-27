@@ -323,6 +323,7 @@ nano /etc/mail/sendmail.cf
 ![globalacc](https://i.imgur.com/CYTZ5mi.png)
 - Меняем значения на те, что у меня и сохраняем:
 `Ctrl+O` , далее `Enter` , далее `Ctrl+X`. Готово.
+(TODO: возможно следует прописать не `0.0.0.0`, а `ip` адрес `mail-server`)
 
 - Перезагружаем демон sendmail или ВМ `reboot`
 Не забываем при `reboot` заново заходить под `sudo su`!
