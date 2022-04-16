@@ -13,7 +13,7 @@
 
 ## Файлы шаблонов:
 
-- Шаблон сервера [(.zip)]()
+- Шаблон сервера [(.zip)](https://github.com/JKearnsl/tcpserver/archive/refs/heads/master.zip)
 - Шаблон клиента [(.zip)](https://github.com/JKearnsl/tcpclient/archive/refs/heads/master.zip)
 
 
