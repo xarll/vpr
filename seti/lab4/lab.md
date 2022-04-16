@@ -12,8 +12,8 @@
 
 ## Файлы шаблонов:
 
-- Шаблон сервера [(.zip)](https://github.com/JKearnsl/tcpserver/archive/refs/heads/master.zip)
-- Шаблон клиента [(.zip)](https://github.com/JKearnsl/tcpclient/archive/refs/heads/master.zip)
+- Шаблон сервера [(.zip)](https://github.com/xarll/tcpserver/archive/refs/heads/master.zip)
+- Шаблон клиента [(.zip)](https://github.com/xarll/tcpclient/archive/refs/heads/master.zipp)
 
 
 ## Инструкция и пример работы
