@@ -13,7 +13,7 @@
 ## Файлы шаблонов:
 
 - Шаблон сервера [(.zip)](https://github.com/xarll/tcpserver/archive/refs/heads/master.zip)
-- Шаблон клиента [(.zip)](https://github.com/xarll/tcpclient/archive/refs/heads/master.zipp)
+- Шаблон клиента [(.zip)](https://github.com/xarll/tcpclient/archive/refs/heads/master.zip)
 
 
 ## Инструкция и пример работы
