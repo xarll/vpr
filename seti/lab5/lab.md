@@ -173,8 +173,13 @@ ping 192.168.3.101
 iptables -F
 ```
 ### 2) Блокировка пакетов со стороны маршрутизатора(основная настройка Firewall)
-...
-
+На ВМ2 вводятся следующие команды:
+```sh
+iptables -t nat –A PREROUTING -p tcp –d 10.44.0.31 --dport 22 –j DNAT --to- distination 10.44.0.30:22
+```
+```sh
+iptables –A FORWARD –I eth0 –d 10.44.0.30 -p tcp –d 10.44.0.31 --dport 22 –j ACCEPT
+```
 
 ### Сохранение изменений
 
