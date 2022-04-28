@@ -188,21 +188,25 @@ ping 192.168.3.101
 ```
 Получаем игнор, всё отработало правильно и маршрутизатор игнорирует входящие FORWARD соединения от ВМ1.
 
+По сути лаба выполнена.
+
 ### Сохранение изменений
 
 Внесенные в цепочки правил изменения пропадут при перезапуске iptables, так что их нужно сохранить с помощью специальной команды. В зависимости от используемого Linux-дистрибутива команда может выглядеть по-разному.
 
-- Ubuntu:
+- **Ubuntu**:
 ```sh
-=sudo /sbin/iptables-save
+sudo /sbin/iptables-save
 ```
 - Red Hat / CentOS:
 ```sh
-=/sbin/service iptables save
+/sbin/service iptables save
 ```
 - Или
 ```sh
-=/etc/init.d/iptables save
+/etc/init.d/iptables save
 ```
+
+Если будут вопросы, пишие [VK](https://vk.com/jkearnsl).
 
 
