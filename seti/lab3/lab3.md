@@ -6,7 +6,7 @@
 - Порядок выполнения (подробная версия) [(.pdf)](https://github.com/whitekeep/vpr12/raw/main/seti/lab3/LabWork_3_v2.pdf)
 - Пример отчёта [(.doc)](https://github.com/whitekeep/vpr12/raw/main/seti/lab3/example_report_3.doc)
 
-## Инструкция по выполнению лабы (от Бояршинова)
+## Инструкция по выполнению лабы
 
 - В случае обнаружения логических ошибок писать [сюда](https://vk.com/jkearnsl), открывать [Issues](https://github.com/whitekeep/vpr12/issues) или делать [Pull Requests](https://github.com/whitekeep/vpr12/pulls)
 - При обнаружении орфографических или пунктуационных ошибок вы можете самостоятельно редактировать инструкцию при наличии доступа
