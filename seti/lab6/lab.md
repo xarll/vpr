@@ -42,7 +42,7 @@ class="sourceCode numberSource xml numberLines"><code class="sourceCode xml"><sp
 <td><p>base64</p></td>
 <td><div class="sourceCode" id="cb2"><pre
 class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">base64</span>&gt;eW91IGNhbid0IHJlYWQgdGhpcyE=&lt;/<span class="kw">base64</span>&gt;</span></code></pre></div></td>
-<td><p>Кодированные в <a href="Base64" title="wikilink">Base64</a>
+<td><p>Кодированные в <a href="https://ru.wikipedia.org/wiki/Base64" title="wikilink">Base64</a>
 двоичные данные</p></td>
 </tr>
 <tr class="odd">
@@ -73,7 +73,7 @@ class="sourceCode xml"><code class="sourceCode xml"><span id="cb6-1"><a href="#c
 <td><p>string</p></td>
 <td><div class="sourceCode" id="cb7"><pre
 class="sourceCode xml"><code class="sourceCode xml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">string</span>&gt;Здравствуй, Мир!&lt;/<span class="kw">string</span>&gt;</span></code></pre></div></td>
-<td><p>Строка символов (в той же кодировке, что и весь <a href="XML"
+<td><p>Строка символов (в той же кодировке, что и весь <a href="https://ru.wikipedia.org/wiki/XML"
 title="wikilink">XML</a>-документ)</p></td>
 </tr>
 <tr class="even">
