@@ -102,3 +102,6 @@ XML-RPC</p></td>
 </tr>
 </tbody>
 </table>
+
+
+Если будут вопросы, пишие [VK](https://vk.com/jkearnsl).
