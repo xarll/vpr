@@ -105,4 +105,4 @@ XML-RPC</p></td>
 </table>
 
 
-Если будут вопросы, пишие [VK](https://vk.com/mxsleo). 
+Если будут вопросы, пишите [VK](https://vk.com/mxsleo).
