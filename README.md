@@ -27,3 +27,4 @@
 
 - Горшков Владимир [VK](https://vk.com/wkeep) [GitHub](https://github.com/whitekeep)
 - Боярышников [VK](https://vk.com/jkearnsl) [GitHub](https://github.com/jkearnsl)
+- Леонов [VK](https://vk.com/mxsleo) [GitHub](https://github.com/mxsleo)
