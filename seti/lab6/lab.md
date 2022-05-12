@@ -5,7 +5,7 @@
 
 ## Быстрый старт
 - Список вариантов [(.pdf)](./XML-RPC_Problems.pdf)
-- Инструкция сборки [ТЫК](https://github.com/mxsleo/xmlrpc-c_example/blob/master/README.md)
+- Инструкция сборки [ТЫК](#инструкция-и-пример-работы)
 
 ## Выполнение лабораторной работы
 - Требуется наличие Debian-подобной ОС (лучше всего две виртуальные машины в одной NAT-сети - прим. mxsleo)
@@ -18,10 +18,6 @@
 ## Файлы шаблона:
 - Шаблон сервера [(.c)](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_server.c)
 - Шаблон клиента [(.c)](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_client.c)
-
-## Инструкция:
-
-Подробная инструкция сборки приложений описана [ТУТ](https://github.com/mxsleo/xmlrpc-c_example/blob/master/README.md)
 
 ### Типы данных:
 
