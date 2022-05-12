@@ -188,5 +188,10 @@ sudo tcpdump -i any -A port 8080
 
 ### Изменение логики программ
 Вся логика сервера прописана в этих строках: описание [функции](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_server.c#L20:L59) и внесение её в [реестр](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_server.c#L65:L68). Логика клиента прописана в этих строках: объявление [имени метода](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_client.c#L29) и его [вызов](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_client.c#L45:L81). Мы можем менять её как угодно, для этого достаточно понимать, что передавать надо данные в формате xmlrpc_value и функцию объявлять по образцу моего сервера. Подробнее про преобразование различных типов к xmlrpc_value и обратно можно почитать в документации: [шифрование](http://xmlrpc-c.sourceforge.net/doc/libxmlrpc.html#creatingxmlrpcvalue), [дешифрование](http://xmlrpc-c.sourceforge.net/doc/libxmlrpc.html#interpreting), [литералы](http://xmlrpc-c.sourceforge.net/doc/libxmlrpc.html#formatstring). Там же можно получить необходимую информацию о принципе работы программы и найти другие примеры.
+После изменения кода его необходимо пересобрать (если мы пишем код на хосте, то предварительно закинуть обновлённые файлы в ~/xmlrpc-c_example):
+```
+make clean
+make
+```
 
 Если будут вопросы, пишите [VK](https://vk.com/mxsleo).
