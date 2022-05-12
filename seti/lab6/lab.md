@@ -5,8 +5,7 @@
 
 ## Быстрый старт
 - Список вариантов [(.pdf)](./XML-RPC_Problems.pdf)
-- Информация о XML ТЫК
-- ...
+- Инструкция сборки [ТЫК](https://github.com/mxsleo/xmlrpc-c_example/blob/master/README.md)
 
 ## Выполнение лабораторной работы
 - Требуется наличие Debian-подобной ОС (лучше всего две виртуальные машины в одной NAT-сети - прим. mxsleo)
@@ -20,13 +19,11 @@
 - Шаблон сервера [(.c)](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_server.c)
 - Шаблон клиента [(.c)](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_client.c)
 
-## Описание:
+## Инструкция:
 
-https://youtu.be/C5gpMukqeUE?t=2457
+Подробная инструкция сборки приложений описана [ТУТ](https://github.com/mxsleo/xmlrpc-c_example/blob/master/README.md)
 
-### Что такое XML?
-
-### Типы данных
+### Типы данных:
 
 <table>
 <thead>
