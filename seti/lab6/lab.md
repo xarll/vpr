@@ -9,7 +9,8 @@
 - ...
 
 ## Файлы шаблона:
-
+- Шаблон сервера [(.c)](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_server.c)
+- Шаблон клиента [(.c)](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_client.c)
 
 ## Описание:
 
