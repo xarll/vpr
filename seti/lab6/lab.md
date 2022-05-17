@@ -19,6 +19,9 @@
 - Шаблон сервера [(.c)](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_server.c)
 - Шаблон клиента [(.c)](https://github.com/mxsleo/xmlrpc-c_example/blob/master/unix_client.c)
 
+## (UPDATE) 17.05.2022
+Бояршинов вещает: Удалось собрать библиотеку под Windows (VS): [(.zip)](https://disk.yandex.ru/d/Wzgn-m-Aidc6DQ)
+
 ### Типы данных:
 
 <table>
