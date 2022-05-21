@@ -1,7 +1,7 @@
 # XML-RPC Инструкция для Windows (VS)
 
 ## Быстрый старт
-- Список вариантов [(.pdf)]()
+- Список вариантов [(.pdf)](../XML-RPC_Problems.pdf)
 - Шаблон [ТЫК](https://drive.google.com/file/d/1EKvI1MK7Iredsp6ndBFQkcPi6y7zO_Zy/view?usp=sharing)
 - Описание методов библиотеки XML-RPC [ТЫК](http://xmlrpcpp.sourceforge.net/doc/classXmlRpc_1_1XmlRpcServer.html)
 
