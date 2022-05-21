@@ -6,6 +6,8 @@
 - Описание методов библиотеки XML-RPC [ТЫК](http://xmlrpcpp.sourceforge.net/doc/classXmlRpc_1_1XmlRpcServer.html)
 
 ### Инструкция
+Вам потребуется visual studio;
+
 Проект разделен на 2 части:\n
 - Клиент (для открытия проекта двойной ЛКМ по /client/Client.vcxproj)
 - Сервер (для открытия проекта двойной ЛКМ по /server/Server.vcxproj)
@@ -116,6 +118,3 @@ int main()
 
 ...
 Если столкнулись с неизвестной ошибкой, пишите [VK](https://vk.com/jkearnsl)
-
-
-
