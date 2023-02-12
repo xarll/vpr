@@ -5,8 +5,8 @@
 - Шаблон [ТЫК](https://drive.google.com/file/d/1EKvI1MK7Iredsp6ndBFQkcPi6y7zO_Zy/view?usp=sharing) **Обязательно скачайте его!**
 - Описание методов библиотеки XML-RPC [ТЫК](http://xmlrpcpp.sourceforge.net/doc/classXmlRpc_1_1XmlRpcServer.html)
 
-### Инструкция
-Вам потребуется visual studio;
+## Инструкция
+Вам потребуется `Visual Studio`
 
 Проект разделен на 2 части:
 - Клиент (для открытия проекта **двойной ЛКМ** по `/client/Client.vcxproj`)
@@ -14,9 +14,9 @@
 
 Сначала следует запускать сервер, а после клиент (хотя, если использовать код ниже, то потребность спадает)
 
-### Пример кода (для варианта №2)
+## Пример кода (для варианта №2)
 
-#### Client
+### Client
 
 ![демострация](https://user-images.githubusercontent.com/76239707/169651891-2fbedd80-4ab6-477a-b651-028d2700d882.png)
 
@@ -70,7 +70,7 @@ int main()
 }
 ```
 
-#### Server
+### Server
 
 ![демострация](https://user-images.githubusercontent.com/76239707/169651928-e6ba3b81-6d19-4ac4-90ad-2b1bf15f8d6d.png)
 
