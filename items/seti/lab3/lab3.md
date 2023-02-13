@@ -6,11 +6,15 @@
 - Порядок выполнения (подробная версия) [(.pdf)](https://github.com/whitekeep/vpr12/raw/main/seti/lab3/LabWork_3_v2.pdf)
 - Пример отчёта [(.doc)](https://github.com/whitekeep/vpr12/raw/main/seti/lab3/example_report_3.doc)
 
+## Ответы на контрольные вопросы
+
+- [Ответы](https://1drv.ms/w/s!AsUG9fN257FxhghIRWOT0YTKRUvt?e=qsfYzK)
+
+Файл доступен для редактирования.
+
 ## Инструкция по выполнению лабы
 
-- В случае обнаружения логических ошибок писать [сюда](https://vk.com/jkearnsl), открывать [Issues](https://github.com/whitekeep/vpr12/issues) или делать [Pull Requests](https://github.com/whitekeep/vpr12/pulls)
-- При обнаружении орфографических или пунктуационных ошибок вы можете самостоятельно редактировать инструкцию при наличии доступа
-- Горох временно отсутствует
+**Выполняйте с пункта "Модель MUA - MTA - MTA (та самая завтеная) - Инструкция от Горшочка" !**
 
 ## Скачиваем образы дистрибутивов
 
