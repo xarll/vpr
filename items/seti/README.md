@@ -14,8 +14,8 @@
 
 ## Контрольные работы
 
-* Контрольная работа №1 - [Вопросы](kwork1.jpg) - [Ответы (позже)]() 
-* Контрольная работа №2 - [Вопросы (позже)]() - [Ответы (позже)]() 
+* Контрольная работа №1 - [Вопросы](https://i.imgur.com/gOZBwFK.png) - [Ответы (не 100% правильные)](https://docs.google.com/document/d/1AYAI1oMe98A-uqq6O-tBKhgo4sRpxFMT/edit?usp=sharing&ouid=114433453162808919564&rtpof=true&sd=true) 
+* Контрольная работа №2 - [Вопросы (позже)]() - [Ответы (не 100% правильные)](https://docs.google.com/document/d/1sM6jFT66HbdXY-I9mM0z1Ya-Qan_oWUu/edit?usp=sharing&ouid=114433453162808919564&rtpof=true&sd=true) 
 
 ### Порядок проведения КР
 
