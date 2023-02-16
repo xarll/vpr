@@ -126,7 +126,6 @@ public class HelloFrame extends Frame {
 
 ```
 Main-Class: HelloFrame
-
 ```
 Внимание! Файл чувствителен к регистру
 
@@ -159,3 +158,4 @@ javadoc HelloFrame.java
 то, что содержится в стандартной документации.
 Скачать руководство пользователя по javadoc (SDK 15) можно по [ссылке](https://docs.oracle.com/en/java/javase/15/javadoc/javadoc-guide.pdf)
 
+*Авторство: **Бояршинов Н.О***
