@@ -31,9 +31,9 @@
 следующим содержимым:
 ```Java
 public class Hello {
- public static void main(String[] s) {
- System.out.println("Hello World!");
- }
+    public static void main(String[] s) {
+        System.out.println("Hello World!");
+    }
 }
 ```
 Обратите внимание на то, что имя файла с исходным кодом программы должно
