@@ -33,7 +33,7 @@
 - [Архитектура вычислительных систем](/items/avys/README.md)
 - [Машино-зависимые ЯП](/items/mzyp/README.md)
 - [Программирование](/items/prog2/README.md)
-- ['экстра' ОС](/items/os1/README.md)
+- [[экстра] ОС](/items/os1/README.md)
 - [Практика](/items/pract2/README.md)
 
 [**Супер мега сборник на Google диске за 3 семестр**](https://drive.google.com/drive/folders/1mdPBKOMceLdzK89-oAb0EhYICUDNMSyd?usp=sharing)
