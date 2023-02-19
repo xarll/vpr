@@ -159,6 +159,38 @@ cat $tempfile
 С помощью команды `cat $tempfile | wc -l` считываем кол-во строк в файле `$tempfile`. Аналогичный синтаксис команды `wc`: `wc -l filename.txt`
 выводим сообщение и удаляем файл.
 
+**4) Переход в другой каталог, формирование файла c листингом каталога и возвращение в исходный каталог.**
+
+```sh
+#/bin/sh
+current_dir=$(pwd)
+# Создание директории
+mkdir somenew_dir
+next_dir="$current_dir/somenew_dir"
+# Создание файла
+cd "$next_dir"
+touch some_info.txt
+# Заполнение информацией
+ls -d "$current_dir"/* >> "$next_dir/some_info.txt"
+cd ../
+```
+Запуск:
+```bash
+>>> ./4.sh
+>>> cat somenew_dir/some_info.txt 
+/home/jkearnsl/Рабочий стол/лаб ос/лаб 4/1.sh
+/home/jkearnsl/Рабочий стол/лаб ос/лаб 4/2.sh
+/home/jkearnsl/Рабочий стол/лаб ос/лаб 4/3.sh
+/home/jkearnsl/Рабочий стол/лаб ос/лаб 4/4.sh
+/home/jkearnsl/Рабочий стол/лаб ос/лаб 4/Laboratornaya_rabota4 (1).docx
+/home/jkearnsl/Рабочий стол/лаб ос/лаб 4/some_info.txt
+/home/jkearnsl/Рабочий стол/лаб ос/лаб 4/some.md
+/home/jkearnsl/Рабочий стол/лаб ос/лаб 4/somenew_dir
+```
+
+
+
+
 
 
 
