@@ -188,8 +188,37 @@ cd ../
 /home/jkearnsl/Рабочий стол/лаб ос/лаб 4/somenew_dir
 ```
 
+**5) Запрос и ввод имени пользователя, сравнение c текущим логическим именем пользователя и вывод сообщения: верно/неверно.**
 
+```sh
+#/bin/sh
+current_user=$(whoami)
+if [ $# -lt 1 ]
+then
+	echo Используйте: $0 username
+	echo Чтобы получить булевое True/False - текущий ли это пользователь или нет
+	exit 1
+fi
 
+if [ $current_user == $1 ]
+then
+    echo True
+else
+    echo False
+fi
+exit 0
+
+```
+Запуск:
+```bash
+>>> ./5.sh
+Используйте: ./5.sh username
+Чтобы получить булевое True/False - текущий ли это пользователь или нет
+>>> ./5.sh jk
+False
+>>> ./5.sh jkearnsl
+True
+```
 
 
 
