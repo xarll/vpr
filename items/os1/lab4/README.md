@@ -367,3 +367,6 @@ swtpm:x:125:137:virtual TPM software stack,,,:/var/lib/swtpm:/bin/false
 ```
 В файле `/etc/passwd` мы нашли следующие строки, которые содержат `/bin/false`
 
+
+
+*Авторство: **Бояршинов Н.О***
