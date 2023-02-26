@@ -78,7 +78,7 @@ chmod +x run.sh
 javac ./*.java -d ./out
 pause
 ```
-И файл `run.sh` с содержимым:
+И файл `run.bat` с содержимым:
 ```
 java ./out/%1
 ```
