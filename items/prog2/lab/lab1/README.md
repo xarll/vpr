@@ -81,7 +81,7 @@ pause
 ```
 И файл `run.bat` с содержимым:
 ```
-java -cp ./out/ $1
+java -cp ./out/ %1
 pause
 ```
 
