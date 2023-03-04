@@ -11,6 +11,61 @@
 содержащую минимальные и максимальные значения для всех простых
 числовых типов
 
+```java
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        Map<String, List<String>> types = new LinkedHashMap<String, List<String>>() {{
+            put("byte", Arrays.asList("8 бит", "-128", "127"));
+            put("short", Arrays.asList("16 бит", "-32768", "32767"));
+            put("int", Arrays.asList("32 бит", "-2147483648", "2147483647"));
+            put("long", Arrays.asList("64 бит", "-9223372036854775808", "9223372036854775807"));
+            put("float", Arrays.asList("32 бит", "1.4e-45", "3.4028235e+38"));
+            put("double", Arrays.asList("64 бит", "4.9e-324", "1.7976931348623157e+308"));
+        }};
+
+        System.out.println("Простые числовые типы Java\n");
+        System.out.println("Тип" + " \tВместимость" + "\tДиапазон значений");
+        
+        for (Map.Entry<String, List<String>> entry : types.entrySet()) {
+            String key = entry.getKey();
+            String capacity = entry.getValue().get(0);
+            String min = entry.getValue().get(1);
+            String max = entry.getValue().get(2);
+
+            System.out.println(key + " \t(" + capacity + ") " + "\tот " + min + " до " + max + ".");
+        }
+    }
+}
+```
+
+##### Вывод:
+```bash
+Простые числовые типы Java
+
+Тип 	Вместимость	Диапазон значений
+byte 	(8 бит) 	от -128 до 127.
+short 	(16 бит) 	от -32768 до 32767.
+int 	(32 бит) 	от -2147483648 до 2147483647.
+long 	(64 бит) 	от -9223372036854775808 до 9223372036854775807.
+float 	(32 бит) 	от 1.4e-45 до 3.4028235e+38.
+double 	(64 бит) 	от 4.9e-324 до 1.7976931348623157e+308.
+```
+##### Несколько слов по коду:
+
+Здесь я создаю переменную `types` типа `Map<String, List<String>>` - т.е она может хранить словарь, где ключ - строка, а значение список строк. 
+далее присваиваю переменной значение `new LinkedHashMap<String, List<String>>()` сразу добавляю все значения которые я хочу.
+
+Замечание: почему `LinkedHashMap`? Потому что `HashMap`, как и многие другие реализации интерфейса Map, не гарантирует сохранение порядка элементов, 
+а `LinkedHashMap` сохраняет порядок элементов в порядке их добавления в `Map`.
+
+Далее могут возникнуть вопросы за красивую табуляцию(пробелы между строк в выводе), за что отвечает обычный спецсимвол стандарта POSIX: `\t`, 
+который и делает такую красивую табуляцию.
+
 ### Задание 2
 Дан массив из 20 целых переменных. Конкретные значения
 для элементов задаются в конструкции инициализации. Найти среднее
