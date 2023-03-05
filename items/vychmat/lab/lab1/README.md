@@ -18,7 +18,7 @@
 
 ### Пример работы на MathCAD
 
-[.xmcd](./example_mathcad.xmcd)
+[.xmcd](./example_mathcad.xmcd "download")
 
 
 ### Реализация варианта 2 на Python
