@@ -433,7 +433,7 @@ public class task9 {
         int index = 0;
         
         for (int i = 0; i < str.length(); i++) {
-            index = str.indexOf("world", index + 1);
+            index = str.indexOf(word, index + 1);
             if (index != -1) {
                 i = index;
                 count++;
