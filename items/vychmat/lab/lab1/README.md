@@ -24,6 +24,10 @@
 <details>
   <summary>Task 1</summary>
   
+  ![image](https://user-images.githubusercontent.com/76239707/222968386-a3c4be54-b38e-4a51-9579-22f2c6304bb6.png)
+  ![image](https://user-images.githubusercontent.com/76239707/222968391-c0032588-8016-4ae8-8795-09abd9b38693.png)
+
+  
 ```Python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -218,6 +222,9 @@ print(
 <details>
   <summary>Task 2</summary>
   
+  ![image](https://user-images.githubusercontent.com/76239707/222968442-7dcc3822-a136-4f74-8a00-b5721a1f7e8b.png)
+
+  
   ```Python
   import numpy as np
   import matplotlib.pyplot as plt
@@ -238,6 +245,8 @@ print(
 <details>
   <summary>Task 3</summary>
   
+  ![image](https://user-images.githubusercontent.com/76239707/222968470-898777da-3a0c-4e84-a97b-0dd4f1e97313.png)
+  
 ```Python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -254,6 +263,16 @@ plt.show()
 ```
 </details>
 
+Не забудьте установить библиотеки:
+- `numpy` для работы с массивами
+- `matplotlib` для работы с графиками
+
+Также все действия: нахождение пределов, производных и тд - лучше проводить прямо в коде, 
+однако в данном случае я оперировал массивами x и y, из-за чего для построения графиков производных 
+я использовал градиент. В будущих лаб работах возможно буду использовать другие библиотеки.
+
 #### Несколько слов про сдачу лаб
 
 Вам предстоит полностью осознать что вы делаете, ибо вы будете обьяснять всё что происходит по пунктно
+
+*Авторство: **Бояршинов Н.О***
