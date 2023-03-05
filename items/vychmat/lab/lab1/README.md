@@ -17,7 +17,7 @@
 </details>
 
 ### Пример работы на MathCAD
-Скачать <a href="./example_mathcad.xmcd" download>.xmcd</a>
+Скачать <a id="raw-url" href="https://raw.githubusercontent.com/xarll/vpr/main/items/vychmat/lab/lab1/example_mathcad.xmcd">.xmcd</a>
 
 
 ### Реализация варианта 2 на Python
