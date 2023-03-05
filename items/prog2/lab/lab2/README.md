@@ -424,10 +424,61 @@ if (index != -1) {
 программной реализации следующей задачи. Посчитать, сколько раз
 заданная подстрока встречается в указанной строке.
 
+```java
+public class task9 {
+    public static void main(String[] args) {
+        String str = "Hello, world!";
+        String word = "world";
+        int count = 0;
+        int index = 0;
+        
+        for (int i = 0; i < str.length(); i++) {
+            index = str.indexOf("world", index + 1);
+            if (index != -1) {
+                i = index;
+                count++;
+            } else {
+                break;
+            }
+        }
+        System.out.println("Количество вхождений слова \"" + word + "\" в строку \"" + str + "\": " + count);
+    }
+}
+```
+##### Вывод
+```bash
+Количество вхождений слова "world" в строку "Hello, world!": 1
+```
+
+
 ### Задание 10
 Напишите программу для решения следующей задачи.
 Дана строка. Найти все ее циклические перестановки. Например, для
 строки “abcd” это строки “abcd”, “bcda”, “cdab”, “dabc”.
 
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class task10 {
+    public static void main(String[] args) {
+        String str = "abcd";
+        List<String> permutations = new ArrayList<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            permutations.add(str.substring(i) + str.substring(0, i));
+        }
+        System.out.println(permutations);
+    }
+}
+```
+##### Вывод
+```bash
+[abcd, bcda, cdab, dabc]
+```
+##### Немного о коде:
+Мы используем метод `substring` класса `String`, чтобы создать новые строки, в которых символы сдвигаются на новые позиции.
+Метод `substring` имеет следующий синтаксис: substring(индекс_от, индекс_до), где если `индекс_до` не указан, то берется максимальное значение
+int => до конца строки, как в случае с `str.substring(i)`.
 
 *Авторство: **Бояршинов Н.О***
