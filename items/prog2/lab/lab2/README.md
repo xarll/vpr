@@ -431,11 +431,11 @@ public class task9 {
         String word = "world";
         int count = 0;
         int index = 0;
-        
-        for (int i = 0; i < str.length(); i++) {
-            index = str.indexOf(word, index + 1);
+
+        while (true) {
+            index = str.indexOf(word, index);
             if (index != -1) {
-                i = index;
+                index = index + word.length();
                 count++;
             } else {
                 break;
