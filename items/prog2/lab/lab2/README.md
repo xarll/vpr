@@ -203,6 +203,33 @@ public class task4 {
 число и его представление в двоичной, восьмеричной и
 шестнадцатеричной системах счисления.
 
+```java
+import java.util.Scanner;
+
+public class task5 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите значение: ");
+        int num = scanner.nextInt();
+        scanner.close();
+
+        System.out.println("\nВведенное число: " + num);
+        System.out.println("Число в двоичной системе: " + Integer.toBinaryString(num));
+        System.out.println("Число в восьмеричной системе: " + Integer.toOctalString(num));
+        System.out.println("Число в шестнадцатеричной системе: " + Integer.toHexString(num));
+    }
+}
+```
+##### Вывод
+```bash
+Введите значение: 5
+
+Введенное число: 5
+Число в двоичной системе: 101
+Число в восьмеричной системе: 5
+Число в шестнадцатеричной системе: 5
+```
+
 ### Задание 6
 В стандарте Unicode-16 под знаки Кириллицы (включая
 символы украинского, сербского, македонского и т.д. языков, а также
@@ -214,7 +241,7 @@ public class task4 {
 0x0400, 16 строк, 16 столбцов, а, затем, для вывода некоторых знаков
 денежных единиц (например, бразильского крузейро, индийской рупии,
 евро, гривны, турецкой лиры, рубля, биткоина), стартовый код 0x20a0, 2
-строки, 16 столбцов. Нужно получить что-то подобное следующему
+строки, 16 столбцов. Нужно получить что-то подобное следующему:
 ```
  0 1 2 3 4 5 6 7 8 9 a b c d e f
 400 Ѐ Ё Ђ Ѓ Є Ѕ І Ї Ј Љ Њ Ћ Ќ Ѝ Ў Џ
@@ -243,6 +270,55 @@ public class task4 {
 Unicode. В MS Visual Studio Code и IntelliJ Idea это настройки по умолчанию.
 Чтобы добиться этого в Eclipse нужно выполнить следующее: Window -
 Preferences - General - Workspace - Text file encoding (установить UTF-8)
+
+```java
+public class task6 {
+    private static void viewTable(int start_code, int rows, int columns) {
+
+        for (int i = 0; i < columns; i++) {
+            System.out.printf("%X ", i);
+        }
+        System.out.println();
+        for (int i = 0; i < rows; i++) {
+            System.out.printf("%4X ", start_code + i * columns);
+            for (int j = 0; j < columns; j++) {;
+                char ch = (char)(start_code + i * columns + j);
+                System.out.printf("%c ", ch);
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        viewTable(0x0400, 16, 16);
+        viewTable(0x20a0, 2, 16);
+    }
+}
+```
+##### Вывод
+```
+0 1 2 3 4 5 6 7 8 9 A B C D E F 
+ 400 Ѐ Ё Ђ Ѓ Є Ѕ І Ї Ј Љ Њ Ћ Ќ Ѝ Ў Џ 
+ 410 А Б В Г Д Е Ж З И Й К Л М Н О П 
+ 420 Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я 
+ 430 а б в г д е ж з и й к л м н о п 
+ 440 р с т у ф х ц ч ш щ ъ ы ь э ю я 
+ 450 ѐ ё ђ ѓ є ѕ і ї ј љ њ ћ ќ ѝ ў џ 
+ 460 Ѡ ѡ Ѣ ѣ Ѥ ѥ Ѧ ѧ Ѩ ѩ Ѫ ѫ Ѭ ѭ Ѯ ѯ 
+ 470 Ѱ ѱ Ѳ ѳ Ѵ ѵ Ѷ ѷ Ѹ ѹ Ѻ ѻ Ѽ ѽ Ѿ ѿ 
+ 480 Ҁ ҁ ҂ ҃ ҄ ҅ ҆ ҇ ҈ ҉ Ҋ ҋ Ҍ ҍ Ҏ ҏ 
+ 490 Ґ ґ Ғ ғ Ҕ ҕ Җ җ Ҙ ҙ Қ қ Ҝ ҝ Ҟ ҟ 
+ 4A0 Ҡ ҡ Ң ң Ҥ ҥ Ҧ ҧ Ҩ ҩ Ҫ ҫ Ҭ ҭ Ү ү 
+ 4B0 Ұ ұ Ҳ ҳ Ҵ ҵ Ҷ ҷ Ҹ ҹ Һ һ Ҽ ҽ Ҿ ҿ 
+ 4C0 Ӏ Ӂ ӂ Ӄ ӄ Ӆ ӆ Ӈ ӈ Ӊ ӊ Ӌ ӌ Ӎ ӎ ӏ 
+ 4D0 Ӑ ӑ Ӓ ӓ Ӕ ӕ Ӗ ӗ Ә ә Ӛ ӛ Ӝ ӝ Ӟ ӟ 
+ 4E0 Ӡ ӡ Ӣ ӣ Ӥ ӥ Ӧ ӧ Ө ө Ӫ ӫ Ӭ ӭ Ӯ ӯ 
+ 4F0 Ӱ ӱ Ӳ ӳ Ӵ ӵ Ӷ ӷ Ӹ ӹ Ӻ ӻ Ӽ ӽ Ӿ ӿ 
+0 1 2 3 4 5 6 7 8 9 A B C D E F 
+20A0 ₠ ₡ ₢ ₣ ₤ ₥ ₦ ₧ ₨ ₩ ₪ ₫ € ₭ ₮ ₯ 
+20B0 ₰ ₱ ₲ ₳ ₴ ₵ ₶ ₷ ₸ ₹ ₺ ₻ ₼ ₽ ₾ ₿ 
+```
+
 
 ### Задание 7
 Написать приложение для реализации следующего
