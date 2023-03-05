@@ -17,8 +17,7 @@
 </details>
 
 ### Пример работы на MathCAD
-
-[.xmcd](./example_mathcad.xmcd "download")
+Скачать <a href="./example_mathcad.xmcd" download>.xmcd</a>
 
 
 ### Реализация варианта 2 на Python
