@@ -86,11 +86,12 @@ public class task2 {
             }
         }
 
-        if (count > 0 && count % 2 != 0 && multiply != 0) {
-            double geometricMean = -Math.pow(Math.abs(multiply), 1.0 / count);
+        if (count > 0 && multiply != 0) {
+            double geometricMean = Math.pow(Math.abs(multiply), 1.0 / count);
+            if (count % 2 != 0) {
+                geometricMean = -geometricMean;
+            }
             System.out.println("Среднее геометрическое элементов: " + geometricMean);
-        } else {
-            System.out.println("Невозможно определить СГ: четное количество элементов");
         }
     }
 }
@@ -208,10 +209,7 @@ import java.util.Scanner;
 
 public class task5 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите значение: ");
-        int num = scanner.nextInt();
-        scanner.close();
+        int num = Integer.parseInt(args[0]);
 
         System.out.println("\nВведенное число: " + num);
         System.out.println("Число в двоичной системе: " + Integer.toBinaryString(num));
