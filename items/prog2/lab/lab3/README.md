@@ -76,6 +76,7 @@ public class Task1 {
         System.out.println(makeTable(table_data, 15));
     }
 }
+
 ```
 
 ##### Вывод
@@ -127,11 +128,34 @@ table_data.put("(e^x)/(x * lg(x))", values.stream().map(val -> {
 элементов в каждой строке.
 
 ```java
+public class Task2 {
+
+    public static void main(String[] args)
+    {
+        int[][] arr = { { 1, 2, -3, -1 }, { 4, -5, 6, -7 }, { 8, -9, 10 } };
+        int maxNegative = Integer.MIN_VALUE;
+
+        for (int[] ints : arr) {
+            for (int anInt : ints) {
+                if (maxNegative < anInt && anInt < 0) {
+                    maxNegative = anInt;
+                }
+            }
+        }
+
+        if (maxNegative != Integer.MIN_VALUE) {
+            System.out.println("Наибольший отрицательный элемент: " + maxNegative);
+        } else {
+            System.out.println("Отрицательные элементы отсутствуют в массиве");
+        }
+    }
+}
 
 ```
 
 ##### Вывод
 ```bash
+Наибольший отрицательный элемент: -1
 
 ```
 
