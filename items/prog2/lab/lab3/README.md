@@ -16,13 +16,108 @@
 ширина *15* позиций, точность *7* знаков.
 
 ```java
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 
+public class Task1 {
+
+    private static String makeTable(Map<String, String[]> data, int width) {
+        List<List<String>> columns = new ArrayList<>();
+
+        for (Map.Entry<String, String[]> entry : data.entrySet()) {
+            List<String> column = new ArrayList<>();
+            column.add(entry.getKey());
+            column.add("-".repeat(width));
+            column.addAll(Arrays.asList(entry.getValue()));
+            columns.add(column);
+        }
+
+        StringBuilder table = new StringBuilder();
+        int row_count = columns.get(0).size();
+
+        for (int i = 0; i < row_count; i++) {
+            for (List<String> column : columns) {
+                table.append(String.format("| %-" + width + "s ", column.get(i)));
+            }
+            table.append("|\n");
+        }
+        return table.toString();
+    }
+
+    public static void main(String[] args) {
+        LinkedHashMap<String, String[]> table_data = new LinkedHashMap<>();
+
+        // ----------------- Arguments -----------------
+        double step = Math.PI / 15.0;
+        double end = Math.PI;
+        List<Double> values = new ArrayList<>();
+
+        for (double value = Math.PI / 15.0; value <= end; value += step) {
+            values.add(value);
+        }
+        table_data.put("x", values.stream().map(val -> String.format("%.5f", val)).toArray(String[]::new));
+
+        // ----------------- sin(x) -----------------
+        table_data.put(
+                "sin(x)", values.stream().map(Math::sin).map(val -> String.format("%.7e", val)).toArray(String[]::new)
+        );
+
+        // ------------ (e^x)/(x * lg(x)) -----------
+        table_data.put("(e^x)/(x * lg(x))", values.stream().map(val -> {
+            if (val == 0.0) {
+                return "0.0";
+            }
+            return String.format("%.7e", Math.exp(val) / (val * Math.log(val)));
+        }).toArray(String[]::new));
+
+        System.out.println(makeTable(table_data, 15));
+    }
+}
 ```
 
 ##### Вывод
 ```bash
-
+| x               | sin(x)          | (e^x)/(x * lg(x)) |
+| --------------- | --------------- | --------------- |
+| 0,20944         | 2,0791169e-01   | -3,7657531e+00  |
+| 0,41888         | 4,0673664e-01   | -4,1708308e+00  |
+| 0,62832         | 5,8778525e-01   | -6,4197073e+00  |
+| 0,83776         | 7,4314483e-01   | -1,5583972e+01  |
+| 1,04720         | 8,6602540e-01   | 5,9006089e+01   |
+| 1,25664         | 9,5105652e-01   | 1,2239682e+01   |
+| 1,46608         | 9,9452190e-01   | 7,7235842e+00   |
+| 1,67552         | 9,9452190e-01   | 6,1768502e+00   |
+| 1,88496         | 9,5105652e-01   | 5,5118960e+00   |
+| 2,09440         | 8,6602540e-01   | 5,2447599e+00   |
+| 2,30383         | 7,4314483e-01   | 5,2074608e+00   |
+| 2,51327         | 5,8778525e-01   | 5,3299753e+00   |
+| 2,72271         | 4,0673664e-01   | 5,5814962e+00   |
+| 2,93215         | 2,0791169e-01   | 5,9501124e+00   |
+| 3,14159         | 5,6655389e-16   | 6,4346282e+00   |
 ```
+##### Немного слов о коде
+Для отображения до 5ти знаков после запятой использовался метод `String.format("%.5f", val)`, 
+для экспоненциального представления - `String.format("%.7e", val)`. Выравнивание по левому краю и ограничение ширины строк: 
+`String.format("| %-" + width + "s ", column.get(i))`.
+
+Рассмотрим кусок java кода:
+```java
+table_data.put("(e^x)/(x * lg(x))", values.stream().map(val -> {
+            if (val == 0.0) {
+                return "0.0";
+            }
+            return String.format("%.7e", Math.exp(val) / (val * Math.log(val)));
+        }).toArray(String[]::new));
+```
+В словарь `table_data` добавляется: ключ `(e^x)/(x * lg(x))` и значение: массив, который формируется след. образом:
+1) `values.stream()` возвращает экземпляр `Stream` - коллекцию списка
+2) `.map(...)` - метод вхождения, который будет выполнен для каждого элемента коллекции, например в данном случае выполнится код анонимной функции
+3) `.toArray(String[]::new)` преобразует стрим в списокую модель. Мы передаем конструктор массива строк => ожидаем его получить.
+
+В итоге получаем объект типа `String[]` как значение коюча `(e^x)/(x * lg(x))`.
 
 
 ### Задание 2
