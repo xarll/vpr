@@ -166,11 +166,49 @@ public class Task2 {
 матрицы 3x3. Вывести матрицу на экран до сортировки и после.
 
 ```java
+import java.util.Arrays;
+
+public class Task3 {
+
+    private static void printMatrix(int[][] matrix) {
+        for (int[] ints : matrix) {
+            System.out.println(Arrays.toString(ints));
+        }
+    }
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 4, 3},
+                {5, 6, 7},
+                {9, -1, 1},
+        };
+
+        System.out.println("Исходная матрица:");
+        printMatrix(matrix);
+
+        for (int[] ints : matrix) {
+            Arrays.sort(ints);
+        }
+
+        System.out.println("\nМатрица после сортировки:");
+        printMatrix(matrix);
+
+    }
+}
 
 ```
 
 ##### Вывод
 ```bash
+Исходная матрица:
+[1, 4, 3]
+[5, 6, 7]
+[9, -1, 1]
+
+Матрица после сортировки:
+[1, 3, 4]
+[5, 6, 7]
+[-1, 1, 9]
 
 ```
 
