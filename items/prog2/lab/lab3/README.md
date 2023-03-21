@@ -247,11 +247,100 @@ public class Test {
 
 ##### Решение
 ```java
+import java.util.Scanner;
+
+public class Task4 {
+
+    private static class Circle {
+        public int x;
+        public int y;
+        public int radius;
+
+        public Circle(int x, int y, int radius) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+        }
+    }
+
+    enum ResultType {
+        TOUCHING,  // касаются
+        INTERSECTING_AT_TWO_POINTS,  // пересекаются в двух точках
+        COINCIDENT,  // совпадают
+        NON_INTERSECTING,  // не пересекаются
+        FIRST_CIRCLE_EMBEDDED,  // первая окружность вложена во вторую
+        SECOND_CIRCLE_EMBEDDED  // вторая окружность вложена в первую
+    }
+
+    private static ResultType DefineResult(Circle circle1, Circle circle2){
+        double distance = Math.sqrt(Math.pow(circle1.x - circle2.x, 2) + Math.pow(circle1.y - circle2.y, 2));
+        if (distance == 0 && circle1.radius == circle2.radius){
+            return ResultType.COINCIDENT;
+        } else if (distance == circle1.radius + circle2.radius){
+            return ResultType.TOUCHING;
+        } else if (distance < circle1.radius + circle2.radius){
+            return ResultType.INTERSECTING_AT_TWO_POINTS;
+        } else if (distance + circle1.radius == circle2.radius){
+            return ResultType.FIRST_CIRCLE_EMBEDDED;
+        } else if (distance + circle2.radius == circle1.radius){
+            return ResultType.SECOND_CIRCLE_EMBEDDED;
+        } else
+            return ResultType.NON_INTERSECTING;
+    }
+
+    public static void main(String[] args) {
+        int x;
+        int y;
+        int radius;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите координаты первой окружности: ");
+        System.out.print("x: ");
+        x = scanner.nextInt();
+        System.out.print("y: ");
+        y = scanner.nextInt();
+        System.out.print("Радиус: ");
+        radius = scanner.nextInt();
+        Circle circle1 = new Circle(x, y, radius);
+
+        System.out.println("\nВведите координаты второй окружности: ");
+        System.out.print("x: ");
+        x = scanner.nextInt();
+        System.out.print("y: ");
+        y = scanner.nextInt();
+        System.out.print("Радиус: ");
+        radius = scanner.nextInt();
+        Circle circle2 = new Circle(x, y, radius);
+
+
+        ResultType result = DefineResult(circle1, circle2);
+        
+        switch (result) {
+            case TOUCHING -> System.out.println("Касаются");
+            case INTERSECTING_AT_TWO_POINTS -> System.out.println("Пересекаются в двух точках");
+            case COINCIDENT -> System.out.println("Совпадают");
+            case NON_INTERSECTING -> System.out.println("Не пересекаются");
+            case FIRST_CIRCLE_EMBEDDED -> System.out.println("Первая окружность вложена во вторую");
+            case SECOND_CIRCLE_EMBEDDED -> System.out.println("Вторая окружность вложена в первую");
+            default -> System.out.println("Неизвестный результат");
+        }
+    }
+}
 
 ```
 
 ##### Вывод
 ```bash
+Введите координаты первой окружности: 
+x: 0
+y: 0
+Радиус: 5
+
+Введите координаты второй окружности: 
+x: 0
+y: 0
+Радиус: 5
+Совпадают
 
 ```
 
