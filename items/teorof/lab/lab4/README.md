@@ -40,6 +40,9 @@
 6. Строим граф
 
 ## Реализация варианта #2
+
+![image](https://user-images.githubusercontent.com/76239707/227050901-3a1e5a51-dc70-4668-9403-4f9109a50802.png)
+
 ...
 
 
