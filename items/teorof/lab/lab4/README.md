@@ -114,7 +114,8 @@ PS: так как из любой вершины можно попасть в с
 <details>
   <summary>Фото</summary>
   
-  
+  ![image](https://user-images.githubusercontent.com/76239707/227139936-0fdf4ebe-df34-44ff-a604-adb37c6424e4.png)
+
 
 </details>
 
