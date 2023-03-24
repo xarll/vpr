@@ -271,9 +271,9 @@ public class Task4 {
             return 2;
         } else if (distance < circle1.radius + circle2.radius){
             return 3;
-        } else if (distance + circle1.radius == circle2.radius){
+        } else if (distance + circle1.radius <= circle2.radius){
             return 4;
-        } else if (distance + circle2.radius == circle1.radius){
+        } else if (distance + circle2.radius <= circle1.radius){
             return 5;
         } else
             return 6;
@@ -368,20 +368,20 @@ public class Task5 {
         SECOND_CIRCLE_EMBEDDED  // вторая окружность вложена в первую
     }
 
-    private static ResultType DefineResult(Circle circle1, Circle circle2){
-        double distance = Math.sqrt(Math.pow(circle1.x - circle2.x, 2) + Math.pow(circle1.y - circle2.y, 2));
-        if (distance == 0 && circle1.radius == circle2.radius){
-            return ResultType.COINCIDENT;
-        } else if (distance == circle1.radius + circle2.radius){
-            return ResultType.TOUCHING;
-        } else if (distance < circle1.radius + circle2.radius){
-            return ResultType.INTERSECTING_AT_TWO_POINTS;
-        } else if (distance + circle1.radius == circle2.radius){
-            return ResultType.FIRST_CIRCLE_EMBEDDED;
-        } else if (distance + circle2.radius == circle1.radius){
-            return ResultType.SECOND_CIRCLE_EMBEDDED;
-        } else
-            return ResultType.NON_INTERSECTING;
+        private static ResultType DefineResult(Circle circle1, Circle circle2){
+            double distance = Math.sqrt(Math.pow(circle1.x - circle2.x, 2) + Math.pow(circle1.y - circle2.y, 2));
+            if (distance == 0 && circle1.radius == circle2.radius){
+                return ResultType.COINCIDENT;
+            } else if (distance == circle1.radius + circle2.radius){
+                return ResultType.TOUCHING;
+            } else if (distance + circle1.radius <= circle2.radius){
+                return ResultType.FIRST_CIRCLE_EMBEDDED;
+            } else if (distance + circle2.radius <= circle1.radius){
+                return ResultType.SECOND_CIRCLE_EMBEDDED;
+            } else if (distance < circle1.radius + circle2.radius){
+                return ResultType.INTERSECTING_AT_TWO_POINTS;
+            } else
+                return ResultType.NON_INTERSECTING;
     }
 
     public static void main(String[] args) {
@@ -410,7 +410,7 @@ public class Task5 {
 
 
         ResultType result = DefineResult(circle1, circle2);
-        
+
         switch (result) {
             case TOUCHING -> System.out.println("Касаются");
             case INTERSECTING_AT_TWO_POINTS -> System.out.println("Пересекаются в двух точках");
@@ -684,19 +684,19 @@ import java.util.regex.Pattern;
 
 public class Task10 {
     public static void main(String[] args) {
-        String some = "Мои номера `220-30-40` и `8904-378-16-61` не считая служебных";
+        String some = "Мои номера `220-30-40` и `8904-378-16-61` не считая 258-85-68 служебных";
 
         Pattern pattern_one = Pattern.compile("(8|\\+7)[-\\(\\s]*(\\d{3}[-\\)\\s]*){2}\\d{2}[-\\)\\s]*\\d{2}");
         Pattern pattern_two = Pattern.compile("\\b[23][- ]?\\d{2}[- ]?\\d{2}[- ]?\\d{2}\\b");
         Matcher match_mob = pattern_one.matcher(some);
         Matcher match_home = pattern_two.matcher(some);
 
-        if (match_mob.find()) {
-            System.out.println(match_mob.group(0));
+        while (match_mob.find()) {
+            System.out.println(match_mob.group());
         }
 
-        if (match_home.find()) {
-            System.out.println(match_home.group(0));
+        while (match_home.find()) {
+            System.out.println(match_home.group());
         }
     }
 }
@@ -707,6 +707,7 @@ public class Task10 {
 ```bash
 8904-378-16-61
 220-30-40
+378-16-61
 ```
 
 *Авторство: **Бояршинов Н.О***
