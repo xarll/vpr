@@ -39,8 +39,39 @@
 ## Работа
 ##### Вариант 2: Дан массив из 8 байт. Рассматривая его, как массив из 64 бит, посчитать количество единиц.
 ```asm
+data segment
+    NB db 04h, 07h, 14h, 23h, 04h, 38h, 3Fh, 2Ah
+    COUNT dw 0
+data ends
+code segment
+    assume cs: code, ds: data
+START:  
+    mov ax, data
+    mov ds, ax       
+    lea bx, NB       
+    mov cx, 8        ; len of array (counter)
+BEG:        
+    mov al, [bx]     ; array byte to al
+    mov si, 0        ; clear si
+COUNTBITS: 
+    shr al, 1        ; bit shift right by 1
+    adc si, 0        ; add CF into value SI
+    cmp al, 0        ; if not 0, then continue
+    jne COUNTBITS   
+    add [COUNT], si  ; add SI value into COUNT var
+    inc bx           ; INC bx byte
+    loop BEG        
+QUIT:   
+    mov ax, 4c00h   
+    int 21h         
+code ends
+end START
 
 ```
+
+Команда shr al, 1 сдвигает биты содержимого регистра al на один бит вправо (т.е. младший бит переходит в следующий разряд справа, а старший бит устанавливается в 0). Например, если в регистре al хранится значение 11001010₂ (202₁₀), то после выполнения команды shr al, 1 значение al станет равным 01100101₂ (101₁₀).
+
+При выполнении этой операции, самый правый бит в регистре al (т.е. младший бит) переходит в флаг CF (Carry Flag), который устанавливается в 1 или 0 в зависимости от значения этого бита.
 
 ## Вопросы
 
