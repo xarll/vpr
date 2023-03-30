@@ -8,10 +8,10 @@
   
 </details>
  
- Скачать [.doc](./)
+ Скачать [.docx](https://github.com/xarll/vpr/raw/main/items/vychmat/lab/lab2/Laboratornaya_rabota_2%20(1).docx)
 
 ### Пример работы на MathCAD
-Скачать <a id="raw-url" href="https://raw.githubusercontent.com/xarll/vpr/main/items/vychmat/lab/lab1/example_mathcad.xmcd">.xmcd</a>
+Скачать [.xmcd]()
 
 
 ### Метод половинного деления (МПД)
