@@ -22,7 +22,8 @@
 <details>
   <summary>Модуль: task1.py</summary>
   
-  
+  ![image](https://user-images.githubusercontent.com/76239707/228904527-abcd93b2-e0d3-4b4b-8a90-a6fb589b9083.png)
+  ![image](https://user-images.githubusercontent.com/76239707/228904570-0ead6cb2-b9f9-4d5a-b2a4-322a06cdadfd.png)
 ```Python
 """
 Классная работа
