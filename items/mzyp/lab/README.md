@@ -6,3 +6,4 @@
 * [Лаб 4](./lab4/README.md)
 * [Лаб 5](./lab5/README.md)
 * [Лаб 6](./lab6/README.md)
+* [Лаб 7](./lab7/README.md)
