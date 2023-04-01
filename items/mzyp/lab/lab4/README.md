@@ -37,7 +37,7 @@
 
 
 ## Работа
-##### Вариант 2: Дан массив из 8 байт. Рассматривая его, как массив из 64 бит, посчитать количество единиц.
+#### Вариант 2: Дан массив из 8 байт. Рассматривая его, как массив из 64 бит, посчитать количество единиц.
 ```asm
 data segment
     NB db 04h, 07h, 14h, 23h, 04h, 38h, 3Fh, 2Ah
@@ -72,6 +72,123 @@ end START
 Команда shr al, 1 сдвигает биты содержимого регистра al на один бит вправо (т.е. младший бит переходит в следующий разряд справа, а старший бит устанавливается в 0). Например, если в регистре al хранится значение 11001010₂ (202₁₀), то после выполнения команды shr al, 1 значение al станет равным 01100101₂ (101₁₀).
 
 При выполнении этой операции, самый правый бит в регистре al (т.е. младший бит) переходит в флаг CF (Carry Flag), который устанавливается в 1 или 0 в зависимости от значения этого бита.
+
+#### Вариант 5: Рассматривая байт как набор логических значений x7 x6 x5 x4 x3 x1 x0 (true -1, false - 0), вычислить логическую формулу
+`f=(x7 & x6 & x3 ) V (x6 & x4 & x2 & x1) V (x7 & x6 & x2 & x0)`
+
+```asm
+data segment
+    NB db 0h, 0h, 0h, 1h, 0h, 1h,  1h, 1h
+    ;     x0, x1, x2 ,x3, x4  x5,  x6  x7
+data ends                    
+
+code segment
+    
+    assume cs: code. ds:data
+    
+    START:
+        mov ax, data
+        mov ds, ax
+        lea bx, NB
+        
+        mov cx, 1 ; store result inside ()
+        mov dx, 0 ; store f result
+ 		
+    CON:
+        ; f=(x7 & x6 & x3 ) V
+        ; (x6 & x4 & x2 & x1) V
+        ; (x7 & x6 & x2 & x0)
+        
+        
+        ; (x7 & x6 & x3 )
+        add bx, 7
+        mov ax, [bx]
+        sub bx, 7
+        
+        and cx, ax
+        
+        add bx, 6
+        mov ax, [bx]
+        sub bx, 6
+        
+        and cx, ax
+        
+        add bx, 3
+        mov ax, [bx]
+        sub bx, 3
+        
+        and cx, ax
+        
+        
+        or dx, cx 
+        
+        ; (x6 & x4 & x2 & x1)
+        
+        add bx, 6
+        mov ax, [bx]
+        sub bx, 6
+        
+        and cx, ax
+        
+        add bx, 4
+        mov ax, [bx]
+        sub bx, 4
+        
+        and cx, ax
+        
+        add bx, 2
+        mov ax, [bx]
+        sub bx, 2
+        
+        and cx, ax
+        
+        add bx, 1
+        mov ax, [bx]
+        sub bx, 1
+        
+        and cx, ax
+        
+        
+        or dx, cx
+        
+        
+        ; (x7 & x6 & x2 & x0)
+        add bx, 7
+        mov ax, [bx]
+        sub bx, 7
+        
+        and cx, ax
+        
+        add bx, 6
+        mov ax, [bx]
+        sub bx, 6
+        
+        and cx, ax
+        
+        add bx, 2
+        mov ax, [bx]
+        sub bx, 2
+        
+        and cx, ax
+        
+        add bx, 0
+        mov ax, [bx]
+        sub bx, 0
+        
+        and cx, ax
+        
+        
+        or dx, cx
+        ; RESULT IN dx
+    
+    QUIT:
+        mov ax, 4c00h ; exit code
+ 		Int 21h
+ 		
+code ends
+end START
+```
+
 
 ## Вопросы
 
