@@ -69,13 +69,8 @@ PS: так как из любой вершины можно попасть в с
 
 ##### 3. Cтроим граф
 
-<details>
-  <summary>Фото</summary>
-  
   ![image](https://user-images.githubusercontent.com/76239707/229360546-11aa2cee-9323-44a3-bbb9-7493c0a15197.png)
 
-
-</details>
 
 ##### 4. Строим детерминированный автомат
 
