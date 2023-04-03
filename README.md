@@ -22,6 +22,7 @@
 
 [**Супер мега сборник на Google диске за 2 семестр**](https://drive.google.com/drive/folders/1OKM2yYlsrIai8Zd_68wvKkQ9lldgY4i0?usp=sharing)
 
+##
 ### 2 курс
 - [Теория вероятностей](/items/teorver/README.md)
 - [Разр. пользовательского интерфейса](/items/dui/README.md)
