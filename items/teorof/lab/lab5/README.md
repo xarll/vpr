@@ -378,12 +378,11 @@ if __name__ == '__main__':
 ```
 
 </details>
-
+ <details>
   <summary>Вывод программы</summary>
   
-  
-  ![изображение](https://user-images.githubusercontent.com/76239707/229886803-544b4fc9-9660-4a4f-a44f-23d49c450dab.png)
-  
+  ![изображение](https://user-images.githubusercontent.com/76239707/229886803-544b4fc9-9660-4a4f-a44f-23d49c450dab.png)  
+   
   ![изображение](https://user-images.githubusercontent.com/76239707/229886823-84e29267-59e5-46b8-85c8-a16725e49856.png)
 
 
