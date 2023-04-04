@@ -54,7 +54,7 @@
 
 * Контрольная работа №1 - [Вопросы](https://i.imgur.com/gOZBwFK.png) - [Ответы (не 100% правильные)](https://1drv.ms/w/s!AuFlXVjM3TMxggH-89FuyfBHTWkE?e=KyXzNe) 
 * Контрольная работа №2 - [Вопросы (позже)]() - [Ответы (не 100% правильные)](https://1drv.ms/w/s!AuFlXVjM3TMxggCd1ApYco9Sr3JI?e=gUDOIK) 
-* Контроль гая работа №3 - [Вопросы](https://i.imgur.com/DUylGL4.png) - [Ответы](https://1drv.ms/w/s!AuFlXVjM3TMxggPcCvk6DY64Vk5A?e=5Zyk2c)
+* Контрольная работа №3 - [Вопросы](https://i.imgur.com/DUylGL4.png) - [Ответы](https://1drv.ms/w/s!AuFlXVjM3TMxggPcCvk6DY64Vk5A?e=5Zyk2c)
 
 ### Порядок проведения КР
 
