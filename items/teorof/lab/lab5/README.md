@@ -478,6 +478,21 @@ Process finished with exit code 0
 </details>
 
 ### Пункты 1-6 (Полная реализация)
+  
+<details>
+  <summary>Рекомендации</summary>
+  
+  Если используете какое-либо IDE для python, то включите поддержку эмуляции консоли, как показано на пример pycharm:
+  
+  ![изображение](https://user-images.githubusercontent.com/76239707/230062745-f5ce2798-55af-4294-8e43-342178a7631b.png)
+  
+  Это позволит использовать нормально функцию `clear_term` в `utils.py`
+  
+  
+  Код предоставлен в ознакомительных целях и полностью готов для модификаций
+
+</details>
+  
 
 <details>
   <summary>utils.py</summary>
