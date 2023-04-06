@@ -22,22 +22,31 @@
 
 [**Супер мега сборник на Google диске за 2 семестр**](https://drive.google.com/drive/folders/1OKM2yYlsrIai8Zd_68wvKkQ9lldgY4i0?usp=sharing)
 
-##
 ### 2 курс
+
+#### 3 семестр
 - [Теория вероятностей](/items/teorver/README.md)
 - [Разр. пользовательского интерфейса](/items/dui/README.md)
 - [Технологич. предпринимательство](/items/techpred/README.md)
 - [Алгоритмы и структуры данных](/items/algstr/README.md)
+
+[**Супер мега сборник на Google диске за 3 семестр**](https://drive.google.com/drive/folders/1mdPBKOMceLdzK89-oAb0EhYICUDNMSyd?usp=sharing)
+
+#### 4 семестр
 - [Исследование операций](/items/expop/README.md)
 - [Вычислительная математика](/items/vychmat/README.md)
 - [Теория автоматов и формальных языков](/items/teorof/README.md)
 - [Архитектура вычислительных систем](/items/avys/README.md)
 - [Машино-зависимые ЯП](/items/mzyp/README.md)
 - [Программирование](/items/prog2/README.md)
-- [[экстра] ОС](/items/os1/README.md)
+- [[доп. образование] Администрирование ОС Linux](/items/os1/README.md)
 - [Практика](/items/pract2/README.md)
 
-[**Супер мега сборник на Google диске за 3 семестр**](https://drive.google.com/drive/folders/1mdPBKOMceLdzK89-oAb0EhYICUDNMSyd?usp=sharing)
+
+[**Супер мега сборник на Google диске за 4 семестр**](https://drive.google.com/drive/folders/1nkOwuID6dn1xQwurwX5gsrXjXaXVLdR6?usp=sharing)
+
+*Возможно, вам придётся написать Лере Радаевой для получения доступа к нему*
+
 
 #### Большинство разделов пусты, мы будем рады, если вы заполните их!
 
