@@ -497,12 +497,14 @@ Process finished with exit code 0
 
 <details>
   <summary>utils.py</summary>
-
+  
+  а вот мне лень 
 
 </details>
 <details>
   <summary>main.py</summary>
 
+  мне лень выкладывать код, так что пишите сами
 
 </details>
 
