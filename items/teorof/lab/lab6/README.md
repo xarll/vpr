@@ -28,15 +28,48 @@
 
 ## Реализация варианта #2
 
+### Ручная
+<details>
+  <summary>Фото</summary>
+
+  ![image](https://user-images.githubusercontent.com/76239707/230787270-cdceddda-3a27-469b-97e3-1d2b1d9b757d.png)
+  ![image](https://user-images.githubusercontent.com/76239707/230787275-7a98676d-824e-4a28-8bde-f87a7f1e8a84.png)
+  ![image](https://user-images.githubusercontent.com/76239707/230787280-587dc5a3-6424-428b-8e9f-9ebc9169ce06.png)
+
+</details>
+
+### Программный код
+
+<details>
+  <summary>Код</summary>
+  
+  ```Python
+  SupaCode
+  ```
+
+</details>
+
 
 
 
 ## Реализация варианта #5
 
+### Ручная
 <details>
   <summary>Фото</summary>
 
   ![image](https://user-images.githubusercontent.com/76239707/230280641-969b8b64-89ab-4d01-814a-c579b2651c89.png)
   ![image](https://user-images.githubusercontent.com/76239707/230280669-7ff6618a-0fd9-4721-a63f-eb5566e7ded3.png)
+
+</details>
+
+### Программный код
+
+<details>
+  <summary>Код</summary>
+  
+  ```bash
+  trash
+  ```
 
 </details>
