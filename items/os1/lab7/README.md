@@ -1,7 +1,7 @@
 # Лабораторная работа #7 - LVM
 
 ## Материалы
-- []()
+- [Lab-7 - LVM.pdf](https://github.com/xarll/vpr/blob/main/items/os1/lab6_2/Lab-6.2%20-%20%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%D1%8B%20Telnet%20%D0%B8%20SSH.docx)
 
 ## Задания для самостоятельной работы
 ...
