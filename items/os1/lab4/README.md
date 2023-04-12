@@ -2,6 +2,9 @@
 
 ## Методичка
 
+- Теория [Bash-скрипты-теория.pdf](https://drive.google.com/file/d/1Mg07lR7W_XgXzg7FBeNy4iTeHwJKbQsM/view?usp=share_link)
+- Задания [Лабораторная работа4.docx](https://docs.google.com/document/d/1EW-N3TjlWFaBuwPygYddGZXns3gBcxeY/edit?usp=share_link&ouid=114433453162808919564&rtpof=true&sd=true)
+
 ## О сдаче
 
 Во время сдачи Долгов смотрел просто все скрипты из [2 пункта](https://github.com/xarll/vpr/blob/main/items/os1/lab4/README.md#2-%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D1%8C%D1%82%D0%B5-%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5-shell---%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B-%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B0%D1%8E%D1%89%D0%B5%D0%B9-%D1%81%D0%BB%D0%B5%D0%B4%D1%83%D1%8E%D1%89%D0%B8%D0%B5-%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F)
