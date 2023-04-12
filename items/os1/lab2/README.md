@@ -1,6 +1,7 @@
 # Лабораторная работа #2 - NULL
 
-![880369e21331f7f78463a33a66510fcc](https://user-images.githubusercontent.com/60810530/231513900-c97e0da0-f6a2-43a5-86c2-dd6b5fee2f4f.jpg)
+![Снимок экрана 2023-04-12 185756](https://user-images.githubusercontent.com/60810530/231514703-895b6eae-4799-49de-a487-1a21fc349985.jpg)
+
 
 ## Почему
 
