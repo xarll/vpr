@@ -518,3 +518,5 @@ class Graph:
 </details>
 
 Код на гитхаб: [тык](https://github.com/xarll/vpr/tree/main/items/teorof/lab/lab6/program)
+  
+Если будут вопросы, то пишите [VK](https://vk.com/jkearnsl)
