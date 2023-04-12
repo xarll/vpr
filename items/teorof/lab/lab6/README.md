@@ -31,6 +31,8 @@
 ### Ручная
 <details>
   <summary>Фото</summary>
+  
+  PS: в п.3 я ошибся, последний класс: `[['q4', 'q5'], ['q0'], ['q3', 'q2', 'q1']]`
 
   ![image](https://user-images.githubusercontent.com/76239707/230787270-cdceddda-3a27-469b-97e3-1d2b1d9b757d.png)
   ![image](https://user-images.githubusercontent.com/76239707/230787275-7a98676d-824e-4a28-8bde-f87a7f1e8a84.png)
