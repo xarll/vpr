@@ -185,11 +185,9 @@ def main():
                 relation["from"] = class_mask
             if relation["to"] in _class:
                 relation["to"] = class_mask
+                
 
-    result_start_vertex = f"[{start_vertex}]"
-    result_end_vertex = f"[{end_vertex[0]}]"
-
-    print_graph(result_graph_data, result_start_vertex, [result_end_vertex])
+    print_graph(result_graph_data)
 
 
 if __name__ == '__main__':
