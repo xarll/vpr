@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Engine {
-    // перечисление типов бензина
-    public enum FuelType{дизель, бензин, газ};
+    // РїРµСЂРµС‡РёСЃР»РµРЅРёРµ С‚РёРїРѕРІ Р±РµРЅР·РёРЅР°
+    public enum FuelType{РґРёР·РµР»СЊ, Р±РµРЅР·РёРЅ, РіР°Р·};
     private double power, fuelConsumption, workload;
 
     public double getPower() {
@@ -55,7 +55,7 @@ public class Engine {
     private FuelType fuelType;
     private String registerSign;
     private int numberOfCylinders;
-    // Конструктор класса Engine, который принимает в качестве параметров данные о количестве цилиндров, мощности, расходе топлива, объеме работы, типе топлива и регистрационном знаке
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Engine, РєРѕС‚РѕСЂС‹Р№ РїСЂРёРЅРёРјР°РµС‚ РІ РєР°С‡РµСЃС‚РІРµ РїР°СЂР°РјРµС‚СЂРѕРІ РґР°РЅРЅС‹Рµ Рѕ РєРѕР»РёС‡РµСЃС‚РІРµ С†РёР»РёРЅРґСЂРѕРІ, РјРѕС‰РЅРѕСЃС‚Рё, СЂР°СЃС…РѕРґРµ С‚РѕРїР»РёРІР°, РѕР±СЉРµРјРµ СЂР°Р±РѕС‚С‹, С‚РёРїРµ С‚РѕРїР»РёРІР° Рё СЂРµРіРёСЃС‚СЂР°С†РёРѕРЅРЅРѕРј Р·РЅР°РєРµ
     public Engine(int numberOfCylinders, double power, double fuelConsumption, double workload, FuelType fuelType, String registerSign){
         this.numberOfCylinders = numberOfCylinders;
         this.power = power;
@@ -65,21 +65,21 @@ public class Engine {
         setRegisterSign(registerSign);
     }
 
-    // Метод для установки регистрационного знака, который принимает в качестве параметра строку
+    // РњРµС‚РѕРґ РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё СЂРµРіРёСЃС‚СЂР°С†РёРѕРЅРЅРѕРіРѕ Р·РЅР°РєР°, РєРѕС‚РѕСЂС‹Р№ РїСЂРёРЅРёРјР°РµС‚ РІ РєР°С‡РµСЃС‚РІРµ РїР°СЂР°РјРµС‚СЂР° СЃС‚СЂРѕРєСѓ
     public void setRegisterSign(String registerSign){
-        Pattern pattern = Pattern.compile("[АВЕКМНОРСТУХ]\\d{3}[АВЕКМНОРСТУХ]{2}\\d{2,3}RUS");
+        Pattern pattern = Pattern.compile("[РђР’Р•РљРњРќРћР РЎРўРЈРҐ]\\d{3}[РђР’Р•РљРњРќРћР РЎРўРЈРҐ]{2}\\d{2,3}RUS");
         Matcher matcher = pattern.matcher(registerSign);
         if(matcher.matches()){
             this.registerSign = registerSign;
         }
         else {
-            System.out.println("Ошибка! Неверные данные!");
+            System.out.println("РћС€РёР±РєР°! РќРµРІРµСЂРЅС‹Рµ РґР°РЅРЅС‹Рµ!");
         }
     }
-    // Переопределенный метод toString для получения строкового представления объекта
+    // РџРµСЂРµРѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РјРµС‚РѕРґ toString РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЃС‚СЂРѕРєРѕРІРѕРіРѕ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ РѕР±СЉРµРєС‚Р°
     @Override
     public String toString(){
-        String s =String.format("Номер: %s  Тип топлива: %s Кол-во цилиндров: %d Мощность: %f Расход топлива: %f Объем работы: %f", registerSign, fuelType, numberOfCylinders, power, fuelConsumption, workload);
+        String s =String.format("РќРѕРјРµСЂ: %s  РўРёРї С‚РѕРїР»РёРІР°: %s РљРѕР»-РІРѕ С†РёР»РёРЅРґСЂРѕРІ: %d РњРѕС‰РЅРѕСЃС‚СЊ: %f Р Р°СЃС…РѕРґ С‚РѕРїР»РёРІР°: %f РћР±СЉРµРј СЂР°Р±РѕС‚С‹: %f", registerSign, fuelType, numberOfCylinders, power, fuelConsumption, workload);
         return s;
     }
 }
