@@ -5,21 +5,21 @@ import java.util.ArrayList;
 public class GraphShower {
     public static void showFuncs(Graph graph){
         for(int i = 0;i<graph.getFuncs().size();i++){
-            System.out.println("Ôóíêöèÿ "+(i+1)+"\tâèä: "+graph.getExplanation().getName(i));
+            System.out.println("Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ "+(i+1)+"\tÐ²Ð¸Ð´: "+graph.getExplanation().getName(i));
         }
     }
     public static void showCoordinateMesh(Graph graph){
-        System.out.println("Ïîçèöèÿ îñåé: "+graph.getCoordinateMesh().getPosition());
+        System.out.println("ÐŸÐ¾Ð·Ð¸Ñ†Ð¸Ñ Ð¾ÑÐµÐ¹: "+graph.getCoordinateMesh().getPosition());
         for(int i = 0;i<graph.getCoordinateMesh().getAxesNum();i++){
-            System.out.println("Îáîçíà÷åíèå îñè: "+graph.getCoordinateMesh().getAxisDesignation(i)+"\tÈíòåðâàë îñè: "+graph.getCoordinateMesh().getAxisInterval(i));
+            System.out.println("ÐžÐ±Ð¾Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¾ÑÐ¸: "+graph.getCoordinateMesh().getAxisDesignation(i)+"\tÐ˜Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ð¾ÑÐ¸: "+graph.getCoordinateMesh().getAxisInterval(i));
         }
     }
     public static void showMesh(Graph graph){
-        System.out.println("Èíòåðâàë ñåòêè: "+graph.getMesh().getInterval());
+        System.out.println("Ð˜Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» ÑÐµÑ‚ÐºÐ¸: "+graph.getMesh().getInterval());
     }
     public static void showExplanation(Graph graph){
         for(int i = 0;i<graph.getFuncs().size();i++){
-            System.out.println("Âèä ôóíêöèè: "+graph.getExplanation().getName(i)+"\tÖâåò ãðàôèêà: "+graph.getExplanation().getColor(i));
+            System.out.println("Ð’Ð¸Ð´ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸: "+graph.getExplanation().getName(i)+"\tÐ¦Ð²ÐµÑ‚ Ð³Ñ€Ð°Ñ„Ð¸ÐºÐ°: "+graph.getExplanation().getColor(i));
         }
     }
 }
