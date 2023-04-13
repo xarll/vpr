@@ -47,13 +47,13 @@ def partitioning_into_equivalence_classes(
                     """
 
                     dest_class = [_ for _ in classes if dest_vertex in _][0]
-                    _ = [el for el in exclude_rels if el["_class"] == dest_class]
-                    dest_class_in_exclude_rels = None if not _ else _[0]
+                    _ = [el for el in exclude_rels if el["dest_vertex"] == dest_vertex]
+                    el_in_exclude_rels = None if not _ else _[0]
 
-                    if dest_class_in_exclude_rels:
-                        dest_class_in_exclude_rels["vertex"].append(vertex)
+                    if el_in_exclude_rels:
+                        el_in_exclude_rels["vertex"].append(vertex)
                     else:
-                        exclude_rels.append(dict(vertex=[vertex], _class=dest_class))
+                        exclude_rels.append(dict(vertex=[vertex], _class=dest_class, dest_vertex=dest_vertex))
 
             """
             Разбиваем класс на подклассы
