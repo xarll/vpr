@@ -7,9 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Car {
-    // Создание объекта Pattern для проверки номера автомобиля на соответствие шаблону
-    private Pattern patternOfSign = Pattern.compile("[АВЕКМНОРСТУХ]\\d{3}[АВЕКМНОРСТУХ]{2}\\d{2,3}RUS");
-    public enum Model{легковой, грузовой, автобус, специальный};
+    // РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° Pattern РґР»СЏ РїСЂРѕРІРµСЂРєРё РЅРѕРјРµСЂР° Р°РІС‚РѕРјРѕР±РёР»СЏ РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ С€Р°Р±Р»РѕРЅСѓ
+    private Pattern patternOfSign = Pattern.compile("[РђР’Р•РљРњРќРћР РЎРўРЈРҐ]\\d{3}[РђР’Р•РљРњРќРћР РЎРўРЈРҐ]{2}\\d{2,3}RUS");
+    public enum Model{Р»РµРіРєРѕРІРѕР№, РіСЂСѓР·РѕРІРѕР№, Р°РІС‚РѕР±СѓСЃ, СЃРїРµС†РёР°Р»СЊРЅС‹Р№};
     private final String BRAND;
     private final Model MODEL;
     private Color color;
@@ -40,7 +40,7 @@ public class Car {
     public final String getRegisterSign() {
         return registerSign;
     }
-    // Конструктор класса Car без параметра registerSign
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Car Р±РµР· РїР°СЂР°РјРµС‚СЂР° registerSign
     public Car(Model MODEL, String BRAND, int NUM_OF_WHEELS, Engine engine, Color color){
         this.BRAND = BRAND;
         this.MODEL = MODEL;
@@ -48,7 +48,7 @@ public class Car {
         this.engine = engine;
         this.color = color;
     }
-    // Конструктор класса Car с параметром registerSign
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Car СЃ РїР°СЂР°РјРµС‚СЂРѕРј registerSign
     public Car(Model MODEL, String BRAND, int NUM_OF_WHEELS, Engine engine,Color color, String registerSign){
         this.BRAND = BRAND;
         this.MODEL = MODEL;
@@ -57,13 +57,13 @@ public class Car {
         this.color = color;
         setRegisterSign(registerSign);
     }
-    // Метод для установки регистрационного знака, который принимает в качестве параметра строку
+    // РњРµС‚РѕРґ РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё СЂРµРіРёСЃС‚СЂР°С†РёРѕРЅРЅРѕРіРѕ Р·РЅР°РєР°, РєРѕС‚РѕСЂС‹Р№ РїСЂРёРЅРёРјР°РµС‚ РІ РєР°С‡РµСЃС‚РІРµ РїР°СЂР°РјРµС‚СЂР° СЃС‚СЂРѕРєСѓ
     public final boolean setRegisterSign(String registerSign){
         return setRegisterSign(registerSign, patternOfSign);
     }
     protected final boolean setRegisterSign(String registerSign, Pattern pattern){
         Matcher matcher = pattern.matcher(registerSign);
-        // проверяем, соответствует ли переданный номер регистрации заданному шаблону
+        // РїСЂРѕРІРµСЂСЏРµРј, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ Р»Рё РїРµСЂРµРґР°РЅРЅС‹Р№ РЅРѕРјРµСЂ СЂРµРіРёСЃС‚СЂР°С†РёРё Р·Р°РґР°РЅРЅРѕРјСѓ С€Р°Р±Р»РѕРЅСѓ
         if(matcher.matches()){
             this.registerSign = registerSign;
             return true;
@@ -81,11 +81,11 @@ public class Car {
     }
 
     public void showInfo(){
-        System.out.println("Марка "+this.BRAND);
-        System.out.println("Модель "+this.MODEL);
-        System.out.println("Колеса "+this.NUM_OF_WHEELS);
-        System.out.println("Цвет "+this.color);
-        System.out.println("Двигатель "+this.engine);
-        System.out.println("Номер "+this.registerSign);
+        System.out.println("РњР°СЂРєР° "+this.BRAND);
+        System.out.println("РњРѕРґРµР»СЊ "+this.MODEL);
+        System.out.println("РљРѕР»РµСЃР° "+this.NUM_OF_WHEELS);
+        System.out.println("Р¦РІРµС‚ "+this.color);
+        System.out.println("Р”РІРёРіР°С‚РµР»СЊ "+this.engine);
+        System.out.println("РќРѕРјРµСЂ "+this.registerSign);
     }
 }
