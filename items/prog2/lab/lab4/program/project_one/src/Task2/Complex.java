@@ -2,31 +2,31 @@ package Task2;
 
 public class Complex {
     private double realPart, imaginaryPart;
-    //Используется для создания нового объекта класса Complex, инициализирующего переменные realPart и imaginaryPart заданными значениями.
+    //РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕРіРѕ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР° Complex, РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋС‰РµРіРѕ РїРµСЂРµРјРµРЅРЅС‹Рµ realPart Рё imaginaryPart Р·Р°РґР°РЅРЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё.
     public Complex(double realPart, double imaginaryPart){
         this.realPart = realPart;
         this.imaginaryPart = imaginaryPart;
     }
-    //Конструктор по умолчанию без параметров, который инициализирует переменные
+    //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ, РєРѕС‚РѕСЂС‹Р№ РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїРµСЂРµРјРµРЅРЅС‹Рµ
     public Complex(){
         this.realPart = 0;
         this.imaginaryPart = 0;
     }
-    // Геттеры для получения значений реальной и мнимой частей.
+    // Р“РµС‚С‚РµСЂС‹ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ СЂРµР°Р»СЊРЅРѕР№ Рё РјРЅРёРјРѕР№ С‡Р°СЃС‚РµР№.
     public double getRealPart(){
         return this.realPart;
     }
     public double getImaginaryPart(){
         return this.imaginaryPart;
     }
-    // Сеттеры для установки значений реальной и мнимой частей.
+    // РЎРµС‚С‚РµСЂС‹ РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё Р·РЅР°С‡РµРЅРёР№ СЂРµР°Р»СЊРЅРѕР№ Рё РјРЅРёРјРѕР№ С‡Р°СЃС‚РµР№.
     public void setRealPart(double realPart){
         this.realPart = realPart;
     }
     public void setImaginaryPart(double imaginaryPart){
         this.imaginaryPart = imaginaryPart;
     }
-    // возвращает true, если два комплексных числа num1 и num2 имеют равные вещественные и мнимые части, иначе возвращает false.
+    // РІРѕР·РІСЂР°С‰Р°РµС‚ true, РµСЃР»Рё РґРІР° РєРѕРјРїР»РµРєСЃРЅС‹С… С‡РёСЃР»Р° num1 Рё num2 РёРјРµСЋС‚ СЂР°РІРЅС‹Рµ РІРµС‰РµСЃС‚РІРµРЅРЅС‹Рµ Рё РјРЅРёРјС‹Рµ С‡Р°СЃС‚Рё, РёРЅР°С‡Рµ РІРѕР·РІСЂР°С‰Р°РµС‚ false.
     static public boolean isEquals(Complex num1, Complex num2) {
         if (num1.getRealPart()==num2.getRealPart()&&num1.getImaginaryPart()==num2.getImaginaryPart()) {
             return true;
@@ -34,7 +34,7 @@ public class Complex {
         return false;
     }
 
-    // Методы будут ПОВТОРЯТЬСЯ!!! (смотрите на свойства внутри mul(...). Используются в зависимости от переданных свойств)
+    // РњРµС‚РѕРґС‹ Р±СѓРґСѓС‚ РџРћР’РўРћР РЇРўР¬РЎРЇ!!! (СЃРјРѕС‚СЂРёС‚Рµ РЅР° СЃРІРѕР№СЃС‚РІР° РІРЅСѓС‚СЂРё mul(...). РСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РїРµСЂРµРґР°РЅРЅС‹С… СЃРІРѕР№СЃС‚РІ)
     static public Complex mul(Complex num1, Complex num2){
         Complex result = new Complex();
         result.setImaginaryPart(num1.getRealPart()*num2.getImaginaryPart()+num2.getRealPart()*num1.getImaginaryPart());
@@ -111,11 +111,11 @@ public class Complex {
         result.setImaginaryPart((num2*num1.getImaginaryPart()-num1.getRealPart()*0)/(Math.pow(num2, 2)+Math.pow(0, 3)));
         return result;
     }
-    //Сопряженные?
+    //РЎРѕРїСЂСЏР¶РµРЅРЅС‹Рµ?
     static public boolean isConjugated(Complex num1, Complex num2){
         boolean result = false;
-        // Проверяем, являются ли два комплексных числа сопряженными.
-        // Для этого сравниваем их мнимые части (умноженные на -1) и реальные части.
+        // РџСЂРѕРІРµСЂСЏРµРј, СЏРІР»СЏСЋС‚СЃСЏ Р»Рё РґРІР° РєРѕРјРїР»РµРєСЃРЅС‹С… С‡РёСЃР»Р° СЃРѕРїСЂСЏР¶РµРЅРЅС‹РјРё.
+        // Р”Р»СЏ СЌС‚РѕРіРѕ СЃСЂР°РІРЅРёРІР°РµРј РёС… РјРЅРёРјС‹Рµ С‡Р°СЃС‚Рё (СѓРјРЅРѕР¶РµРЅРЅС‹Рµ РЅР° -1) Рё СЂРµР°Р»СЊРЅС‹Рµ С‡Р°СЃС‚Рё.
         if((num1.getImaginaryPart()*-1==num2.getImaginaryPart()||num2.getImaginaryPart()*-1==num1.getImaginaryPart())&&num1.getRealPart()==num2.getRealPart()){
             result = true;
         }
