@@ -7,10 +7,10 @@ import java.awt.*;
 
 public class PassengerCar extends Car {
     public PassengerCar(String BRAND, Engine engine, Color color) {
-        super(Model.легковой, BRAND, 4, engine, color);
+        super(Model.Р»РµРіРєРѕРІРѕР№, BRAND, 4, engine, color);
     }
     public PassengerCar(String BRAND, Engine engine, Color color, String registerSign) {
-        super(Model.легковой, BRAND, 4, engine, color, registerSign);
+        super(Model.Р»РµРіРєРѕРІРѕР№, BRAND, 4, engine, color, registerSign);
     }
 
 }
