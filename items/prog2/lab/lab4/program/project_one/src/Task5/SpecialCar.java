@@ -9,14 +9,14 @@ import java.util.regex.Pattern;
 
 public class SpecialCar extends Car {
 
-    private Pattern patternOfSign  = Pattern.compile("[ÀÂÅÊÌÍÎĞÑÒÓÕ]\\d{3}[ÁÃÅÆÈËÍÏÑÓÕ×]{2}\\d{2,3}SPR");
+    private Pattern patternOfSign  = Pattern.compile("[ĞĞ’Ğ•ĞšĞœĞĞĞ Ğ¡Ğ¢Ğ£Ğ¥]\\d{3}[Ğ‘Ğ“Ğ•Ğ–Ğ˜Ğ›ĞĞŸĞ¡Ğ£Ğ¥Ğ§]{2}\\d{2,3}SPR");
 
     public SpecialCar(String BRAND, int NUM_OF_WHEELS, Engine engine, Color color) {
-        super(Model.ñïåöèàëüíûé, BRAND, NUM_OF_WHEELS, engine, color);
+        super(Model.ÑĞ¿ĞµÑ†Ğ¸Ğ°Ğ»ÑŒĞ½Ñ‹Ğ¹, BRAND, NUM_OF_WHEELS, engine, color);
     }
 
     public SpecialCar(String BRAND, int NUM_OF_WHEELS, Engine engine, Color color, String registerSign) {
-        super(Model.ñïåöèàëüíûé, BRAND, NUM_OF_WHEELS, engine, color);
+        super(Model.ÑĞ¿ĞµÑ†Ğ¸Ğ°Ğ»ÑŒĞ½Ñ‹Ğ¹, BRAND, NUM_OF_WHEELS, engine, color);
         setRegisterSign(registerSign, patternOfSign);
     }
 
