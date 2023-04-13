@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class CoordinateMesh {
     private ArrayList<Axis> axes = new ArrayList<>();
-    public enum Positions{середина, лево, право};
-    private Positions position = Positions.середина;
+    public enum Positions{СЃРµСЂРµРґРёРЅР°, Р»РµРІРѕ, РїСЂР°РІРѕ};
+    private Positions position = Positions.СЃРµСЂРµРґРёРЅР°;
 
     public Positions getPosition() {
         return position;
