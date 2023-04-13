@@ -15,19 +15,19 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args){
-        Engine engine = new Engine(4, 200, 20, 10000, Engine.FuelType.бензин, "В345ВК104RUS");
+        Engine engine = new Engine(4, 200, 20, 10000, Engine.FuelType.Р±РµРЅР·РёРЅ, "Р’345Р’Рљ104RUS");
         System.out.println("Task1");
         System.out.println("=".repeat(100));
-        Car car = new Car(Car.Model.легковой, "ТОЙОТА", 4, engine, Color.BLUE, "А432ВВ544RUS");
+        Car car = new Car(Car.Model.Р»РµРіРєРѕРІРѕР№, "РўРћР™РћРўРђ", 4, engine, Color.BLUE, "Рђ432Р’Р’544RUS");
         car.showInfo();
         Scanner scanner = new Scanner(System.in);
         int i = 0;
         do{
-            System.out.println("Заменить желаемую характеристику\n1-Цвет\n2-Двигатель\n3-знак\n-1 - выход:");
+            System.out.println("Р—Р°РјРµРЅРёС‚СЊ Р¶РµР»Р°РµРјСѓСЋ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєСѓ\n1-Р¦РІРµС‚\n2-Р”РІРёРіР°С‚РµР»СЊ\n3-Р·РЅР°Рє\n-1 - РІС‹С…РѕРґ:");
             i = scanner.nextInt();
             switch(i){
                 case 1:
-                    System.out.println("Выберете цвет\n1-синий\n2-красный\n3-белый:");
+                    System.out.println("Р’С‹Р±РµСЂРµС‚Рµ С†РІРµС‚\n1-СЃРёРЅРёР№\n2-РєСЂР°СЃРЅС‹Р№\n3-Р±РµР»С‹Р№:");
                     int color = scanner.nextInt();
                     switch (color){
                         case 1:
@@ -42,23 +42,23 @@ public class Test {
                     }
                     break;
                 case 2:
-                    System.out.println("Выберете двигатель\n1-бензиновый\n2-дизельный\n3-газовый:");
+                    System.out.println("Р’С‹Р±РµСЂРµС‚Рµ РґРІРёРіР°С‚РµР»СЊ\n1-Р±РµРЅР·РёРЅРѕРІС‹Р№\n2-РґРёР·РµР»СЊРЅС‹Р№\n3-РіР°Р·РѕРІС‹Р№:");
                     int eng = scanner.nextInt();
                     switch (eng){
                         case 1:
-                            car.setEngine(new Engine(4, 200, 20, 10000, Engine.FuelType.бензин, "В345ВК104RUS"));
+                            car.setEngine(new Engine(4, 200, 20, 10000, Engine.FuelType.Р±РµРЅР·РёРЅ, "Р’345Р’Рљ104RUS"));
                             break;
                         case 2:
-                            car.setEngine(new Engine(4, 200, 20, 10000, Engine.FuelType.дизель, "В345ВК104RUS"));
+                            car.setEngine(new Engine(4, 200, 20, 10000, Engine.FuelType.РґРёР·РµР»СЊ, "Р’345Р’Рљ104RUS"));
                             break;
                         case 3:
-                            car.setEngine(new Engine(4, 200, 20, 10000, Engine.FuelType.газ, "В345ВК104RUS"));
+                            car.setEngine(new Engine(4, 200, 20, 10000, Engine.FuelType.РіР°Р·, "Р’345Р’Рљ104RUS"));
                             break;
                     }
                     break;
                 case 3:
                     scanner.nextLine();
-                    System.out.println("Введите знак:");
+                    System.out.println("Р’РІРµРґРёС‚Рµ Р·РЅР°Рє:");
                     String sing = scanner.nextLine();
                     car.setRegisterSign(sing);
             }
@@ -78,16 +78,16 @@ public class Test {
         System.out.println(Complex.mul(num1, num2));
         System.out.println(Complex.div(num1, num2));
         if(Complex.isEquals(num1,num2)){
-            System.out.println("Равны");
+            System.out.println("Р Р°РІРЅС‹");
         }
         else {
-            System.out.println("Не равны");
+            System.out.println("РќРµ СЂР°РІРЅС‹");
         }
         if(Complex.isConjugated(num1, num2)){
-            System.out.println("Сопряжены");
+            System.out.println("РЎРѕРїСЂСЏР¶РµРЅС‹");
         }
         else {
-            System.out.println("Не сопряжены");
+            System.out.println("РќРµ СЃРѕРїСЂСЏР¶РµРЅС‹");
         }
         System.out.println(num1.toTrigonometryForm());
         System.out.println("=".repeat(100));
@@ -106,15 +106,15 @@ public class Test {
 
         System.out.println("Task5");
         System.out.println("=".repeat(100));
-        SpecialCar car1 = new SpecialCar("ТОЙОТА", 4, engine, Color.BLUE, "А432ЖЖ544SPR");
+        SpecialCar car1 = new SpecialCar("РўРћР™РћРўРђ", 4, engine, Color.BLUE, "Рђ432Р–Р–544SPR");
         car1.showInfo();
         System.out.println("=".repeat(100));
 
         System.out.println("Task7");
         System.out.println("=".repeat(100));
         MotorDepot motorDepot = new MotorDepot(3);
-        SpecialCar car2 = new SpecialCar("ЛАДА", 4, engine, Color.BLUE, "А432ЖЖ544SPR");
-        CargoCar car3 = new CargoCar("КАМАЗ", 6, engine, Color.BLUE, "К432ЖЖ544SPR");
+        SpecialCar car2 = new SpecialCar("Р›РђР”Рђ", 4, engine, Color.BLUE, "Рђ432Р–Р–544SPR");
+        CargoCar car3 = new CargoCar("РљРђРњРђР—", 6, engine, Color.BLUE, "Рљ432Р–Р–544SPR");
         motorDepot.add(car1);
         motorDepot.add(car1);
         motorDepot.add(car2);
