@@ -36,7 +36,6 @@
 - [Исследование операций](/items/expop/README.md)
 - [Вычислительная математика](/items/vychmat/README.md)
 - [Теория автоматов и формальных языков](/items/teorof/README.md)
-- [Архитектура вычислительных систем](/items/avys/README.md)
 - [Машино-зависимые ЯП](/items/mzyp/README.md)
 - [Программирование](/items/prog2/README.md)
 - [[доп. образование] Администрирование ОС Linux](/items/os1/README.md)
