@@ -39,14 +39,212 @@
 которые можно изменять и выводом на экран текущих значений всех
 характеристик.
 
-```java
-```
+<details>
+  <summary>Task1/Car.java</summary>
+  
+  ```java
+ package Task1;
+
+public abstract class Car {
+    private String regPlatePattern;
+
+    protected String regPlate;
+    private final String brand;
+    protected String color;
+    protected int enginePower;
+    private final int numOfWheels;
+
+    public Car(String brand, String color, int enginePower, int numOfWheels) {
+        this.brand = brand;
+        this.color = color;
+        this.enginePower = enginePower;
+        this.numOfWheels = numOfWheels;
+
+    }
+
+    public Car(String brand, String color, int enginePower, int numOfWheels, String regPlatePattern) {
+        this.brand = brand;
+        this.color = color;
+        this.enginePower = enginePower;
+        this.numOfWheels = numOfWheels;
+        this.regPlatePattern = regPlatePattern;
+    }
 
 
-##### Вывод
-```bash
+    public String getRegPlate() { return  this.regPlate;}
+    public void setRegPlate(String value) {
+        if ((this.regPlatePattern != null) && (!value.matches(this.regPlatePattern))) {
+            throw new IllegalArgumentException("Invalid registration plate");
+        }
+        this.regPlate = value;
+    }
+    public String getBrand() { return  this.brand;}
+    public String getColor() { return  this.color;}
+    public void setColor(String value) { this.color = value;}
+    public int getEnginePower() { return  this.enginePower;}
+    public void setEnginePower(int value) { this.enginePower = value;}
+    public int getNumOfWheels() {return this.numOfWheels;}
 
-```
+    
+}
+
+  ```
+ 
+</details>
+
+<details>
+  <summary>Task1/CarFactory.java</summary>
+  
+  ```java
+ package Task1;
+
+
+public class CarFactory {
+    public static Car createCar(CarTypes type, String brand, String color, int enginePower, int numOfWheels) {
+        return switch (type) {
+            case passenger -> new PassengerCar(
+                    brand,
+                    color,
+                    enginePower,
+                    numOfWheels,
+                    "[АВЕКМНОРСТУХ]{1}\\d{3}[АВЕКМНОРСТУХ]{2}\\d{2,3}RUS"
+            );
+            case freight -> new FreightCar(
+                    brand,
+                    color,
+                    enginePower,
+                    numOfWheels,
+                    "[АВЕКМНОРСТУХ]{1}\\d{3}[АВЕКМНОРСТУХ]{2}\\d{2,3}RUS"
+            );
+            case bus -> new Bus(
+                    brand,
+                    color,
+                    enginePower,
+                    numOfWheels,
+                    "[АВЕКМНОРСТУХ]{1}\\d{3}[АВЕКМНОРСТУХ]{2}\\d{2,3}RUS"
+            );
+        };
+    }
+}
+
+  ```
+ 
+</details>
+
+
+<details>
+  <summary>Task1/CarTypes.java</summary>
+  
+  ```java
+ package Task1;
+
+public enum CarTypes {
+    passenger,
+    freight,
+    bus,
+}
+
+  ```
+ 
+</details>
+
+
+<details>
+  <summary>Task1/Bus.java</summary>
+  
+  ```java
+ package Task1;
+
+public class Bus extends Car {
+    public Bus(String brand, String color, int enginePower, int numOfWheels) {
+        super(brand, color, enginePower, numOfWheels);
+    }
+
+    public Bus(String brand, String color, int enginePower, int numOfWheels, String regPlatePattern) {
+        super(brand, color, enginePower, numOfWheels, regPlatePattern);
+    }
+}
+
+  ```
+ 
+</details>
+
+
+<details>
+  <summary>Task1/FreightCar.java</summary>
+  
+  ```java
+ package Task1;
+
+public class FreightCar extends Car {
+    public FreightCar(String brand, String color, int enginePower, int numOfWheels) {
+        super(brand, color, enginePower, numOfWheels);
+    }
+
+    public FreightCar(String brand, String color, int enginePower, int numOfWheels, String regPlatePattern) {
+        super(brand, color, enginePower, numOfWheels, regPlatePattern);
+    }
+}
+
+  ```
+ 
+</details>
+
+
+<details>
+  <summary>Task1/PassengerCar.java</summary>
+  
+  ```java
+ package Task1;
+
+public class PassengerCar extends Car {
+    public PassengerCar(String brand, String color, int enginePower, int numOfWheels) {
+        super(brand, color, enginePower, numOfWheels);
+    }
+
+    public PassengerCar(String brand, String color, int enginePower, int numOfWheels, String regPlatePattern) {
+        super(brand, color, enginePower, numOfWheels, regPlatePattern);
+    }
+}
+
+ 
+  ```
+ 
+</details>
+
+
+<details>
+  <summary>Task1/Test.java</summary>
+  
+  ```java
+ package Task1;
+
+public class Test {
+    public static void main(String[] args) {
+        Car car = CarFactory.createCar(CarTypes.bus, "Volvo", "Red", 100, 4);
+        System.out.println(car.getBrand());
+        System.out.println(car.getColor());
+        System.out.println(car.getEnginePower());
+        System.out.println(car.getNumOfWheels());
+
+        System.out.println(car.getRegPlate()); // null
+        car.setRegPlate("А123ВС77RUS");
+        System.out.println(car.getRegPlate()); // А123ВС77RUS
+
+        car.setColor("Blue");
+        System.out.println(car.getColor()); // Blue
+
+        car.setRegPlate("123ВС77RUS");
+        System.out.println(car.getRegPlate()); // exception
+    }
+}
+
+  ```
+ 
+</details>
+
+
+PS: Вообще enum в моем случае излишен, но я не хотел спорить с преподом
 
 
 ### Задание 2
@@ -61,14 +259,17 @@
 аргументов действительное число (тип double).
 
 
-```java
-```
+<details>
+  <summary>Task1/Car.java</summary>
+  
+  ```java
+ 
+  ```
+ 
+</details>
 
 
-##### Вывод
-```bash
 
-```
 
 ### Задание 3
 Реализуйте методы для вычисления элементарных
@@ -81,14 +282,14 @@ sh(z) = ..., ch(z) = ..., , th(z) = ..., cth(z) = ...
 код, ответьте себе на вопрос, должны ли эти методы быть методами
 класса Complex, созданного в предыдущем задании?
 
-```java
-```
-
-
-##### Вывод
-```bash
-
-```
+<details>
+  <summary>Task1/Car.java</summary>
+  
+  ```java
+ 
+  ```
+ 
+</details>
 
 ### Задание 4
 В Задании 1 двигатель автомобиля представлен только
