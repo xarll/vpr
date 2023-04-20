@@ -263,7 +263,7 @@ PS: Вообще enum в моем случае излишен, но я не хо
   <summary>Task2/Complex.java</summary>
   
   ```java
- package Task2;
+package Task2;
 
 /**
  * @param real действительная часть
@@ -314,11 +314,16 @@ public record Complex(double real, double imag) {
         }
     }
 
-    public double abs() {
-        return Math.sqrt(real * real + imag * imag);
+    public String toTrigString() {
+        double r = Math.sqrt(real * real + imag * imag);
+        double theta = Math.atan2(imag, real);
+        return String.format("%.2f(cos(%.2f) + i sin(%.2f))", r, theta, theta);
     }
 
-    public double arg() {
+    /**
+     * @return аргумент комплексного числа (phi)
+     */
+    public double phase() {
         return Math.atan2(imag, real);
     }
 
@@ -370,10 +375,86 @@ sh(z) = ..., ch(z) = ..., , th(z) = ..., cth(z) = ...
 класса Complex, созданного в предыдущем задании?
 
 <details>
-  <summary>Task3/Car.java</summary>
+  <summary>Task3/ComplexMath.java</summary>
   
   ```java
- 
+ package Task3;
+
+import Task2.Complex;
+
+public class ComplexMath {
+
+    public static Complex sin(Complex z) {
+        double real = Math.sin(z.real()) * Math.cosh(z.imag());
+        double imag = Math.cos(z.real()) * Math.sinh(z.imag());
+        return new Complex(real, imag);
+    }
+
+    public static Complex cos(Complex z) {
+        double real = Math.cos(z.real()) * Math.cosh(z.imag());
+        double imag = -Math.sin(z.real()) * Math.sinh(z.imag());
+        return new Complex(real, imag);
+    }
+
+    public static Complex tan(Complex z) {
+        Complex numerator = sin(z);
+        Complex denominator = cos(z);
+        return numerator.divide(denominator);
+    }
+
+    public static Complex arctan(Complex z) {
+        Complex numerator = new Complex(1, 0).subtract(new Complex(0, 1).multiply(z));
+        Complex denominator = new Complex(1, 0).add(new Complex(0, 1).multiply(z));
+        Complex quotient = numerator.divide(denominator);
+        return new Complex(0, -0.5).multiply(
+                log(new Complex(1, 0).subtract(quotient)).subtract(
+                        log(new Complex(1, 0).add(quotient))
+                )
+        );
+    }
+
+    public static Complex sinh(Complex z) {
+        double real = Math.sinh(z.real()) * Math.cos(z.imag());
+        double imag = Math.cosh(z.real()) * Math.sin(z.imag());
+        return new Complex(real, imag);
+    }
+
+    public static Complex cosh(Complex z) {
+        double real = Math.cosh(z.real()) * Math.cos(z.imag());
+        double imag = Math.sinh(z.real()) * Math.sin(z.imag());
+        return new Complex(real, imag);
+    }
+
+    public static Complex tanh(Complex z) {
+        Complex numerator = sinh(z);
+        Complex denominator = cosh(z);
+        return numerator.divide(denominator);
+    }
+
+    public static Complex coth(Complex z) {
+        Complex numerator = new Complex(1, 0).add(new Complex(0, 1).multiply(z));
+        Complex denominator = new Complex(1, 0).subtract(new Complex(0, 1).multiply(z));
+        return numerator.divide(denominator);
+    }
+
+    public static Complex exp(Complex z) {
+        double real = Math.exp(z.real()) * Math.cos(z.imag());
+        double imag = Math.exp(z.real()) * Math.sin(z.imag());
+        return new Complex(real, imag);
+    }
+
+
+    public static double abs(Complex z) {
+        return Math.sqrt(z.real() * z.real() + z.imag() * z.imag());
+    }
+
+
+    public static Complex log(Complex z) {
+        double real = Math.log(abs(z));
+        double imag = z.phase();
+        return new Complex(real, imag);
+    }
+}
   ```
  
 </details>
@@ -383,7 +464,43 @@ sh(z) = ..., ch(z) = ..., , th(z) = ..., cth(z) = ...
   <summary>Task3/Test.java</summary>
   
   ```java
- 
+ package Task3;
+
+import Task2.Complex;
+
+public class Test {
+    public static void main(String[] args) {
+        Complex z1 = new Complex(3, 4);
+        Complex z2 = new Complex(2, 5);
+
+        System.out.println("z1 = " + z1);
+        System.out.println("z2 = " + z2);
+
+
+        System.out.println("\nz1 + z2 = " + z1.add(z2));
+        System.out.println("z1 - z2 = " + z1.subtract(z2));
+        System.out.println("z1 * z2 = " + z1.multiply(z2));
+        System.out.println("z1 / z2 = " + z1.divide(z2));
+
+        System.out.println("\nconjugate(z1) = " + z1.conjugate());
+        System.out.println("abs(z1) = " + ComplexMath.abs(z1));
+        System.out.println("phase(z1) = " + z1.phase());
+        System.out.println("exp(z1) = " + ComplexMath.exp(z1));
+        System.out.println("sin(z1) = " + ComplexMath.sin(z1));
+        System.out.println("cos(z1) = " + ComplexMath.cos(z1));
+        System.out.println("tan(z1) = " + ComplexMath.tan(z1));
+        System.out.println("arctan(z1) = " + ComplexMath.arctan(z1));
+        System.out.println("sinh(z1) = " + ComplexMath.sinh(z1));
+        System.out.println("cosh(z1) = " + ComplexMath.cosh(z1));
+        System.out.println("tanh(z1) = " + ComplexMath.tanh(z1));
+        System.out.println("coth(z1) = " + ComplexMath.coth(z1));
+        System.out.println("exp(z1) = " + ComplexMath.exp(z1));
+
+        System.out.println("\nAsTrigString(z1) = " + z1.toTrigString());
+        System.out.println("AsString(z1) = " + z1.toString());
+    }
+}
+
   ```
  
 </details>
@@ -401,14 +518,26 @@ sh(z) = ..., ch(z) = ..., , th(z) = ..., cth(z) = ...
 Измените код тестирования для проверки работоспособности новой
 версии класса Car и класса Engine.
 
+
+<details>
+  <summary>Task4/Test.java</summary>
+  
 ```java
 ```
+  
+</details>
 
 
-##### Вывод
-```bash
 
+<details>
+  <summary>Task4/Test.java</summary>
+  
+```java
 ```
+  
+</details>
+
+
 
 ### Задание 5
 В Заданиях 1, 4 вид автомобиля задается как
@@ -431,14 +560,25 @@ sh(z) = ..., ch(z) = ..., , th(z) = ..., cth(z) = ...
 придумайте свою схему формирования регистрационного знака (или
 возьмите из ГОСТ Р 50577-2018 [6]).
 
+
+<details>
+  <summary>Task4/Test.java</summary>
+  
 ```java
 ```
+  
+</details>
 
 
-##### Вывод
-```bash
 
+<details>
+  <summary>Task5/Test.java</summary>
+  
+```java
 ```
+  
+</details>
+
 
 ### Задание 6
 . В Задании 5 класс Car содержит общую функциональность
@@ -548,14 +688,25 @@ UML-диаграммы классов). Каждое важное
 разместить элемент управления в окне, чтобы "подстраивались" одновременно
 и ширина, и высота Canvas.*
 
+
+<details>
+  <summary>Task9/Test.java</summary>
+  
 ```java
 ```
+  
+</details>
 
 
-##### Вывод
-```bash
 
+<details>
+  <summary>Task9/Test.java</summary>
+  
+```java
 ```
+  
+</details>
+
 
 
 *Авторство: **Бояршинов Н.О***
