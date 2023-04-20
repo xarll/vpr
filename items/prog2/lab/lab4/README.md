@@ -650,14 +650,164 @@ public final class Bus extends Car {...}
 базе исправных автомобилей, списка автомобилей, находящихся в
 рейсе, списка неисправных автомобилей (отдельные методы). 
 
+<details>
+  <summary>Task7/AutoBase.java</summary>
+  
 ```java
+package task7;
+
+import Task1.Car;
+
+public class AutoBase {
+    private final Car[] parkedCars;
+    private final Car[] inTransitCars;
+    private final Car[] inRepairCars;
+
+    public AutoBase(int maxCars) {
+        parkedCars = new Car[maxCars];
+        inTransitCars = new Car[maxCars];
+        inRepairCars = new Car[maxCars];
+    }
+
+    public void addCarToBase(Car car) {
+        addCarToArray(car, parkedCars);
+    }
+
+    public void removeCarFromBase(Car car) {
+        removeCarFromArray(car, parkedCars);
+    }
+
+    public void sendCarToTransit(Car car) {
+        moveCarToArray(car, parkedCars, inTransitCars);
+    }
+
+    public void returnCarFromTransit(Car car) {
+        moveCarToArray(car, inTransitCars, parkedCars);
+    }
+
+    public void sendCarToRepair(Car car) {
+        moveCarToArray(car, parkedCars, inRepairCars);
+    }
+
+    public void returnCarFromRepair(Car car) {
+        moveCarToArray(car, inRepairCars, parkedCars);
+    }
+
+    public Car[] getParkedCars() {
+        return parkedCars;
+    }
+
+    public Car[] getInTransitCars() {
+        return inTransitCars;
+    }
+
+    public Car[] getInRepairCars() {
+        return inRepairCars;
+    }
+
+    private void addCarToArray(Car car, Car[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                array[i] = car;
+                return;
+            }
+        }
+        throw new IllegalStateException("The array is full");
+    }
+
+    private void removeCarFromArray(Car car, Car[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == car) {
+                array[i] = null;
+                return;
+            }
+        }
+        throw new IllegalArgumentException("The car is not in the array");
+    }
+
+    private void moveCarToArray(Car car, Car[] fromArray, Car[] toArray) {
+        removeCarFromArray(car, fromArray);
+        addCarToArray(car, toArray);
+    }
+
+    private int getArrayCarsCount(Car[] parkedCars) {
+        int count = 0;
+        for (Car car : parkedCars) {
+            if (car != null) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public String toString() {
+        return "Parked cars: " + getArrayCarsCount(parkedCars) + "\n" +
+                "In transit cars: " + getArrayCarsCount(inTransitCars) + "\n" +
+                "In repair cars: " + getArrayCarsCount(inRepairCars);
+    }
+}
+
 ```
+  
+</details>
+
+<details>
+  <summary>Task7/Test.java</summary>
+  
+```java
+package task7;
+
+import Task1.Car;
+import Task1.CarFactory;
+import Task4.Engine;
+
+public class Test {
+    public static void main(String[] args) {
+        AutoBase autobase = new AutoBase(5);
+
+        Engine engine = new Engine(
+                "1234567890",
+                100,
+                1.6,
+                "gasoline",
+                4
+        );
+
+        Car bus1 = CarFactory.createCar("bus", "red", "A123AA", engine, 6);
+        Car bus2 = CarFactory.createCar("bus", "red", "A111AA", engine, 6);
+
+        autobase.addCarToBase(bus1);
+        autobase.addCarToBase(bus2);
+
+        System.out.println(autobase.toString());
+
+        autobase.removeCarFromBase(bus1);
+        System.out.println();
+        System.out.println(autobase.toString());
+
+        autobase.sendCarToTransit(bus2);
+        System.out.println();
+        System.out.println(autobase.toString());
+
+        autobase.returnCarFromTransit(bus2);
+        System.out.println();
+        System.out.println(autobase.toString());
 
 
-##### Вывод
-```bash
+        autobase.sendCarToRepair(bus2);
+        System.out.println();
+        System.out.println(autobase.toString());
+
+        autobase.returnCarFromRepair(bus2);
+        System.out.println();
+        System.out.println(autobase.toString());
+
+    }
+}
 
 ```
+  
+</details>
 
 ### Задание 8
 
