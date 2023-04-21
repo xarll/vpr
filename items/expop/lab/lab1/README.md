@@ -288,20 +288,26 @@ import linear_transport as lt
 
 
 def main() -> None:
-    m, n = utils.get_matrix_size()
+    # Вставьте сюда размерность своей таблицы через запятую:
+    # m - количество строк, n - количество столбцов
+    m, n = 3, 5
 
-    A = utils.get_producers(m)
-    print()
-    B = utils.get_consumers(n)
+    # Вставьте сюда значения предложений производителей:
+    A = [200, 350, 150]
     print()
 
-    C = utils.get_costs(m, n)
+    # Вставьте сюда значения спроса потребителей:
+    B = [100, 100, 80, 90, 70]
+    print()
+
+    # Вставьте сюда значения тарифов перевозок:
+    C = [[1, 4, 7, 2, 1], [2, 5, 1, 4, 3], [2, 3, 1, 2, 1]]
     print()
 
     print(f'Размер таблицы: {m} x {n}')
     print('Предложения производителей:', A)
     print('Спрос потребителей:', B)
-    print('Стоимости перевозок:')
+    print('Тарифы перевозок:')
     utils.print_matrix(C)
     print()
 
@@ -319,51 +325,39 @@ def main() -> None:
         print(f'Размер таблицы: {transport.dimension_rows} x {transport.dimension_columns}')
         print('Предложения производителей:', transport.producers)
         print('Спрос потребителей:', transport.consumers)
-        print('Стоимости перевозок:')
-        for i in range(transport.dimension_rows):
-            for j in range(transport.dimension_columns):
-                print(transport.get_element(i, j).cost, end=' ')
-            print()
+        print('Тарифы перевозок:')
+        utils.print_transportations_cost(transport)
     else:
         print('Исходная задача закрыта')
     print()
 
     transport.north_west_corner()
     print('Опорный план, полученный методом северо-западного угла:')
-    for i in range(transport.dimension_rows):
-        for j in range(transport.dimension_columns):
-            if transport.get_element(i, j).quantity != '*':
-                print(int(transport.get_element(i, j).quantity), end=' ')
-            else:
-                print(transport.get_element(i, j).quantity, end=' ')
-        print()
+    utils.print_transportations_quantity(transport)
+    print(f'Стоимость перевозок согласно плану: {transport.calculate_transportations_cost()}')
     print()
 
     if transport.check_degeneracy():
         print('Полученный план - вырожденный')
         transport.remove_degeneracy()
         print('Новый опорный план:')
-        for i in range(transport.dimension_rows):
-            for j in range(transport.dimension_columns):
-                if transport.get_element(i, j).quantity != '*':
-                    print(int(transport.get_element(i, j).quantity), end=' ')
-                else:
-                    print(transport.get_element(i, j).quantity, end=' ')
-            print()
+        utils.print_transportations_quantity(transport)
+        print(f'Стоимость перевозок согласно плану: {transport.calculate_transportations_cost()}')
     else:
         print('Полученный план не является вырожденным')
     print()
 
-    transport.potential_method()
-    print('Оптимальный план, полученный методом потенциалов:')
-    for i in range(transport.dimension_rows):
-        for j in range(transport.dimension_columns):
-            if transport.get_element(i, j).quantity != '*':
-                print(int(transport.get_element(i, j).quantity), end=' ')
-            else:
-                print(transport.get_element(i, j).quantity, end=' ')
+    count = 0
+    while not transport.potential_method():
+        print(f'Оптимизация плана методом потенциалов, итерация №{count + 1}:')
+        utils.print_transportations_quantity(transport)
+        print(f'Стоимость перевозок согласно плану: {transport.calculate_transportations_cost()}')
+        count += 1
         print()
-    print()
+
+    print('Оптимальный план, полученный методом потенциалов: ')
+    utils.print_transportations_quantity(transport)
+    print(f'Стоимость перевозок согласно плану: {transport.calculate_transportations_cost()}')
 
 
 if __name__ == '__main__':
@@ -378,94 +372,32 @@ if __name__ == '__main__':
   <summary>utils.py</summary>
   
   ```Python
-def check_int(value: any) -> bool:
-    try:
-        int(value)
-    except ValueError:
-        return False
-    else:
-        if int(value) < 0:
-            return False
-        else:
-            return True
+from linear_transport import TransportationTable
 
 
-def get_matrix_size() -> [int, int]:
-    rows_amount: int
-    columns_amount: int
-
-    while True:
-        rows_amount = input('Количество строк таблицы = ')
-        if not check_int(rows_amount):
-            print('\ninvalid input\n')
-        else:
-            columns_amount = input('Количество столбцов таблицы = ')
-            if not check_int(columns_amount):
-                print('\ninvalid input\n')
-            else:
-                rows_amount = int(rows_amount)
-                columns_amount = int(columns_amount)
-                break
-
-    return rows_amount, columns_amount
-
-
-def get_costs(rows_amount: int, columns_amount: int) -> list[list[int]]:
-    costs = []
-
-    for i in range(rows_amount):
-        costs_row = [-1] * columns_amount
-        costs.append(costs_row)
-
-    for i in range(rows_amount):
-        for j in range(columns_amount):
-            while True:
-                element = input(f'Стоимость[{i + 1}][{j + 1}] =  ')
-                if check_int(element):
-                    costs[i][j] = int(element)
-                    break
-                else:
-                    print('\ninvalid input\n')
-
-    return costs
-
-
-def get_consumers(consumers_amount: int) -> list[int]:
-    consumers = []
-
-    for j in range(consumers_amount):
-        while True:
-            consumer = input(f'Потребитель[{j + 1}] = ')
-            if check_int(consumer):
-                consumers.append(int(consumer))
-                break
-            else:
-                print('\ninvalid input\n')
-
-    return consumers
-
-
-def get_producers(producers_amount: int) -> list[int]:
-    producers = []
-
-    for i in range(producers_amount):
-        while True:
-            producer = input(f'Производитель[{i + 1}] = ')
-            if check_int(producer):
-                producers.append(int(producer))
-                break
-            else:
-                print('\ninvalid input\n')
-
-    return producers
-
-
-def print_matrix(matrix: list[list]) -> None:
+def print_matrix(matrix: list[list[int]]) -> None:
     for row in matrix:
         for element in row:
             print(element, end=' ')
         print()
-  
+
+
+def print_transportations_cost(table: TransportationTable) -> None:
+    for row in table.transportations:
+        for transportation in row:
+            print(transportation.cost, end=' ')
+        print()
+
+
+def print_transportations_quantity(table: TransportationTable) -> None:
+    for row in table.transportations:
+        for transportation in row:
+            if transportation.quantity != '*':
+                print(int(transportation.quantity), end=' ')
+            else:
+                print(transportation.quantity, end=' ')
+        print()
+
   ```
   
   </details>
@@ -532,9 +464,6 @@ class TransportationTable:
                 transportations_row.append(Transportation(i, j))
             self._transportations.append(transportations_row)
 
-    def __len__(self) -> int:
-        return self._rows_amount * self._columns_amount
-
     def get_element(self, index1: int, index2: int) -> Transportation:
         return self._transportations[index1][index2]
 
@@ -570,11 +499,13 @@ class TransportationTable:
         else:
             raise Exception('Длина входного массива не совпадает с измерением таблицы')
 
-    # Проверка, является ли задача открытой или закрытой:
+    @property
+    def transportations(self) -> list[list[Transportation]]:
+        return self._transportations.copy()
+
     def check_balance(self) -> bool:
         return self._consumers_sum == self._producers_sum
 
-    # Перевод открытой задачи в закрытую:
     def balance(self) -> None:
         if not self.check_balance():
 
@@ -700,7 +631,7 @@ class TransportationTable:
                 if zero_added:
                     break
 
-    def potential_method(self) -> None:
+    def potential_method(self) -> bool:
         max_reduction = 0
         move = []
         leaving: Transportation
@@ -751,7 +682,9 @@ class TransportationTable:
                     self._transportations[transportation.position_row][transportation.position_column] = transportation
                 plus = not plus
 
-            self.potential_method()
+            return False
+
+        return True
 
     def calculate_transportations_cost(self) -> int:
         transportations_cost = 0
