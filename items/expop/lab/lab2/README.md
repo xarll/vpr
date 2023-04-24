@@ -81,8 +81,8 @@ if __name__ == '__main__':
     G.draw()
 
     info, tree = G.depth_search()
+  
     tree.draw()
-
     print_info(info)
 
 ```
