@@ -1,14 +1,496 @@
-# Лабораторная работа №2. Алгоритмы поиска на графах
+# Лабораторная работа №2. Алгоритмы поиска на графах.
 
 Необходимо придумать для себя два графа (ориентированный и неориентированный), с количествами вершин, большими шести, произвести поиск на графах согласно своему варианту и разработать программное средство для реализации этого поиска.
 
 
 ## Варианты заданий:
-Вариант №1, №4, №7, ... - Поиск в ширину (ПВШ)
+Номер Вашего варианта совпадает с Вашим порядковым номером в списке группы. Алгоритм на реализацию определяется следующим образом:
 
-Вариант №2, №5, №8, ... - Поиск в глубину (ПВГ)
+- Поиск в ширину (ПВШ) - варианты №1, №4, №7, ...
 
-Вариант №3, №6, №9, ... - Поиск в глубину (ПВГ) с классификацией дуг
+- Поиск в глубину (ПВГ) - варианты №2, №5, №8, ... 
+
+- Поиск в глубину (ПВГ) с классификацией дуг - варианты №3, №6, №9, ...
+
+
+
+## Реализация поиска в ширину (ПВШ)
+
+### Ручная
+<details>
+
+  <summary>Фото</summary>
+  
+  ![1]
+  ![2]
+  
+</details>
+
+
+
+
+### Программный код
+Для работы программы потребуется:
+
+- Python 3.11:
+  - `networkx`
+  - `matplotlib`
+
+
+<details>
+  <summary>main.py</summary>
+
+```python
+import graph, utils
+
+
+if __name__ == '__main__':
+    # Вставьте свой неориентированный граф, представленный списками смежности:
+    A = {
+        1: [2, 6],
+        2: [1, 3, 7, 8],
+        3: [2, 8],
+        4: [5, 8, 9, 10],
+        5: [4, 10],
+        6: [1, 7],
+        7: [2, 6, 8],
+        8: [2, 3, 4, 7, 9],
+        9: [4, 8],
+        10: [4, 5]
+    }
+
+    G = graph.UndirectedGraph(A)
+    G.draw()
+
+    # Параметром метода width_search укажите вершину, с которой хотите начать поиск в глубину
+    info, tree = G.width_search(1)
+    utils.print_info(info)
+    tree.draw()
+
+    print()
+
+    # Вставьте свой ориентированный граф, представленный списками смежности:
+    A = {
+        1: [2, 6],
+        2: [3, 7],
+        3: [8],
+        4: [5, 8, 10],
+        5: [10],
+        6: [7],
+        7: [8],
+        8: [2, 9],
+        9: [4],
+        10: []
+    }
+
+    G = graph.DirectedGraph(A)
+    G.draw()
+
+    # Параметром метода width_search укажите вершину, с которой хотите начать поиск в глубину
+    info, tree = G.width_search(1)
+    utils.print_info(info)
+    tree.draw()
+
+```
+
+</details>
+
+
+<details>
+  <summary>graph.py</summary>
+
+```python
+import matplotlib.pyplot as plt
+import networkx as nx
+
+import utils
+
+
+class UndirectedGraph:
+    def __init__(
+            self,
+            adjacency_matrix: dict[int or str: list[int or str]],
+            with_labels=True,
+            node_size=500,
+            node_color='gray',
+            font_size=12,
+            font_color='black',
+            font_weight='bold',
+            width=1,
+            edge_color='black',
+            alpha=1
+    ) -> None:
+        self._adjacency_matrix = adjacency_matrix.copy()
+        self._with_labels = with_labels
+        self._node_size = node_size
+        self._node_color = node_color
+        self._font_size = font_size
+        self._font_color = font_color
+        self._font_weight = font_weight
+        self._width = width
+        self._edge_color = edge_color
+        self._alpha = alpha
+
+        self._graph = nx.Graph()
+
+        self._node_style = {}
+
+        for key in self._adjacency_matrix.keys():
+            self._graph.add_node(key)
+
+        for key in self._adjacency_matrix.keys():
+            for node in self._adjacency_matrix[key]:
+                self._graph.add_edge(key, node)
+
+    @property
+    def adjacency_matrix(self) -> dict[int or str: list[int or str]]:
+        return self._adjacency_matrix.copy()
+
+    @adjacency_matrix.setter
+    def adjacency_matrix(self, adjacency_matrix: dict[int or str: list[int or str]]) -> None:
+        self._adjacency_matrix = adjacency_matrix.copy()
+        self._graph.clear()
+
+        for key in self._adjacency_matrix.keys():
+            self._graph.add_node(key)
+
+        for key in self._adjacency_matrix.keys():
+            for node in self._adjacency_matrix[key]:
+                self._graph.add_edge(key, node)
+
+    @property
+    def nodes(self):
+        return sorted(list(self._graph.nodes).copy())
+
+    def clear(self) -> None:
+        self._graph.clear()
+        self._adjacency_matrix.clear()
+
+    def draw(self) -> None:
+        nx.draw(
+            self._graph,
+            with_labels=self._with_labels,
+            node_size=self._node_size,
+            node_color=self._node_color,
+            font_size=self._font_size,
+            font_color=self._font_color,
+            font_weight=self._font_weight,
+            width=self._width,
+            edge_color=self._edge_color,
+            alpha=self._alpha,
+        )
+        for node, style in self._node_style.items():
+            nx.draw_networkx_nodes(
+                self._graph,
+                nodelist=[node],
+                **style,
+            )
+        plt.show()
+
+    def width_search(self, start_node: int or str):
+        if start_node not in list(self._graph.nodes):
+            raise Exception('Node not in list')
+
+        queue = utils.Queue()
+        queue_copy = queue.copy()
+
+        num = {}
+        nodes = list(self._adjacency_matrix.keys())
+        for node in nodes:
+            num[node] = -1
+
+        ftr = num.copy()
+
+        queue.insert(start_node)
+        queue_copy.insert(start_node)
+        num[start_node] = 0
+        ftr[start_node] = 0
+
+        while not queue.empty():
+            node = queue.pop()
+            for neighbour in self._adjacency_matrix[node]:
+                if num[neighbour] == -1:
+                    queue.insert(neighbour)
+                    queue_copy.insert(neighbour)
+                    ftr[neighbour] = node
+                    num[neighbour] = num[node] + 1
+
+        for node in self._adjacency_matrix.keys():
+            if node == start_node:
+                continue
+
+            if num[node] == -1:
+                num[node] = 0
+                ftr[node] = 0
+                queue.insert(node)
+                queue_copy.insert(node)
+
+                while not queue.empty():
+                    queue_node = queue.pop()
+                    for neighbour in self._adjacency_matrix[queue_node]:
+                        if num[neighbour] == -1:
+                            queue.insert(neighbour)
+                            queue_copy.insert(neighbour)
+                            ftr[neighbour] = queue_node
+                            num[neighbour] = num[queue_node] + 1
+
+        for key in ftr.keys():
+            if ftr[key] == 0:
+                ftr[key] = '*'
+
+        search_info = {
+            'nodes': self.nodes,
+            'num': list(num.values()),
+            'ftr': list(ftr.values()),
+            'queue': list(queue_copy)
+        }
+
+        width_tree_adjacency_matrix = {}
+        for node in self.nodes:
+            width_tree_adjacency_matrix[node] = []
+
+        for i in range(len(search_info['nodes'])):
+            if search_info['ftr'][i] != '*':
+                width_tree_adjacency_matrix[search_info['nodes'][i]].append(search_info['ftr'][i])
+                width_tree_adjacency_matrix[search_info['ftr'][i]].append(search_info['nodes'][i])
+
+        tree = UndirectedGraph(width_tree_adjacency_matrix)
+
+        return search_info, tree
+
+
+class DirectedGraph:
+    def __init__(
+            self,
+            adjacency_matrix: dict[int or str: list[int or str]],
+            with_labels=True,
+            node_size=500,
+            node_color='gray',
+            font_size=12,
+            font_color='black',
+            font_weight='bold',
+            width=1,
+            edge_color='black',
+            arrows=True,
+            alpha=1
+    ) -> None:
+        self._adjacency_matrix = adjacency_matrix.copy()
+        self._with_labels = with_labels
+        self._node_size = node_size
+        self._node_color = node_color
+        self._font_size = font_size
+        self._font_color = font_color
+        self._font_weight = font_weight
+        self._width = width
+        self._edge_color = edge_color
+        self._arrows = arrows
+        self._alpha = alpha
+
+        self._graph = nx.DiGraph()
+
+        self._node_style = {}
+
+        for key in self._adjacency_matrix.keys():
+            self._graph.add_node(key)
+
+        for key in self._adjacency_matrix.keys():
+            for node in self._adjacency_matrix[key]:
+                self._graph.add_edge(key, node)
+
+    @property
+    def adjacency_matrix(self) -> dict[int or str: list[int or str]]:
+        return self._adjacency_matrix.copy()
+
+    @adjacency_matrix.setter
+    def adjacency_matrix(self, adjacency_matrix: dict[int or str: list[int or str]]) -> None:
+        self._adjacency_matrix = adjacency_matrix.copy()
+        self._graph.clear()
+
+        for key in self._adjacency_matrix:
+            for node in self._adjacency_matrix[key]:
+                self._graph.add_edge(key, node)
+
+    @property
+    def nodes(self):
+        return sorted(list(self._graph.nodes).copy())
+
+    def clear(self) -> None:
+        self._graph.clear()
+        self._adjacency_matrix.clear()
+
+    def draw(self) -> None:
+        nx.draw(
+            self._graph,
+            with_labels=self._with_labels,
+            node_size=self._node_size,
+            node_color=self._node_color,
+            font_size=self._font_size,
+            font_color=self._font_color,
+            font_weight=self._font_weight,
+            width=self._width,
+            edge_color=self._edge_color,
+            arrows=self._arrows,
+            alpha=self._alpha,
+        )
+        for node, style in self._node_style.items():
+            nx.draw_networkx_nodes(
+                self._graph,
+                nodelist=[node],
+                **style,
+            )
+        plt.show()
+
+    def width_search(self, start_node: int or str):
+        if start_node not in list(self._graph.nodes):
+            raise Exception('Node not in list')
+
+        queue = utils.Queue()
+        queue_copy = queue.copy()
+
+        num = {}
+        nodes = list(self._adjacency_matrix.keys())
+        for node in nodes:
+            num[node] = -1
+
+        ftr = num.copy()
+
+        queue.insert(start_node)
+        queue_copy.insert(start_node)
+        num[start_node] = 0
+        ftr[start_node] = 0
+
+        while not queue.empty():
+            node = queue.pop()
+            for neighbour in self._adjacency_matrix[node]:
+                if num[neighbour] == -1:
+                    queue.insert(neighbour)
+                    queue_copy.insert(neighbour)
+                    ftr[neighbour] = node
+                    num[neighbour] = num[node] + 1
+
+        for node in self._adjacency_matrix.keys():
+            if node == start_node:
+                continue
+
+            if num[node] == -1:
+                num[node] = 0
+                ftr[node] = 0
+                queue.insert(node)
+                queue_copy.insert(node)
+
+                while not queue.empty():
+                    queue_node = queue.pop()
+                    for neighbour in self._adjacency_matrix[queue_node]:
+                        if num[neighbour] == -1:
+                            queue.insert(neighbour)
+                            queue_copy.insert(neighbour)
+                            ftr[neighbour] = queue_node
+                            num[neighbour] = num[queue_node] + 1
+
+        for key in ftr.keys():
+            if ftr[key] == 0:
+                ftr[key] = '*'
+
+        search_info = {
+            'nodes': self.nodes,
+            'num': list(num.values()),
+            'ftr': list(ftr.values()),
+            'queue': list(queue_copy)
+        }
+
+        width_tree_adjacency_matrix = {}
+        for node in self.nodes:
+            width_tree_adjacency_matrix[node] = []
+
+        for i in range(len(search_info['nodes'])):
+            if search_info['ftr'][i] != '*':
+                width_tree_adjacency_matrix[search_info['ftr'][i]].append(search_info['nodes'][i])
+
+        tree = DirectedGraph(width_tree_adjacency_matrix)
+
+        return search_info, tree
+
+```
+
+</details>
+
+
+<details>
+  <summary>utils.py</summary>
+  
+```python
+class QueueIterator:
+    def __init__(self, queue):
+        self._queue = queue
+        self._index = 0
+
+    def __next__(self):
+        if self._index < len(self._queue):
+            result = self._queue[self._index]
+            self._index += 1
+            return result
+
+        raise StopIteration
+
+
+class Queue:
+    def __init__(self, elements: list = None) -> None:
+        if elements is None:
+            self._elements = []
+        else:
+            self._elements = elements.copy()
+
+    def __len__(self) -> int:
+        return len(self._elements)
+
+    def __str__(self) -> str:
+        return str(self._elements)
+
+    def __getitem__(self, index):
+        return self._elements[index]
+
+    def __iter__(self):
+        return QueueIterator(self)
+
+    def copy(self):
+        return Queue(self._elements.copy())
+
+    def insert(self, value: any or list) -> None:
+        if isinstance(value, (list, dict)):
+            self._elements = value.copy()
+        elif isinstance(value, (int, float, str, tuple)):
+            self._elements.append(value)
+
+    def pop(self) -> any:
+        return self._elements.pop(0)
+
+    def empty(self) -> bool:
+        return len(self._elements) == 0
+
+    def clear(self) -> None:
+        self._elements.clear()
+
+
+def print_info(info: dict[str: list[int or str]]) -> None:
+    for key in info.keys():
+        if key == 'nodes':
+            print(' ' * 7, end='')
+        else:
+            print(f'{key}:', end='')
+            print(' ' * (6 - len(key)), end='')
+
+        for element in info[key]:
+            if len(str(element)) > 1:
+                print(f'{element}', end='  ')
+            else:
+                print(f' {element}', end='  ')
+        print()
+
+```
+
+</details>
+
+
 
 
 ## Реализация поиска в глубину (ПВГ)
@@ -30,7 +512,7 @@
 ### Программный код
 Для работы программы потребуется:
 
-- python 3.11
+- Python 3.11:
   - `networkx`
   - `matplotlib`
 
@@ -39,33 +521,11 @@
   <summary>main.py</summary>
 
 ```python
-import graph
-
-
-def print_info(info: list[list[int or str]]) -> None:
-    for i in range(len(info)):
-        if i == 0:
-            print('     ', end='')
-        elif i == 1:
-            print('num: ', end='')
-        elif i == 2:
-            print('ftr: ', end='')
-        elif i == 3:
-            print('tn:  ', end='')
-        elif i == 4:
-            print('tk:  ', end='')
-
-        for element in info[i]:
-            if len(str(element)) > 1:
-                print(f'{element}', end='  ')
-            else:
-                print(f' {element}', end='  ')
-        print()
+import graph, utils
 
 
 if __name__ == '__main__':
-
-    # Вставьте сюда свой неориентированный граф, представленный списками смежности:
+    # Вставьте свой неориентированный граф, представленный списками смежности:
     A = {
         1: [2, 6],
         2: [1, 3, 7, 8],
@@ -82,17 +542,19 @@ if __name__ == '__main__':
     G = graph.UndirectedGraph(A)
     G.draw()
 
-    info, tree = G.depth_search()
-  
+    # Параметром метода depth_search укажите вершину, с которой хотите начать поиск в глубину
+    info, tree = G.depth_search(1)
+    utils.print_info(info)
     tree.draw()
-    print_info(info)
-    
-    # Вставьте сюда свой ориентированный граф, представленный списками смежности:
+
+    print()
+
+    # Вставьте свой ориентированный граф, представленный списками смежности:
     A = {
         1: [2, 6],
         2: [3, 7],
         3: [8],
-        4: [8],
+        4: [5, 8, 10],
         5: [10],
         6: [7],
         7: [8],
@@ -104,12 +566,16 @@ if __name__ == '__main__':
     G = graph.DirectedGraph(A)
     G.draw()
 
+    # Параметром метода depth_search укажите вершину, с которой хотите начать поиск в глубину
     info, tree = G.depth_search(1)
+    utils.print_info(info)
     tree.draw()
 
 ```
 
 </details>
+
+
 <details>
   <summary>graph.py</summary>
 
@@ -207,7 +673,7 @@ class UndirectedGraph:
             start_time: dict[int or str: int],
             end_time: dict[int or str: int],
             time: int,
-            k:  int
+            k: int
     ) -> [int]:
         time += 1
         start_time[node] = time
@@ -224,7 +690,7 @@ class UndirectedGraph:
 
         return time, k
 
-    def depth_search(self, start_node: int or str) -> list[list[int or str]]:
+    def depth_search(self, start_node: int or str):
         if start_node not in list(self._graph.nodes):
             raise Exception('Node not in list')
 
@@ -250,22 +716,22 @@ class UndirectedGraph:
             if ftr[key] == 0:
                 ftr[key] = '*'
 
-        search_info = [
-            self.nodes,
-            list(num.values()),
-            list(ftr.values()),
-            list(start_time.values()),
-            list(end_time.values())
-        ]
+        search_info = {
+            'nodes': self.nodes,
+            'num': list(num.values()),
+            'ftr': list(ftr.values()),
+            'tn': list(start_time.values()),
+            'tk': list(end_time.values())
+        }
 
         depth_tree_adjacency_matrix = {}
         for node in self.nodes:
             depth_tree_adjacency_matrix[node] = []
 
-        for i in range(len(search_info[0])):
-            if search_info[2][i] != '*':
-                depth_tree_adjacency_matrix[search_info[0][i]].append(search_info[2][i])
-                depth_tree_adjacency_matrix[search_info[2][i]].append(search_info[0][i])
+        for i in range(len(search_info['nodes'])):
+            if search_info['ftr'][i] != '*':
+                depth_tree_adjacency_matrix[search_info['nodes'][i]].append(search_info['ftr'][i])
+                depth_tree_adjacency_matrix[search_info['ftr'][i]].append(search_info['nodes'][i])
 
         tree = UndirectedGraph(depth_tree_adjacency_matrix)
 
@@ -302,6 +768,9 @@ class DirectedGraph:
         self._graph = nx.DiGraph()
 
         self._node_style = {}
+
+        for key in self._adjacency_matrix.keys():
+            self._graph.add_node(key)
 
         for key in self._adjacency_matrix.keys():
             for node in self._adjacency_matrix[key]:
@@ -358,7 +827,7 @@ class DirectedGraph:
             start_time: dict[int or str: int],
             end_time: dict[int or str: int],
             time: int,
-            k:  int
+            k: int
     ) -> [int]:
         time += 1
         start_time[node] = time
@@ -401,21 +870,21 @@ class DirectedGraph:
             if ftr[key] == 0:
                 ftr[key] = '*'
 
-        search_info = [
-            self.nodes,
-            list(num.values()),
-            list(ftr.values()),
-            list(start_time.values()),
-            list(end_time.values())
-        ]
+        search_info = {
+            'nodes': self.nodes,
+            'num': list(num.values()),
+            'ftr': list(ftr.values()),
+            'tn': list(start_time.values()),
+            'tk': list(end_time.values())
+        }
 
         depth_tree_adjacency_matrix = {}
         for node in self.nodes:
             depth_tree_adjacency_matrix[node] = []
 
-        for i in range(len(search_info[0])):
-            if search_info[2][i] != '*':
-                depth_tree_adjacency_matrix[search_info[2][i]].append(search_info[0][i])
+        for i in range(len(search_info['nodes'])):
+            if search_info['ftr'][i] != '*':
+                depth_tree_adjacency_matrix[search_info['ftr'][i]].append(search_info['nodes'][i])
 
         tree = DirectedGraph(depth_tree_adjacency_matrix)
 
@@ -424,6 +893,32 @@ class DirectedGraph:
 ```
 
 </details>
+
+
+<details>
+  <summary>utils.py</summary>
+
+```python
+def print_info(info: dict[str: list[int or str]]) -> None:
+    for key in info.keys():
+        if key == 'nodes':
+            print(' ' * 7, end='')
+        else:
+            print(f'{key}:', end='')
+            print(' ' * (6 - len(key)), end='')
+
+        for element in info[key]:
+            if len(str(element)) > 1:
+                print(f'{element}', end='  ')
+            else:
+                print(f' {element}', end='  ')
+        print()
+
+```
+
+</details>
+
+
 
 
 *Авторство: **Прокопенко Д.О.***
