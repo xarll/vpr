@@ -1,8 +1,6 @@
 # Лабораторная работа №2. Алгоритмы поиска на графах
 
-Необходимо придумать для себя граф с количеством вершин, большим шести, произвести поиск на графе согласно своему варианту и разработать программное средство для реализации этого поиска.
-
-Преподаватель не уточнял, для какого вида графов (орграф или неоргаф) необходимо выполнять задание, поэтому далее будут представлены решения для обоих видов.
+Необходимо придумать для себя два графа (ориентированный и неориентированный), с количествами вершин, большими шести, произвести поиск на графах согласно своему варианту и разработать программное средство для реализации этого поиска.
 
 
 ## Варианты заданий:
@@ -17,10 +15,17 @@
 
 ### Ручная
 <details>
+
   <summary>Фото</summary>
-
-
+  
+  ![1](https://user-images.githubusercontent.com/102437629/233969850-d1c80630-8c33-4e50-a9fc-5ded6337188a.jpg)
+  
+  ![2](https://user-images.githubusercontent.com/102437629/233969909-76d1f209-9686-47ae-a966-9b3475c11c56.jpg)
+  
 </details>
+
+
+
 
 ### Программный код
 Для работы программы потребуется:
@@ -60,7 +65,7 @@ def print_info(info: list[list[int or str]]) -> None:
 
 if __name__ == '__main__':
 
-    # Вставьте сюда свой граф, представленный списками смежности:
+    # Вставьте сюда свой неориентированный граф, представленный списками смежности:
     A = {
         1: [2, 6],
         2: [1, 3, 7, 8],
@@ -74,16 +79,33 @@ if __name__ == '__main__':
         10: [4, 5]
     }
 
-    # Если Ваш граф неориентированный, используйте строку (1);
-    # Если ваш граф ориентированный, используйте строку (2):
-    G = graph.UndirectedGraph(A)  # (1)
-    # G = graph.DirectedGraph(A)  # (2)
+    G = graph.UndirectedGraph(A)
     G.draw()
 
     info, tree = G.depth_search()
   
     tree.draw()
     print_info(info)
+    
+    # Вставьте сюда свой ориентированный граф, представленный списками смежности:
+    A = {
+        1: [2, 6],
+        2: [3, 7],
+        3: [8],
+        4: [8],
+        5: [10],
+        6: [7],
+        7: [8],
+        8: [2, 9],
+        9: [4],
+        10: []
+    }
+
+    G = graph.DirectedGraph(A)
+    G.draw()
+
+    info, tree = G.depth_search(1)
+    tree.draw()
 
 ```
 
@@ -101,7 +123,7 @@ class UndirectedGraph:
             self,
             adjacency_matrix: dict[int or str: list[int or str]],
             with_labels=True,
-            node_size=1000,
+            node_size=500,
             node_color='gray',
             font_size=12,
             font_color='black',
@@ -126,6 +148,9 @@ class UndirectedGraph:
         self._node_style = {}
 
         for key in self._adjacency_matrix.keys():
+            self._graph.add_node(key)
+
+        for key in self._adjacency_matrix.keys():
             for node in self._adjacency_matrix[key]:
                 self._graph.add_edge(key, node)
 
@@ -138,7 +163,10 @@ class UndirectedGraph:
         self._adjacency_matrix = adjacency_matrix.copy()
         self._graph.clear()
 
-        for key in self._adjacency_matrix:
+        for key in self._adjacency_matrix.keys():
+            self._graph.add_node(key)
+
+        for key in self._adjacency_matrix.keys():
             for node in self._adjacency_matrix[key]:
                 self._graph.add_edge(key, node)
 
@@ -196,7 +224,10 @@ class UndirectedGraph:
 
         return time, k
 
-    def depth_search(self) -> list[list[int or str]]:
+    def depth_search(self, start_node: int or str) -> list[list[int or str]]:
+        if start_node not in list(self._graph.nodes):
+            raise Exception('Node not in list')
+
         num = {}
         nodes = list(self._adjacency_matrix.keys())
         for node in nodes:
@@ -209,12 +240,14 @@ class UndirectedGraph:
         time = 0
         k = 1
 
+        time, k = self._depth_search_step(start_node, num, ftr, start_time, end_time, time, k)
+
         for node in self._adjacency_matrix.keys():
             if num[node] == 0:
                 time, k = self._depth_search_step(node, num, ftr, start_time, end_time, time, k)
 
-        for key in start_time.keys():
-            if start_time[key] == 1:
+        for key in ftr.keys():
+            if ftr[key] == 0:
                 ftr[key] = '*'
 
         search_info = [
@@ -244,15 +277,13 @@ class DirectedGraph:
             self,
             adjacency_matrix: dict[int or str: list[int or str]],
             with_labels=True,
-            node_size=1000,
+            node_size=500,
             node_color='gray',
             font_size=12,
             font_color='black',
             font_weight='bold',
             width=1,
             edge_color='black',
-            arrowsize=20,
-            arrowstyle='->',
             arrows=True,
             alpha=1
     ) -> None:
@@ -265,8 +296,6 @@ class DirectedGraph:
         self._font_weight = font_weight
         self._width = width
         self._edge_color = edge_color
-        self._arrowsize = arrowsize
-        self._arrowstyle = arrowstyle
         self._arrows = arrows
         self._alpha = alpha
 
@@ -310,8 +339,6 @@ class DirectedGraph:
             font_weight=self._font_weight,
             width=self._width,
             edge_color=self._edge_color,
-            arrowsize=self._arrowsize,
-            arrowstyle=self._arrowstyle,
             arrows=self._arrows,
             alpha=self._alpha,
         )
@@ -348,7 +375,10 @@ class DirectedGraph:
 
         return time, k
 
-    def depth_search(self) -> list[list[int or str]]:
+    def depth_search(self, start_node: int or str) -> list[list[int or str]]:
+        if start_node not in list(self._graph.nodes):
+            raise Exception('Node not in list')
+
         num = {}
         nodes = list(self._adjacency_matrix.keys())
         for node in nodes:
@@ -361,12 +391,14 @@ class DirectedGraph:
         time = 0
         k = 1
 
+        time, k = self._depth_search_step(start_node, num, ftr, start_time, end_time, time, k)
+
         for node in self._adjacency_matrix.keys():
             if num[node] == 0:
                 time, k = self._depth_search_step(node, num, ftr, start_time, end_time, time, k)
 
-        for key in start_time.keys():
-            if start_time[key] == 1:
+        for key in ftr.keys():
+            if ftr[key] == 0:
                 ftr[key] = '*'
 
         search_info = [
