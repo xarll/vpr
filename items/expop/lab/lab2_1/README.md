@@ -21,8 +21,9 @@
 
   <summary>Фото</summary>
   
-  ![1]
-  ![2]
+  ![1](https://user-images.githubusercontent.com/102437629/234269509-3b9cfd39-def0-4816-8981-f50146f3de60.jpg)
+
+  ![2](https://user-images.githubusercontent.com/102437629/234269534-8373855e-a80f-4e6e-abfa-19a3d4a94772.jpg)
   
 </details>
 
@@ -923,8 +924,9 @@ def print_info(info: dict[str: list[int or str]]) -> None:
 
   <summary>Фото</summary>
   
-  ![1]
-  ![2]
+  ![1](https://user-images.githubusercontent.com/102437629/234335845-d5829ff0-d413-4562-a7a5-5af5a11d8458.jpg)
+
+  ![2](https://user-images.githubusercontent.com/102437629/234335958-2facc8bc-d046-4c81-bd1c-ed060c82c057.jpg)
   
 </details>
 
@@ -1094,26 +1096,32 @@ class UndirectedGraph:
             node: int or str,
             num: dict[int or str: int],
             ftr: dict[int or str: int or str],
+            start_time: dict[int or str: int],
             end_time: dict[int or str: int],
             UB: utils.Set,
             UT: utils.Set,
+            time: int,
             k: int
     ):
+        time += 1
+        start_time[node] = time
         num[node] = k
         k += 1
 
         for neighbour in self._adjacency_matrix[node]:
-            if num[neighbour] == 0:
+            if start_time[neighbour] == 0:
                 ftr[neighbour] = node
 
                 UT.insert((node, neighbour))
-                k = self._depth_classification_search_step(neighbour, num, ftr, end_time, UB, UT, k)
-            elif num[neighbour] < num[node] and ftr[node] != neighbour:
+                time, k = self._depth_classification_search_step(neighbour, num, ftr, start_time, end_time, UB, UT,
+                                                                 time, k)
+            elif start_time[neighbour] < start_time[node] and ftr[node] != neighbour:
                 UB.insert((node, neighbour))
 
-        end_time[node] = k
+        time += 1
+        end_time[node] = time
 
-        return k
+        return time, k
 
     def depth_classification_search(self, start_node: int or str):
         if start_node not in list(self._graph.nodes):
@@ -1128,15 +1136,17 @@ class UndirectedGraph:
             num[node] = 0
 
         ftr = num.copy()
+        start_time = num.copy()
         end_time = num.copy()
 
         k = 1
+        time = 0
 
-        k = self._depth_classification_search_step(start_node, num, ftr, end_time, UB, UT, k)
+        time, k = self._depth_classification_search_step(start_node, num, ftr, start_time, end_time, UB, UT, time, k)
 
         for node in self._adjacency_matrix.keys():
-            if num[node] == 0:
-                k = self._depth_classification_search_step(node, num, ftr, end_time, UB, UT, k)
+            if start_time[node] == 0:
+                time, k = self._depth_classification_search_step(node, num, ftr, start_time, end_time, UB, UT, time, k)
 
         for key in ftr.keys():
             if ftr[key] == 0:
@@ -1146,6 +1156,7 @@ class UndirectedGraph:
             'nodes': self.nodes,
             'num': list(num.values()),
             'ftr': list(ftr.values()),
+            'tn': list(start_time.values()),
             'tk': list(end_time.values()),
             'UB': list(UB),
             'UT': list(UT)
@@ -1251,32 +1262,38 @@ class DirectedGraph:
             node: int or str,
             num: dict[int or str: int],
             ftr: dict[int or str: int or str],
+            start_time: dict[int or str: int],
             end_time: dict[int or str: int],
             UB: utils.Set,
             UC: utils.Set,
             UF: utils.Set,
             UT: utils.Set,
+            time: int,
             k: int
     ):
+        time += 1
+        start_time[node] = time
         num[node] = k
         k += 1
 
         for neighbour in self._adjacency_matrix[node]:
-            if num[neighbour] == 0:
+            if start_time[neighbour] == 0:
                 ftr[neighbour] = node
 
                 UT.insert((node, neighbour))
-                k = self._depth_classification_search_step(neighbour, num, ftr, end_time, UB, UC, UF, UT, k)
-            elif num[neighbour] > num[node]:
+                time, k = self._depth_classification_search_step(neighbour, num, ftr, start_time, end_time, UB, UC, UF,
+                                                                 UT, time, k)
+            elif start_time[neighbour] > start_time[node]:
                 UF.insert((node, neighbour))
             elif end_time[neighbour] == 0:
                 UB.insert((node, neighbour))
             else:
                 UC.insert((node, neighbour))
 
-        end_time[node] = k
+        time += 1
+        end_time[node] = time
 
-        return k
+        return time, k
 
     def depth_classification_search(self, start_node: int or str):
         if start_node not in list(self._graph.nodes):
@@ -1293,15 +1310,19 @@ class DirectedGraph:
             num[node] = 0
 
         ftr = num.copy()
+        start_time = num.copy()
         end_time = num.copy()
 
         k = 1
+        time = 0
 
-        k = self._depth_classification_search_step(start_node, num, ftr, end_time, UB, UC, UF, UT, k)
+        time, k = self._depth_classification_search_step(start_node, num, ftr, start_time, end_time, UB, UC, UF, UT,
+                                                         time, k)
 
         for node in self._adjacency_matrix.keys():
-            if num[node] == 0:
-                k = self._depth_classification_search_step(node, num, ftr, end_time, UB, UC, UF, UT, k)
+            if start_time[node] == 0:
+                time, k = self._depth_classification_search_step(node, num, ftr, start_time, end_time, UB, UC, UF, UT,
+                                                                 time, k)
 
         for key in ftr.keys():
             if ftr[key] == 0:
@@ -1311,6 +1332,7 @@ class DirectedGraph:
             'nodes': self.nodes,
             'num': list(num.values()),
             'ftr': list(ftr.values()),
+            'tn': list(start_time.values()),
             'tk': list(end_time.values()),
             'UB': list(UB),
             'UC': list(UC),
