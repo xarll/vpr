@@ -11,6 +11,7 @@
 
 - [Шведенко/Тузов](https://github.com/xarll/vpr/tree/main/items/prog2/lab/lab4/program/project_one)
 - [Лунь Архипов]()
+- [Бояршинов Н.О](https://github.com/xarll/vpr/tree/main/items/prog2/lab/lab4/program/project_two)
 
 ## Работа
 
