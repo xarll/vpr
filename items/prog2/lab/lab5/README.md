@@ -215,7 +215,7 @@ public class Test {
 ### Задание 3
 Создайте НЕОБОБЩЕННЫЙ класс `PairBag`, представляющий "мешок" для хранения пар значений. Используйте созданные
 раньше обобщенный класс `Pair` и необобщенный класс Bag. Прежде
-всего, определите, какое отношение между классами Bag и `PairBag`
+всего, определите, какое отношение между классами `Bag` и `PairBag`
 следует использовать. Как и следует из названия, объекты `PairBag`
 должны хранить только пары значений (не могут хранить отдельные)
 значения. Методы должны работать с парами (получать/возвращать). 
@@ -227,6 +227,25 @@ public class Test {
   <summary>Task3/PairBag.java</summary>
   
 ```java
+package Task3;
+
+import Task1.Pair;
+import Task2.Bag;
+
+public class PairBag extends Bag {
+
+    public PairBag(int weight) {
+        super(weight);
+    }
+
+    public Pair<Object, Object> getPair() {
+        return (Pair<Object, Object>) super.getItem();
+    }
+    
+    public void putPair(Pair<Object, Object> pair) {
+        super.putItem(pair);
+    }
+}
 
 ```
   
@@ -236,6 +255,22 @@ public class Test {
   <summary>Task3/Test.java</summary>
   
 ```java
+package Task3;
+
+import Task1.Pair;
+
+public class Test {
+    public static void main(String[] args) {
+        PairBag pairBag = new PairBag(10);
+
+        pairBag.putPair(new Pair<>(1, "Cool String"));
+
+        Pair<Object, Object> some = pairBag.getPair();
+
+        System.out.println(some.getFirst());
+        System.out.println(some.getSecond());
+    }
+}
 
 ```
   
@@ -247,11 +282,11 @@ public class Test {
 к неопределенности при использовании пар. Такой проблемы не будет,
 если типы пар одинаковые. Если тип первого значения пары T1, а тип
 второго значения пары T2, то все пары в контейнере должны иметь тип
-Pair<T1,T2>. Создайте обобщенный класс GPairBag для хранения пар
+`Pair<T1,T2>`. Создайте обобщенный класс GPairBag для хранения пар
 одинакового типа. В реализации не используйте стандартные
 контейнеры Java. Используйте те классы, которые Вы реализовали при
 решении предыдущих заданий этой лабораторной работы. Начните с
-определения того, какое отношение между GPairBag и PairBag удобно
+определения того, какое отношение между `GPairBag` и `PairBag` удобно
 использовать.
 
 <details>
