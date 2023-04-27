@@ -707,43 +707,200 @@ public class Test {
 
 
 <details>
-  <summary>Task1/Test.java</summary>
+  <summary>Task8/Test.java</summary>
   
 ```java
 
 ```
   
 </details>
+  
+<details>
+  <summary>Task8/Test.java</summary>
+  
+```java
+
+```
+  
+</details>
+
 
 ### Задание 9
 Создайте обобщенный класс `HashFunction<K>` с одним
 объявленным абстрактным методом `int hash(K s)`. При создании объекта
-класса HashFunction ему должна передаваться информация о размере
+класса `HashFunction` ему должна передаваться информация о размере
 таблицы – это определяет, какие целые значения (из какого диапазона)
-должна выдавать функция. Создайте обобщенный класс HashTable для
+должна выдавать функция. Создайте обобщенный класс `HashTable` для
 представления хэш-таблицы в виде массива списков. Учтите, что в
-таблице хранятся данные одного типа T, а поиск в таблице может
-осуществляться по другому типу K (например, поиск проводится не по
+таблице хранятся данные одного типа `T`, а поиск в таблице может
+осуществляться по другому типу `K` (например, поиск проводится не по
 всей записи, а только по одному ее полю). Это, в частности накладывает
 ограничение на тип элементов таблицы. Нужно уметь проверять, что
 конкретный элемент содержит значение (например, отдельное поле) по
-которому хэш-функция генерирует свое значение. То есть тип T должен
+которому хэш-функция генерирует свое значение. То есть тип `T` должен
 содержать реализацию некоторого метода (например, `boolean
 contains(K value))`, объявленного в определенном базовом классе (или в
 реализуемом интерфейсе). Размер массива (таблицы) и конкретная
-хэш-функция (как ссылка на объект класса-наследника HashFunction)
-передаются конструктору класса при создании объекта HashTable.
+хэш-функция (как ссылка на объект класса-наследника `HashFunction`)
+передаются конструктору класса при создании объекта `HashTable`.
 
 
 <details>
-  <summary>Task1/Test.java</summary>
+  <summary>Task9/HashFunction.java</summary>
   
 ```java
+package Task9;
+
+
+public abstract class HashFunction<K> {
+    protected int tableSize;
+
+    public HashFunction(int tableSize) {
+        this.tableSize = tableSize;
+    }
+
+    public abstract int hash(K s);
+}
 
 ```
   
 </details>
 
+<details>
+  <summary>Task9/HashTable.java</summary>
+  
+```java
+package Task9;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class HashTable<T, K> {
+    private final List<T>[] table;
+    private final HashFunction<K> hashFunction;
+
+    public HashTable(int tableSize, HashFunction<K> hashFunction) {
+        this.table = new ArrayList[tableSize];
+        for (int i = 0; i < tableSize; i++) {
+            table[i] = new ArrayList<T>();
+        }
+        this.hashFunction = hashFunction;
+    }
+
+    public void add(T element) {
+        K key = getKey(element);
+        int index = hashFunction.hash(key);
+        table[index].add(element);
+    }
+
+    public List<T> get(K key) {
+        int index = hashFunction.hash(key);
+        return table[index];
+    }
+
+    public abstract K getKey(T element);
+}
+
+```
+  
+</details>
+
+<details>
+  <summary>Task9/test/Person.java</summary>
+  
+```java
+package Task9.test;
+
+public record Person(String name, int age) {
+
+}
+
+```
+  
+</details>
+
+<details>
+  <summary>Task9/test/PersonHashTable.java</summary>
+  
+```java
+package Task9.test;
+
+import Task9.HashFunction;
+import Task9.HashTable;
+
+public class PersonHashTable extends HashTable<Person, String> {
+
+    public PersonHashTable(int tableSize, HashFunction<String> hashFunction) {
+        super(tableSize, hashFunction);
+    }
+
+    @Override
+    public String getKey(Person element) {
+        return element.name() + element.age();
+    }
+}
+
+```
+  
+</details>
+
+  
+<details>
+  <summary>Task9/test/PersonNameHashFunction.java</summary>
+  
+```java
+package Task9.test;
+
+import Task9.HashFunction;
+
+public class PersonNameHashFunction extends HashFunction<String> {
+    public PersonNameHashFunction(int tableSize) {
+        super(tableSize);
+    }
+
+    public int hash(String s) {
+        if (s == null) {
+            return 0;
+        }
+        return Math.abs(s.hashCode() % tableSize);
+    }
+}
+
+```
+  
+</details>
+
+<details>
+  <summary>Task9/test/Test.java</summary>
+  
+```java
+package Task9.test;
+
+import Task9.HashFunction;
+import Task9.HashTable;
+
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        HashFunction<String> hashFunction = new PersonNameHashFunction(10);
+        HashTable<Person, String> hashTable = new PersonHashTable(10, hashFunction);
+        Person p1 = new Person("John", 30);
+        Person p2 = new Person("Alice", 25);
+        Person p3 = new Person("Bob", 40);
+        hashTable.add(p1);
+        hashTable.add(p2);
+        hashTable.add(p3);
+        List<Person> persons = hashTable.get("Alice25");
+        for (Person person : persons) {
+            System.out.println(person.name() + " " + person.age());
+        }
+    }
+}
+
+```
+  
+</details>
 
 ### Задание 10
 Создайте класс Person, для хранения информации о
