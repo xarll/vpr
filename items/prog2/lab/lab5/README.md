@@ -280,9 +280,9 @@ public class Test {
 ### Задание 4
 Хранение в контейнере пар разного типа обычно приводит
 к неопределенности при использовании пар. Такой проблемы не будет,
-если типы пар одинаковые. Если тип первого значения пары T1, а тип
-второго значения пары T2, то все пары в контейнере должны иметь тип
-`Pair<T1,T2>`. Создайте обобщенный класс GPairBag для хранения пар
+если типы пар одинаковые. Если тип первого значения пары `T1`, а тип
+второго значения пары `T2`, то все пары в контейнере должны иметь тип
+`Pair<T1,T2>`. Создайте обобщенный класс `GPairBag` для хранения пар
 одинакового типа. В реализации не используйте стандартные
 контейнеры Java. Используйте те классы, которые Вы реализовали при
 решении предыдущих заданий этой лабораторной работы. Начните с
@@ -290,9 +290,27 @@ public class Test {
 использовать.
 
 <details>
-  <summary>Task4/Test.java</summary>
+  <summary>Task4/GPairBag.java</summary>
   
 ```java
+package Task4;
+
+import Task1.Pair;
+import Task2.Bag;
+
+public class GPairBag<T> extends Bag {
+    public GPairBag(int weight) {
+        super(weight);
+    }
+
+    public void putPair(Pair<T, T> pair) {
+        super.putItem(pair);
+    }
+
+    public Pair<T, T> getPair() {
+        return (Pair<T, T>) super.getItem();
+    }
+}
 
 ```
   
@@ -302,6 +320,22 @@ public class Test {
   <summary>Task4/Test.java</summary>
   
 ```java
+package Task4;
+
+import Task1.Pair;
+
+public class Test {
+    public static void main(String[] args) {
+        GPairBag<String> bag = new GPairBag<String>(10);
+
+        bag.putPair(new Pair<String, String>("Hello", "World"));
+
+        Pair<String, String> some = bag.getPair();
+
+        System.out.println(some.getFirst());
+        System.out.println(some.getSecond());
+    }
+}
 
 ```
   
