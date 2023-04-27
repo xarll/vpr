@@ -342,19 +342,77 @@ public class Test {
 </details>
 
 ### Задание 5
-Создайте обобщенный класс GenericPairBag для хранения
+Создайте обобщенный класс `GenericPairBag` для хранения
 пар одинакового типа, используя подходящий стандартный
-обобщенный контейнерный класс Java, например, ArrayList.
+обобщенный контейнерный класс Java, например, `ArrayList`.
 
 
 <details>
-  <summary>Task1/Test.java</summary>
+  <summary>Task5/GenericPairBag.java</summary>
   
 ```java
+package Task5;
+
+import Task1.Pair;
+
+import java.util.ArrayList;
+
+public class GenericPairBag<T> {
+
+    private final ArrayList<Pair<T, T>> pairs;
+
+    public GenericPairBag() {
+        pairs = new ArrayList<>();
+    }
+
+    public void putPair(Pair<T, T> pair) {
+        pairs.add(pair);
+    }
+
+    public Pair<T, T> getPair() {
+        if (pairs.isEmpty()) {
+            throw new IllegalStateException("Pair bag is empty");
+        }
+
+        int randomIndex = (int)Math.round(Math.random()*(pairs.size() - 1));
+        Pair<T, T> pair = pairs.get(randomIndex);
+        pairs.remove(randomIndex);
+        return pair;
+    }
+}
 
 ```
   
 </details>
+  
+<details>
+  <summary>Task5/Test.java</summary>
+  
+```java
+package Task5;
+
+import Task1.Pair;
+
+public class Test {
+    public static void main(String[] args) {
+
+        GenericPairBag<String> bag = new GenericPairBag<>();
+
+        Pair<String, String> pair1 = new Pair<>("1", "2");
+        Pair<String, String> pair2 = new Pair<>("3", "4");
+
+        bag.putPair(pair1);
+        bag.putPair(pair2);
+
+        Pair<String, String> pair = bag.getPair();
+        System.out.println(pair.getFirst() + " " + pair.getSecond());
+    }
+}
+
+```
+  
+</details>
+
 
 
 ### Задание 6
@@ -375,12 +433,21 @@ public class Test {
 описанный выше процесс проведения турнира. Число командучастников N задается пользователем. Очевидно, что N не может быть
 произвольным. Если пользователь дает недопустимое значение N
 можно задать значение по умолчанию, например, 8. "Мешки" должны
-быть представлены каким-нибудь подходящим стандартным классомконтейнером (или классом Bag) и классом GenericPairBag. Имена 
-команд можно генерировать автоматически ("Команда1", "Команда2", …).
+быть представлены каким-нибудь подходящим стандартным классомконтейнером (или классом `Bag`) и классом `GenericPairBag`. Имена 
+команд можно генерировать автоматически `("Команда1", "Команда2", …)`.
 
+  
+<details>
+  <summary>Task6/Test.java</summary>
+  
+```java
+
+```
+  
+</details>
 
 <details>
-  <summary>Task1/Test.java</summary>
+  <summary>Task6/Test.java</summary>
   
 ```java
 
