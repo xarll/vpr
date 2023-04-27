@@ -28,9 +28,66 @@ Generic Types (Общие типы) - и есть тема данной лаб �
 
 
 <details>
+  <summary>Task1/Pair.java</summary>
+  
+```java
+package Task1;
+
+public class Pair<T1, T2> {
+    private T1 first;
+    private T2 second;
+
+    public Pair(T1 first, T2 second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public T1 getFirst() {
+        return first;
+    }
+
+    public void setFirst(T1 first) {
+        this.first = first;
+    }
+
+    public T2 getSecond() {
+        return second;
+    }
+
+    public void setSecond(T2 second) {
+        this.second = second;
+    }
+
+    public static <T1, T2> Pair<T1, T2> makePair(T1 first, T2 second) {
+        return new Pair<>(first, second);
+    }
+}
+
+```
+  
+</details>
+
+<details>
   <summary>Task1/Test.java</summary>
   
 ```java
+package Task1;
+
+import java.util.Arrays;
+
+public class Test {
+    public static void main(String[] args) {
+        Pair<String, Integer> pair = Pair.makePair("foo", 42);
+        System.out.println(pair.getFirst());
+        System.out.println(pair.getSecond());
+
+
+        String[] strings = {"hello", "world"};
+        Pair<String, String[]> pair2 = Pair.makePair("foo", strings);
+        System.out.println(pair2.getFirst());
+        System.out.println(Arrays.toString(pair2.getSecond()));
+    }
+}
 
 ```
   
@@ -58,6 +115,7 @@ Generic Types (Общие типы) - и есть тема данной лаб �
 текущего размера Bag. Какие методы (или один метод) Bag не должны
 переопределяться в классах-потомках? Запретите их (или его)
 переопределение.
+  
 Метод random() класса Math возвращает псевдослучайное действительное значение в диапазоне от 0.0 до 1.0, включая 0.0 но не включая 1.0.
 Чтобы получить псевдослучайное целое значение из диапазона `[0, size1]` можно использовать выражение `(int)Math.round(Math.random()*(size1))`.
 Протестируйте работоспособность класса Bag для элементов разного
