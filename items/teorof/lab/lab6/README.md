@@ -312,8 +312,8 @@ def partitioning_into_equivalence_classes(
                 continue
 
             exclude_rels: list[dict[str, list]] = []
-            for vertex in _class:
-                for alpha in alphabet:
+            for alpha in alphabet:
+                for vertex in _class:
 
                     if [el for el in exclude_rels if vertex in el["vertex"]]:
                         continue
@@ -329,13 +329,13 @@ def partitioning_into_equivalence_classes(
                     """
 
                     dest_class = [_ for _ in classes if dest_vertex in _][0]
-                    _ = [el for el in exclude_rels if el["dest_vertex"] == dest_vertex]
+                    _ = [el for el in exclude_rels if el["dest_vertex"] == dest_vertex and el["alpha"] == alpha]
                     el_in_exclude_rels = None if not _ else _[0]
 
                     if el_in_exclude_rels:
                         el_in_exclude_rels["vertex"].append(vertex)
                     else:
-                        exclude_rels.append(dict(vertex=[vertex], _class=dest_class, dest_vertex=dest_vertex))
+                        exclude_rels.append(dict(vertex=[vertex], _class=dest_class, dest_vertex=dest_vertex, alpha=alpha))
 
             """
             Разбиваем класс на подклассы
