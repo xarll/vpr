@@ -116,16 +116,95 @@ public class Test {
 переопределяться в классах-потомках? Запретите их (или его)
 переопределение.
   
-Метод random() класса Math возвращает псевдослучайное действительное значение в диапазоне от 0.0 до 1.0, включая 0.0 но не включая 1.0.
-Чтобы получить псевдослучайное целое значение из диапазона `[0, size1]` можно использовать выражение `(int)Math.round(Math.random()*(size1))`.
-Протестируйте работоспособность класса Bag для элементов разного
-типа `(Integer, String, …)`.
+Метод `random()` класса `Math` возвращает псевдослучайное действительное значение в диапазоне от 0.0 до 1.0, включая 0.0 но не включая 1.0.
+Чтобы получить псевдослучайное целое значение из диапазона `[0, size-1]` можно использовать выражение `(int)Math.round(Math.random()*(size-1))`.
+Протестируйте работоспособность класса Bag для элементов разного типа `(Integer, String, …)`.
 
 
 <details>
-  <summary>Task1/Test.java</summary>
+  <summary>Task2/Bag.java</summary>
   
 ```java
+package Task2;
+
+public class Bag {
+    private Object[] items;
+
+    public Bag(int weight) {
+        this.items = new Object[weight];
+    }
+
+    public int getCurrentSize() {
+        int counter = 0;
+        for (Object item : items) {
+            if (item != null) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public Object getItem() {
+        while (true) {
+            int random_index = (int)Math.round(Math.random()*(items.length - 1));
+            if (items[random_index] != null) {
+                Object item = items[random_index];
+                items[random_index] = null;
+                return item;
+            }
+        }
+    }
+
+    public void putItem(Object obj) {
+        if (obj == null) {
+            throw new IllegalArgumentException("Object is null");
+        }
+
+        if (getCurrentSize() == items.length) {
+            throw new IllegalStateException("Bag is full");
+        }
+
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] == null) {
+                items[i] = obj;
+                break;
+            }
+        }
+    }
+}
+
+```
+  
+</details>
+  
+<details>
+  <summary>Task2/Test.java</summary>
+  
+```java
+package Task2;
+
+public class Test {
+    public static void main(String[] args) {
+        Bag bag = new Bag(10);
+        bag.putItem("item1");
+        bag.putItem("item2");
+        bag.putItem("item3");
+        bag.putItem("item4");
+        bag.putItem("item5");
+        bag.putItem("item6");
+        bag.putItem("item7");
+        bag.putItem("item8");
+        bag.putItem("item9");
+        bag.putItem("item10");
+        System.out.println(bag.getCurrentSize());
+        System.out.println(bag.getItem());
+        System.out.println(bag.getItem());
+        System.out.println(bag.getCurrentSize());
+        bag.putItem("item11");
+        System.out.println(bag.getCurrentSize());
+        System.out.println(bag.getItem());
+    }
+}
 
 ```
   
@@ -134,19 +213,27 @@ public class Test {
 
 
 ### Задание 3
-Создайте НЕОБОБЩЕННЫЙ класс PairBag, представляющий "мешок" для хранения пар значений. Используйте созданные
-раньше обобщенный класс Pair и необобщенный класс Bag. Прежде
-всего, определите, какое отношение между классами Bag и PairBag
-следует использовать. Как и следует из названия, объекты PairBag
+Создайте НЕОБОБЩЕННЫЙ класс `PairBag`, представляющий "мешок" для хранения пар значений. Используйте созданные
+раньше обобщенный класс `Pair` и необобщенный класс Bag. Прежде
+всего, определите, какое отношение между классами Bag и `PairBag`
+следует использовать. Как и следует из названия, объекты `PairBag`
 должны хранить только пары значений (не могут хранить отдельные)
 значения. Методы должны работать с парами (получать/возвращать). 
-При этом, в одном и том же объекте PairBag одновременно могут
-храниться могут пары c разными типами значений, например,
-Pair<Integer,Integer> и Pair<Integer,String>.
-
+При этом, в одном и том же объекте `PairBag` одновременно могут
+храниться пары c разными типами значений, например,
+`Pair<Integer,Integer>` и `Pair<Integer,String>`.
 
 <details>
-  <summary>Task1/Test.java</summary>
+  <summary>Task3/PairBag.java</summary>
+  
+```java
+
+```
+  
+</details>
+
+<details>
+  <summary>Task3/Test.java</summary>
   
 ```java
 
@@ -167,9 +254,17 @@ Pair<T1,T2>. Создайте обобщенный класс GPairBag для х
 определения того, какое отношение между GPairBag и PairBag удобно
 использовать.
 
-
 <details>
-  <summary>Task1/Test.java</summary>
+  <summary>Task4/Test.java</summary>
+  
+```java
+
+```
+  
+</details>
+  
+<details>
+  <summary>Task4/Test.java</summary>
   
 ```java
 
