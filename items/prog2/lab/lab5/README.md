@@ -559,9 +559,97 @@ i, либо значение первого поля. Например, перв
 
 
 <details>
-  <summary>Task1/Test.java</summary>
+  <summary>Task7/DList.java</summary>
   
 ```java
+package Task7;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class DList<T1, T2> {
+    private final List<T1> list1;
+    private final List<List<T2>> list2;
+
+    public DList() {
+        list1 = new ArrayList<>();
+        list2 = new ArrayList<>();
+    }
+
+    public void add(T1 value, List<T2> sublist) {
+        list1.add(value);
+        list2.add(sublist);
+    }
+
+    public Map<T1, List<T2>> getByIndex(int index) {
+        Map<T1, List<T2>> resp = new HashMap<>();
+        resp.put(list1.get(index), list2.get(index));
+        return resp;
+    }
+
+    public Map<T1, List<T2>> getByKey(T1 key) {
+        Map<T1, List<T2>> resp = new HashMap<>();
+        int index = list1.indexOf(key);
+        if (index >= 0) {
+            resp.put(list1.get(index), list2.get(index));
+        } else
+            throw new IllegalArgumentException("Key not found");
+        return resp;
+    }
+
+
+    public void removeByIndex(int index) {
+        list1.remove(index);
+        list2.remove(index);
+    }
+
+    public void removeByKey(T1 key) {
+        int index = list1.indexOf(key);
+        if (index >= 0) {
+            list1.remove(index);
+            list2.remove(index);
+        } else
+            throw new IllegalArgumentException("Key not found");
+    }
+}
+
+```
+  
+</details>
+  
+<details>
+  <summary>Task7/Test.java</summary>
+  
+```java
+package Task7;
+
+import Task3.PairBag;
+import Task1.Pair;
+
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        DList<String, PairBag> dlist = new DList<>();
+
+        PairBag pairBag = new PairBag(10);
+        pairBag.putPair(new Pair<>("Hello", "World"));
+
+        dlist.add("Hello", List.of(pairBag));
+
+        System.out.println(dlist.getByIndex(0));
+        System.out.println(dlist.getByKey("Hello"));
+
+        dlist.removeByKey("Hello");
+
+        dlist.add("Hello2", List.of(pairBag));
+
+        System.out.println(dlist.getByIndex(0));
+        System.out.println(dlist.getByKey("Hello2"));
+    }
+}
 
 ```
   
