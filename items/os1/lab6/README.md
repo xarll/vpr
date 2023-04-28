@@ -1,8 +1,8 @@
-# Лабораторная работа #6 - Файловая структура системы GNU/LINUX
+# Лабораторная работа #7 - Файловая структура системы GNU/LINUX
 
 ## Материалы
 
-- [Laboratornayaya_rabota6_AdmLinux_FS.pdf](https://github.com/xarll/vpr/blob/main/items/os1/lab6/Laboratornayaya_rabota6_AdmLinux_FS.pdf)
+- [Laboratornayaya_rabota7_AdmLinux_FS.pdf](https://github.com/xarll/vpr/blob/main/items/os1/lab6/Laboratornayaya_rabota6_AdmLinux_FS.pdf)
 
 
 ## Работа
