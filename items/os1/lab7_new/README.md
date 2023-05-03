@@ -2,7 +2,7 @@
 
 ## Материалы
 
-- [Laboratornayaya_rabota7_AdmLinux_FS.pdf](https://github.com/xarll/vpr/blob/main/items/os1/lab6/Laboratornayaya_rabota6_AdmLinux_FS.pdf)
+- [Laboratornayaya_rabota7_AdmLinux_FS.pdf](./Laboratornayaya_rabota6_AdmLinux_FS%20(2).pdf)
 
 
 ## Работа
