@@ -138,6 +138,34 @@ scp file.txt jkearnsl@10.0.2.4:~
 Файл отправлен:
 ![Screenshot_20230504_204330](https://user-images.githubusercontent.com/76239707/236285741-a626a510-731d-42a8-b2c1-e9d85c178b6c.png)
 
+#### Смена порта SSH
+
+Вернемся к ВМ1
+
+Для редактирования конфигурации SSH сервера, перейдем к `/etc/ssh/sshd_config` и отредактируем строку `#Port 22` на `Port 42` например:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+Сохраняем `Ctrl + o`, *enter*, `Ctrl + x`
+![Screenshot_20230504_204957](https://user-images.githubusercontent.com/76239707/236287234-72f607c8-f296-4c88-a9cc-7536d2c8a329.png)
+
+Перезапустим службу **sshd** для приминения изменений:
+
+```bash
+sudo systemctl restart sshd
+```
+
+Заодно можем включить автозагрузку (если не включена) процесса службы **sshd** для автостарта после перезагрузки командой:
+```bash
+sudo systemctl enable sshd
+```
+
+Попытаемся подключиться с ВМ2 к ВМ1, используя новый порт **42**, используя флаг `-p`:
+
+```bash
+ssh 10.0.2.4 -p 42
+```
 
 
 *Авторство: **Бояршинов Н.О***
