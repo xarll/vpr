@@ -12,9 +12,17 @@
 
 ### ВМ 1
 
+Имеем
+
+![Screenshot_20230504_192926](https://user-images.githubusercontent.com/76239707/236266629-ee5bacd4-f773-4855-9ee8-4136d3b1ae74.png)
+
 
 
 ### ВМ 2
+
+Имеем
+
+![Screenshot_20230504_192959](https://user-images.githubusercontent.com/76239707/236266798-3c389e7c-93d9-489b-b6f1-232de8563da7.png)
 
 
 *Авторство: **Бояршинов Н.О***
