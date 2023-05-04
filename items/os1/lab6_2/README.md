@@ -5,7 +5,11 @@
 
 ## Работа
 
+Я буду использовать 2 ВМ [Ubuntu Server](https://ubuntu.com/download/server#downloads)
+
+
 ### Настроим сеть NAT
+
 
 
 
@@ -16,7 +20,12 @@
 
 ![Screenshot_20230504_192926](https://user-images.githubusercontent.com/76239707/236266629-ee5bacd4-f773-4855-9ee8-4136d3b1ae74.png)
 
+Установим `telnetd` - демон, который будет являться сервером telnet
 
+```bash
+sudo apt update && sudo apt-get install telnetd
+
+```
 
 ### ВМ 2
 
