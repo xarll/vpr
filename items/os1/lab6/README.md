@@ -24,7 +24,7 @@ read dateWithoutHour
 datetime=$(date -d "$dateWithoutHour $hourAndMin"":00""" +"%D %T")
 timestamp=$(date -d "$datetime" +%s)
 
-echo "В " $datetime " очистится экран. В int: " $timestamp ">" $(date +%s)
+echo "В " $datetime " очистится экран.
 
 
 while [ $(date +%s) -lt $timestamp ];
@@ -35,11 +35,6 @@ done
 clear
 
 
-```
-
-Для примера, можно рассчитать время так:
-```bash
-expr $(date +%s) + 30
 ```
 
 ### №8: Циклический просмотр списка файлов и выдача сообщения при появлении заданного имени в списке
