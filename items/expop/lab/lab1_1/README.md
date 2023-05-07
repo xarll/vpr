@@ -224,7 +224,7 @@ ai	b1 = 100	b2 = 90	b3 = 80	b4 = 70	b5 = 200
 
 
 
-## Реализация
+## Реализация (Прокопенко)
 
 ### Программный код
 
@@ -645,5 +645,10 @@ class TransportationTable:
   ```
   
   </details>
+  
+  
+## Реализация (Бояршинов)
+- [transport_task](https://github.com/JKearnsl/transport_task)
+PS: папка с логикой [тут](https://github.com/JKearnsl/transport_task/tree/master/src/model/transport_solution)
 
 *Авторство: **Прокопенко Д.О.***
