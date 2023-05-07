@@ -648,7 +648,8 @@ class TransportationTable:
   
   
 ## Реализация (Бояршинов)
-- [transport_task](https://github.com/JKearnsl/transport_task)
+Repo: [transport_task](https://github.com/JKearnsl/transport_task)
+
 PS: папка с логикой [тут](https://github.com/JKearnsl/transport_task/tree/master/src/model/transport_solution)
 
 *Авторство: **Прокопенко Д.О.***
