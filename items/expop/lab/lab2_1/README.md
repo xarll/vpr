@@ -918,6 +918,9 @@ def print_info(info: dict[str: list[int or str]]) -> None:
 
 </details>
 
+### Программный код (Бояршинов)
+  
+Репозиторий: [JKearnsl/search_in_graph](https://github.com/JKearnsl/search_in_graph)
 
 ## Реализация поиска в глубину (ПВГ) с классификацией дуг
 
