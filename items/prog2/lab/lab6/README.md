@@ -14,7 +14,7 @@
 Создайте приложение, отображающее в окне 300x300
 пикселей график кривой f(x) = sin(x) на интервале x от -π до π.
 
-![image](https://github.com/xarll/vpr/assets/76239707/3dc2e782-8b50-44d0-aae0-4eae7800f741)
+![image](https://github.com/xarll/vpr/assets/76239707/4501a826-1b3e-429b-b10f-948b55a961d8)
 
 <details>
   <summary>Task1/Task1.java</summary>
@@ -31,12 +31,10 @@ import java.awt.Graphics2D;
 
 
 public class Task1 {
-
-    public Task1 () {
+    public Task1() {
         JFrame frame = new JFrame("Task1");
         frame.setSize(300, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // толщина линий - 3 пикселя
         JPanel panel = new JPanel() {
             @Override
             public void paintComponent(Graphics g) {
@@ -46,14 +44,22 @@ public class Task1 {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setStroke(new BasicStroke(3));
                 g.setColor(Color.RED);
-
-                // draw sin(x) graphic
-                for (double x = 0; x < w; x += Math.PI/10) {
-                    double y = Math.sin(x / 10) * 100 + 100;
-                    g.drawLine((int) x, (int) y, (int) x, (int) y);
+                
+                double xScale = w / (2 * Math.PI); // Масштаб x по размеру панели
+                double yScale = h / 2.0; // Масштабировать y по размеру панели
+                double xOffset = w / 2.0; // Центр x
+                double yOffset = h / 2.0; // Центр y
+                double yPrev = Math.sin(-Math.PI); // Предыдущее значение y
+                
+                for (double x = -Math.PI; x <= Math.PI; x += 0.01) {
+                    double y = Math.sin(x);
+                    int x1 = (int) Math.round(x * xScale + xOffset);
+                    int y1 = (int) Math.round(yPrev * yScale + yOffset);
+                    int x2 = (int) Math.round(x * xScale + xOffset);
+                    int y2 = (int) Math.round(y * yScale + yOffset);
+                    g.drawLine(x1, y1, x2, y2);
+                    yPrev = y;
                 }
-
-
             }
         };
         frame.add(panel);
