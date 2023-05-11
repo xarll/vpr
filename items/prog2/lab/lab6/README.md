@@ -2,10 +2,10 @@
 
 ## Вступление
 
+Вам предстоит реализовать графические приложения на Java
 
 ## Готовые проекты
 
-- [...](...)
 - [...](...)
 
 ## Работа
@@ -14,10 +14,57 @@
 Создайте приложение, отображающее в окне 300x300
 пикселей график кривой f(x) = sin(x) на интервале x от -π до π.
 
+![image](https://github.com/xarll/vpr/assets/76239707/3dc2e782-8b50-44d0-aae0-4eae7800f741)
+
 <details>
-  <summary>Task1/Pair.java</summary>
+  <summary>Task1/Task1.java</summary>
   
 ```java
+package task1;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+
+public class Task1 {
+
+    public Task1 () {
+        JFrame frame = new JFrame("Task1");
+        frame.setSize(300, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // толщина линий - 3 пикселя
+        JPanel panel = new JPanel() {
+            @Override
+            public void paintComponent(Graphics g) {
+                int w = getWidth(), h = getHeight();
+                g.setColor(Color.BLACK);
+                g.fillRect(0, 0, w - 1, h - 1);
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setStroke(new BasicStroke(3));
+                g.setColor(Color.RED);
+
+                // draw sin(x) graphic
+                for (double x = 0; x < w; x += Math.PI/10) {
+                    double y = Math.sin(x / 10) * 100 + 100;
+                    g.drawLine((int) x, (int) y, (int) x, (int) y);
+                }
+
+
+            }
+        };
+        frame.add(panel);
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Task1();
+    }
+}
+
 ```
   
 </details>
