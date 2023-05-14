@@ -39,6 +39,7 @@ style 6 fill:#ACD1AF
 
 ### Программный код
 
+Пример реализации с GUI: [JKearnsl/short_path_in_graph](https://github.com/JKearnsl/short_path_in_graph)
 
 <details>
   <summary>main.py</summary>
