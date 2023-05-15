@@ -55,11 +55,53 @@ tcpdump "icmp or (port 80 or port 443)"
 
 ![image](https://github.com/xarll/vpr/assets/76239707/b7c30b7c-3aa7-40f9-b146-08f0b8513d34)
 
+Со 2й ВМ выполните `ping <ip адрес> -c 3` и `curl <ip адрес>`
+
 #### 1.2. С помощью утилиты TCPDump захватите и запишите в файл трафик, передаваемый виртуальной машиной с Ubuntu Server в процессе обращения к ней по протоколу HTTP и выполнения команды ping.
 
+Действия как и в П.1.1, но добавляется параметр для сохранения результата `... -w /home/jkearnsl/supadump.cap`
+
 ```bash
-tcpdump "icmp or (port 80 or port 443)" -w /home/jkearnsl
+tcpdump "icmp or (port 80 or port 443)" -w /home/jkearnsl/supadump.cap
 ```
+
+#### 2. Wireshark
+
+Wireshark — программа-анализатор трафика для компьютерных сетей Ethernet и некоторых других. Имеет графический пользовательский интерфейс. 
+Позволяет анализировать шифрованный/незашифрованный трафик, дешифровать шифрованный график (при наличии сертификата)
+
+![image](https://github.com/xarll/vpr/assets/76239707/a4bd0224-8f4f-42c2-9f92-4b4198189f00)
+
+
+##### Установка
+
+```bash
+sudo apt-get install wireshark
+```
+
+```bash
+sudo dpkg-reconfigure wireshark-common
+```
+
+```bash
+sudo adduser $USER wireshark
+```
+
+##### Запуск
+
+```bash
+wireshark
+```
+
+#### 2.1. Передайте полученный трафик на виртуальную машину с десктопной версией Linux и установленной программой Wireshark.
+
+Нажмите: `Файл` -> `Открыть`
+
+![image](https://github.com/xarll/vpr/assets/76239707/5c0deb2c-7270-4422-a711-8586dfe901bb)
+
+-> <выберите файл, который мы сохранили в П.1.2> -> `Открыть`
+
+![image](https://github.com/xarll/vpr/assets/76239707/bb9a4d1e-282d-4c54-b53b-f0fbf0a58632)
 
 
 
