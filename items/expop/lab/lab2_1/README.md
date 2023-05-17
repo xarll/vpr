@@ -135,6 +135,7 @@ class UndirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.Graph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -170,8 +171,11 @@ class UndirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -293,6 +297,7 @@ class DirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.DiGraph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -325,8 +330,11 @@ class DirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -620,6 +628,7 @@ class UndirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.Graph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -655,8 +664,11 @@ class UndirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -779,6 +791,7 @@ class DirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.DiGraph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -811,8 +824,11 @@ class DirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -1059,6 +1075,7 @@ class UndirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.Graph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -1094,8 +1111,11 @@ class UndirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -1230,6 +1250,7 @@ class DirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.DiGraph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -1262,8 +1283,11 @@ class DirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
