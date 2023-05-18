@@ -309,6 +309,11 @@ class UndirectedGraph:
 
         max_flow_value = sum(flow_matrix[source_node][node] for node in self.nodes)
 
+        for _ in flow_matrix:
+            for __ in flow_matrix[_]:
+                if flow_matrix[_][__] < 0:
+                    flow_matrix[_][__] = 0
+
         capacities = nx.get_edge_attributes(self._graph, 'capacity')
         for src_node in flow_matrix.keys():
             for dst_node in flow_matrix[src_node]:
@@ -523,6 +528,11 @@ class DirectedGraph:
             path = self._width_search(flow_matrix, source_node, sink_node)
 
         max_flow_value = sum(flow_matrix[source_node][node] for node in self.nodes)
+
+        for _ in flow_matrix:
+            for __ in flow_matrix[_]:
+                if flow_matrix[_][__] < 0:
+                    flow_matrix[_][__] = 0
 
         capacities = nx.get_edge_attributes(self._graph, 'capacity')
         for src_node in flow_matrix.keys():
