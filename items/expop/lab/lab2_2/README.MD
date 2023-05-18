@@ -251,7 +251,7 @@ class UndirectedGraph:
             ftr: dict[int or str: int or str],
             num: dict[int or str: int]
     ) -> None:
-        time = 1
+        time = 0
 
         set = utils.Set(self.nodes)
         while not set.empty():
@@ -267,11 +267,12 @@ class UndirectedGraph:
             except:
                 return
 
+            time += 1
+
             for node_destination in set:
                 if (node_source, node_destination) in self._edge_dictionary.keys() and \
                         self._edge_dictionary[(node_source, node_destination)] < keys[node_destination]:
                     ftr[node_destination] = node_source
-                    time += 1
                     num[node_destination] = time
                     keys[node_destination] = self._edge_dictionary[(node_source, node_destination)]
 
@@ -287,8 +288,10 @@ class UndirectedGraph:
             keys[node] = float('inf')
         keys[start_node] = 0
 
-        ftr = {start_node: 0}
-        num = {start_node: 1}
+        ftr = {}
+        for node in self.nodes:
+            ftr[node] = 0
+        num = ftr.copy()
 
         self._prim_minimum_tree_component(keys, ftr, num)
 
@@ -296,7 +299,7 @@ class UndirectedGraph:
             if keys[node] == float('inf'):
                 keys[node] = 0
                 ftr[node] = 0
-                num[node] = 1
+                num[node] = 0
                 self._prim_minimum_tree_component(keys, ftr, num)
 
         for key in ftr.keys():
@@ -315,6 +318,7 @@ class UndirectedGraph:
             'num': list(num.values()),
             'ftr': list(ftr.values()),
             'key': list(keys.values()),
+            'start': start_node,
             'cost': [cost]
         }
 
@@ -475,8 +479,10 @@ class DirectedGraph:
             keys[node] = float('inf')
         keys[start_node] = 0
 
-        ftr = {start_node: 0}
-        num = {start_node: 1}
+        ftr = {}
+        for node in self.nodes:
+            ftr[node] = 0
+        num = ftr.copy()
 
         self._prim_minimum_tree_component(keys, ftr, num)
 
@@ -503,6 +509,7 @@ class DirectedGraph:
             'num': list(num.values()),
             'ftr': list(ftr.values()),
             'key': list(keys.values()),
+            'start': start_node,
             'cost': [cost]
         }
 
