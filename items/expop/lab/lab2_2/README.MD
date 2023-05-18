@@ -249,10 +249,7 @@ class UndirectedGraph:
             self,
             keys: dict[int or str: int or float],
             ftr: dict[int or str: int or str],
-            num: dict[int or str: int]
     ) -> None:
-        time = 1
-
         set = utils.Set(self.nodes)
         while not set.empty():
             min_keys = float('inf')
@@ -271,8 +268,6 @@ class UndirectedGraph:
                 if (node_source, node_destination) in self._edge_dictionary.keys() and \
                         self._edge_dictionary[(node_source, node_destination)] < keys[node_destination]:
                     ftr[node_destination] = node_source
-                    time += 1
-                    num[node_destination] = time
                     keys[node_destination] = self._edge_dictionary[(node_source, node_destination)]
 
     def prim_minimum_tree(self, start_node: int or str = None):
@@ -287,17 +282,17 @@ class UndirectedGraph:
             keys[node] = float('inf')
         keys[start_node] = 0
 
-        ftr = {start_node: 0}
-        num = {start_node: 1}
+        ftr = {}
+        for node in self.nodes:
+            ftr[node] = 0
 
-        self._prim_minimum_tree_component(keys, ftr, num)
+        self._prim_minimum_tree_component(keys, ftr)
 
         for node in keys.keys():
             if keys[node] == float('inf'):
                 keys[node] = 0
                 ftr[node] = 0
-                num[node] = 1
-                self._prim_minimum_tree_component(keys, ftr, num)
+                self._prim_minimum_tree_component(keys, ftr)
 
         for key in ftr.keys():
             if ftr[key] == 0:
@@ -312,9 +307,9 @@ class UndirectedGraph:
 
         tree_info = {
             'node': self.nodes,
-            'num': list(num.values()),
             'ftr': list(ftr.values()),
             'key': list(keys.values()),
+            'start': start_node,
             'cost': [cost]
         }
 
@@ -437,10 +432,7 @@ class DirectedGraph:
             self,
             keys: dict[int or str: int or float],
             ftr: dict[int or str: int or str],
-            num: dict[int or str: int],
     ) -> None:
-        time = 1
-
         set = utils.Set(self.nodes)
         while not set.empty():
             min_keys = float('inf')
@@ -459,8 +451,6 @@ class DirectedGraph:
                 if (node_source, node_destination) in self._edge_dictionary.keys() and \
                         self._edge_dictionary[(node_source, node_destination)] < keys[node_destination]:
                     ftr[node_destination] = node_source
-                    time += 1
-                    num[node_destination] = time
                     keys[node_destination] = self._edge_dictionary[(node_source, node_destination)]
 
     def prim_minimum_tree(self, start_node: int or str = None):
@@ -475,17 +465,17 @@ class DirectedGraph:
             keys[node] = float('inf')
         keys[start_node] = 0
 
-        ftr = {start_node: 0}
-        num = {start_node: 1}
+        ftr = {}
+        for node in self.nodes:
+            ftr[node] = 0
 
-        self._prim_minimum_tree_component(keys, ftr, num)
+        self._prim_minimum_tree_component(keys, ftr)
 
         for node in keys.keys():
             if keys[node] == float('inf'):
                 keys[node] = 0
                 ftr[node] = 0
-                num[node] = 1
-                self._prim_minimum_tree_component(keys, ftr, num)
+                self._prim_minimum_tree_component(keys, ftr)
 
         for key in ftr.keys():
             if ftr[key] == 0:
@@ -500,9 +490,9 @@ class DirectedGraph:
 
         tree_info = {
             'node': self.nodes,
-            'num': list(num.values()),
             'ftr': list(ftr.values()),
             'key': list(keys.values()),
+            'start': start_node,
             'cost': [cost]
         }
 
