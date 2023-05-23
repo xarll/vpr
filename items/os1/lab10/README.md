@@ -5,7 +5,7 @@
 
 ## Работа
 
-###1. Настройка ВМ
+### 1. Настройка ВМ
 
 Для выполнения работы необходимы:
 - Ubuntu Server (https://ubuntu.com/download/desktop)
