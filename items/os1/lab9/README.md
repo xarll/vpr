@@ -43,7 +43,7 @@ sudo apt install vsftpd
 sudo apt install samba
 ```
 
-Проверим запущен ли FTP-сервер:
+Проверим запущен ли утилиты:
 ```
 sudo systemctl status smbd
 sudo systemctl status vsftpd
@@ -107,9 +107,9 @@ echo "hello! i am server VM file!" > ~/server-file
 
 Если в консоли приложения появилась надпись
 ```
-Status: Directory listing of "/home/user-name" succesfull
+Status: Directory listing of "/home/user-name" successful
 ```
-И в окне **Remote site** виден наш только что созданный файл - всё выполненно корректно.
+И в окне **Remote site** виден наш только что созданный файл - всё выполнено корректно.
 
 ![7](https://github.com/xarll/vpr/assets/100228870/e1b48065-e017-44a0-a8b1-2128464ca708)
 
@@ -119,7 +119,7 @@ Status: Directory listing of "/home/user-name" succesfull
 
 Переходим в терминал десктопной ВМ. Просматриваем домашнюю директорию.
 ```
-ls /home/user-name
+ls /home/username
 ```
 Если файл присутствует в директории - всё верно.
 
@@ -201,7 +201,7 @@ echo "hello! i am anonymous file!" | sudo tee /srv/ftp/anon-file
 
 ![16](https://github.com/xarll/vpr/assets/100228870/04ab657b-ceea-48cb-a2f1-5fffdaa585d8)
 
-При попытке загрузить что-либо на сервер с десктопной ВМ мы получим ошибку. Для того, что бы загрузка стала возможно возвращаемся в конфиг.
+При попытке загрузить что-либо на сервер с десктопной ВМ мы получим ошибку. Для того, чтобы загрузка стала возможно возвращаемся в конфиг.
 
 Открываем файл конфигурации FTP-сервера
 ```
@@ -230,7 +230,7 @@ ls -l /srv/ftp/
 
 ![18](https://github.com/xarll/vpr/assets/100228870/01da8bca-c6e1-4330-a87b-4d281407e25d)
 
-Переходим на декстопную ВМ. Восстанавливаем анонимное подключение. В окне **Remote site** находим новую папку **upload** и открываем её дабл-кликом.
+Переходим на десктопную ВМ. Восстанавливаем анонимное подключение. В окне **Remote site** находим новую папку **upload** и открываем её дабл-кликом.
 
 Теперь из окна **Local site** зажатием ЛКМ перетянем файл **server-file** в директорию **upload**.
 
@@ -444,7 +444,7 @@ ls /home/const/from-server-dir
 
 ![36](https://github.com/xarll/vpr/assets/100228870/0bfa1d68-81c5-4cc3-b154-f9e3ce6cedf5)
 
-Файл существует - всё сделанно верно.
+Файл существует - всё сделано верно.
 
 Можем переходить к размонтированию папки на десктопной ВМ.
 ```
