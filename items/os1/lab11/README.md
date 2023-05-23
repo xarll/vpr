@@ -94,7 +94,7 @@ nano /etc/netplan/*.yaml
 После строки **dhcp4: true** добавляем следующие строки:
 ```
   enp0s8
-    dhcp: no
+    dhcp4: no
     addresses: [172.16.0.1/16]
 ```
 Сохраняем файл (Ctrl+O) и закрываем редактор (Ctrl+X).
