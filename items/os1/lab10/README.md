@@ -348,8 +348,8 @@ ping 172.16.0.1
 
 После создания всех правил их необходимо сохранить, иначе они исчезнут после перезагрузки операционной системы. Это можно сделать командами:
 ```
-iptables-save
-iptables-restore
+iptables-save > ~/iptables-rules.txt
+iptables-restore < ~/iptables-rules.txt
 ```
 
 ## Контрольные вопросы
