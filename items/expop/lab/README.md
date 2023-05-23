@@ -59,7 +59,7 @@
 
 * [Лаб 2.1](./lab2_1/README.md)
 
-* [Лаб 2.2](./lab2_2/README.md)
+* [Лаб 2.2](./lab2_2/README.MD)
 
 * [Лаб 2.3](./lab2_3/README.md)
 

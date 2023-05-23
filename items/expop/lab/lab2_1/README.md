@@ -63,8 +63,8 @@ if __name__ == '__main__':
     G = graph.UndirectedGraph(A)
     G.draw()
 
-    # Параметром метода width_search укажите вершину, с которой хотите начать поиск в глубину
-    info, tree = G.width_search(1)
+    # Параметром метода width_search можно указать вершину, с которой хотите начать поиск в глубину
+    info, tree = G.width_search()
     utils.print_info(info)
     tree.draw()
 
@@ -87,8 +87,8 @@ if __name__ == '__main__':
     G = graph.DirectedGraph(A)
     G.draw()
 
-    # Параметром метода width_search укажите вершину, с которой хотите начать поиск в глубину
-    info, tree = G.width_search(1)
+    # Параметром метода width_search можно указать вершину, с которой хотите начать поиск в глубину
+    info, tree = G.width_search()
     utils.print_info(info)
     tree.draw()
 
@@ -101,6 +101,8 @@ if __name__ == '__main__':
   <summary>graph.py</summary>
 
 ```python
+import random
+  
 import matplotlib.pyplot as plt
 import networkx as nx
 
@@ -133,6 +135,7 @@ class UndirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.Graph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -168,8 +171,11 @@ class UndirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -188,10 +194,13 @@ class UndirectedGraph:
             )
         plt.show()
 
-    def width_search(self, start_node: int or str):
-        if start_node not in list(self._graph.nodes):
+    def width_search(self, start_node: int or str = None):
+        if start_node and start_node not in list(self._graph.nodes):
             raise Exception('Node not in list')
 
+        if not start_node:
+            start_node = random.choice(self.nodes)
+  
         queue = utils.Queue()
         queue_copy = queue.copy()
 
@@ -288,6 +297,7 @@ class DirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.DiGraph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -320,8 +330,11 @@ class DirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -341,9 +354,12 @@ class DirectedGraph:
             )
         plt.show()
 
-    def width_search(self, start_node: int or str):
-        if start_node not in list(self._graph.nodes):
+    def width_search(self, start_node: int or str = None):
+        if start_node and start_node not in list(self._graph.nodes):
             raise Exception('Node not in list')
+
+        if not start_node:
+            start_node = random.choice(self.nodes)
 
         queue = utils.Queue()
         queue_copy = queue.copy()
@@ -542,8 +558,8 @@ if __name__ == '__main__':
     G = graph.UndirectedGraph(A)
     G.draw()
 
-    # Параметром метода depth_search укажите вершину, с которой хотите начать поиск в глубину
-    info, tree = G.depth_search(1)
+    # Параметром метода depth_search можно указать вершину, с которой хотите начать поиск в глубину
+    info, tree = G.depth_search()
     utils.print_info(info)
     tree.draw()
 
@@ -566,8 +582,8 @@ if __name__ == '__main__':
     G = graph.DirectedGraph(A)
     G.draw()
 
-    # Параметром метода depth_search укажите вершину, с которой хотите начать поиск в глубину
-    info, tree = G.depth_search(1)
+    # Параметром метода depth_search можно указать вершину, с которой хотите начать поиск в глубину
+    info, tree = G.depth_search()
     utils.print_info(info)
     tree.draw()
 
@@ -580,6 +596,8 @@ if __name__ == '__main__':
   <summary>graph.py</summary>
 
 ```python
+import random
+  
 import matplotlib.pyplot as plt
 import networkx as nx
 
@@ -610,6 +628,7 @@ class UndirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.Graph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -645,8 +664,11 @@ class UndirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -690,9 +712,12 @@ class UndirectedGraph:
 
         return time, k
 
-    def depth_search(self, start_node: int or str):
-        if start_node not in list(self._graph.nodes):
+    def depth_search(self, start_node: int or str = None):
+        if start_node and start_node not in list(self._graph.nodes):
             raise Exception('Node not in list')
+
+        if not start_node:
+            start_node = random.choice(self.nodes)
 
         num = {}
         nodes = list(self._adjacency_matrix.keys())
@@ -766,6 +791,7 @@ class DirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.DiGraph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -798,8 +824,11 @@ class DirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -844,9 +873,12 @@ class DirectedGraph:
 
         return time, k
 
-    def depth_search(self, start_node: int or str) -> list[list[int or str]]:
-        if start_node not in list(self._graph.nodes):
+    def depth_search(self, start_node: int or str = None):
+        if start_node and start_node not in list(self._graph.nodes):
             raise Exception('Node not in list')
+
+        if not start_node:
+            start_node = random.choice(self.nodes)
 
         num = {}
         nodes = list(self._adjacency_matrix.keys())
@@ -971,8 +1003,8 @@ if __name__ == '__main__':
     G = graph.UndirectedGraph(A)
     G.draw()
 
-    # Параметром метода depth_classification_search укажите вершину, с которой хотите начать поиск в глубину
-    info, tree = G.depth_classification_search(1)
+    # Параметром метода depth_classification_search можно указать вершину, с которой хотите начать поиск в глубину
+    info, tree = G.depth_classification_search()
     utils.print_info(info)
     tree.draw()
 
@@ -995,8 +1027,8 @@ if __name__ == '__main__':
     G = graph.DirectedGraph(A)
     G.draw()
 
-    # Параметром метода depth_classification_search укажите вершину, с которой хотите начать поиск в глубину
-    info, tree = G.depth_classification_search(1)
+    # Параметром метода depth_classification_search можно указать вершину, с которой хотите начать поиск в глубину
+    info, tree = G.depth_classification_search()
     utils.print_info(info)
     tree.draw()
 
@@ -1009,6 +1041,8 @@ if __name__ == '__main__':
   <summary>graph.py</summary>
   
 ```python
+import random
+  
 import matplotlib.pyplot as plt
 import networkx as nx
 
@@ -1041,6 +1075,7 @@ class UndirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.Graph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -1076,8 +1111,11 @@ class UndirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -1128,9 +1166,12 @@ class UndirectedGraph:
 
         return time, k
 
-    def depth_classification_search(self, start_node: int or str):
-        if start_node not in list(self._graph.nodes):
+    def depth_classification_search(self, start_node: int or str = None):
+        if start_node and start_node not in list(self._graph.nodes):
             raise Exception('Node not in list')
+
+        if not start_node:
+            start_node = random.choice(self.nodes)
 
         UB = utils.Set()
         UT = UB.copy()
@@ -1209,6 +1250,7 @@ class DirectedGraph:
         self._alpha = alpha
 
         self._graph = nx.DiGraph()
+        self._pos = None
 
         self._node_style = {}
 
@@ -1241,8 +1283,11 @@ class DirectedGraph:
         self._adjacency_matrix.clear()
 
     def draw(self) -> None:
+        self._pos = nx.circular_layout(self._graph)
+  
         nx.draw(
             self._graph,
+            self._pos,
             with_labels=self._with_labels,
             node_size=self._node_size,
             node_color=self._node_color,
@@ -1300,9 +1345,12 @@ class DirectedGraph:
 
         return time, k
 
-    def depth_classification_search(self, start_node: int or str):
-        if start_node not in list(self._graph.nodes):
+    def depth_classification_search(self, start_node: int or str = None):
+        if start_node and start_node not in list(self._graph.nodes):
             raise Exception('Node not in list')
+
+        if not start_node:
+            start_node = random.choice(self.nodes)
 
         UB = utils.Set()
         UC = UB.copy()
@@ -1474,5 +1522,8 @@ def print_info(info: dict[str: list[int or str]]) -> None:
 
 </details>
 
+  
+ *При обнаружении каких-либо недочетов и багов **ОБЯЗАТЕЛЬНО И СРОЧНО** писать в ВК: https://vk.com/prokdo*
+ 
 
 *Авторство: **Прокопенко Д.О.***

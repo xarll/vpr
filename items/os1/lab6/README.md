@@ -18,13 +18,10 @@
 echo -n "Введите время в формате час:мин, пример <<10:05>>: "
 read hourAndMin
 
-echo -n "Введите дату в формате день/месяц/год, пример <<05/05/2023>>: "
-read dateWithoutHour
-
-datetime=$(date -d "$dateWithoutHour $hourAndMin"":00""" +"%D %T")
+datetime=$(date -d  "$hourAndMin" +"%D %T")
 timestamp=$(date -d "$datetime" +%s)
 
-echo "В " $datetime " очистится экран.
+echo "В " $datetime " очистится экран. В int: " $timestamp ">" $(date +%s)
 
 
 while [ $(date +%s) -lt $timestamp ];
@@ -33,7 +30,6 @@ do
 done
 
 clear
-
 
 ```
 
