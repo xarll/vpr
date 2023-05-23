@@ -43,8 +43,8 @@ sudo apt install vsftpd
 sudo apt install samba
 ```
 
-
 Проверим запущены ли утилиты:
+
 ```
 sudo systemctl status smbd
 sudo systemctl status vsftpd
