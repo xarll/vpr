@@ -43,7 +43,7 @@ sudo apt install vsftpd
 sudo apt install samba
 ```
 
-Проверим запущен ли FTP-сервер:
+Проверим запущены ли FTP-сервер:
 ```
 sudo systemctl status smbd
 sudo systemctl status vsftpd
