@@ -1,3 +1,10 @@
+
+<div id="header" align="center">
+  <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" width="100"/>
+</div>
+
+![GitHub repo size](https://img.shields.io/github/repo-size/xarll/vpr)
+
 # База знаний ВПР
 
 Единая база знаний ВПР со ссылками на методички, ответами к зачётам и т.п.
