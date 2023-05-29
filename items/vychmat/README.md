@@ -3,3 +3,4 @@
 ## Содержание
 
 * [Лаб работы](./lab/README.md)
+* [Билеты](./exam_tickets/README.md)
