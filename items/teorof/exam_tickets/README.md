@@ -10,5 +10,9 @@
    
   Возможно не встречается на экзамене
   ![изображение](https://github.com/xarll/vpr/assets/76239707/538820e8-4d34-4984-be72-9441b5dfbd57)
+  
+  Тут исправление небольшое:  
+  ![изображение](https://github.com/xarll/vpr/assets/76239707/1fb7d8cd-9b07-4242-923a-6e8fddb18290)
+
 
 </details>
