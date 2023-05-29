@@ -4,3 +4,4 @@
 
 * [Лаб работы](./lab/README.md)
 * [Контрольные работы](./cw/README.md)
+* [Билеты к экзамену](./exam_tickets/README.md)
