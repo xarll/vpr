@@ -5,5 +5,6 @@
 
 ## Примеры реализаций заданий
 
-* [Бинарное дерево поиска](https://github.com/JKearnsl/binary-tree)
+* [Бинарное дерево поиска](https://github.com/JKearnsl/binary-tree) | [Отчет](https://github.com/xarll/vpr/raw/main/items/pract1/%D0%91%D0%BE%D1%8F%D1%80%D1%88%D0%B8%D0%BD%D0%BE%D0%B2%D0%9D%D0%9E%D0%92%D0%BF%D1%8012.docx)
+
 
