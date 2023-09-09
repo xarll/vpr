@@ -1,6 +1,6 @@
 
 <div id="header" align="center">
-  <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" width="100"/>
+  <img src="https://avatars.githubusercontent.com/u/103823789?s=250&v=4" width="200"/>
 </div>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/xarll/vpr)
@@ -29,7 +29,7 @@
 - [Физика](/items/physics/README.md)
 - [Практика](/items/pract1/README.md)
 
-[**Супер мега сборник на Google диске за 2 семестр**](https://drive.google.com/drive/folders/1OKM2yYlsrIai8Zd_68wvKkQ9lldgY4i0?usp=sharing)
+[**Сборник на Google диске за 2 семестр**](https://drive.google.com/drive/folders/1OKM2yYlsrIai8Zd_68wvKkQ9lldgY4i0?usp=sharing)
 
 ### 2 курс
 
@@ -39,7 +39,7 @@
 - [Технологич. предпринимательство](/items/techpred/README.md)
 - [Алгоритмы и структуры данных](/items/algstr/README.md)
 
-[**Супер мега сборник на Google диске за 3 семестр**](https://drive.google.com/drive/folders/1mdPBKOMceLdzK89-oAb0EhYICUDNMSyd?usp=sharing)
+[**Сборник на Google диске за 3 семестр**](https://drive.google.com/drive/folders/1mdPBKOMceLdzK89-oAb0EhYICUDNMSyd?usp=sharing)
 
 #### 4 семестр
 - [Исследование операций](/items/expop/README.md)
@@ -51,9 +51,8 @@
 - [Практика](/items/pract2/README.md)
 
 
-[**Супер мега сборник на Google диске за 4 семестр**](https://drive.google.com/drive/folders/1nkOwuID6dn1xQwurwX5gsrXjXaXVLdR6?usp=sharing)
+[**Сборник на Google диске за 4 семестр**](https://drive.google.com/drive/folders/1nkOwuID6dn1xQwurwX5gsrXjXaXVLdR6?usp=sharing)
 
-*Возможно, вам придётся написать Лере Радаевой для получения доступа к нему*
 
 ### 3 курс
 
@@ -63,13 +62,8 @@
 - [Базы данных](/items/database/README.md)
 - [Анализ и кодирование информации](/items/encoding/README.md)
 
-#### Большинство разделов пусты, мы будем рады, если вы заполните их!
-
-## Участники базы знаний
-
-- Горшков Владимир [VK](https://vk.com/wkeep) [GitHub](https://github.com/whitekeep)
-- Боярышников [VK](https://vk.com/jkearnsl) [GitHub](https://github.com/jkearnsl)
-- Леонов [VK](https://vk.com/mxsleo) [GitHub](https://github.com/mxsleo)
-- И многие другие неравнадушные люди с ВПР ❤️
-
 ---
+
+Большинство разделов пусты, мы будем рады, если вы заполните их!
+
+Возможно, вам придётся написать [Лере Радаевой](https://vk.com/leralera823) для получения доступа к некоторым сборникам
