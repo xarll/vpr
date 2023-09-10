@@ -206,25 +206,20 @@ end-points
 
 ```java
 public Cylinder createConnection(Point3D origin, Point3D target) {
- Point3D yAxis = new Point3D(0, 1, 0); /* цилиндр изначально расположен вертикально 
-(высота вдоль оси OY), направляющий вектор для оси OY - (0, 1, 0) */
- Point3D diff = target.subtract(origin); /* разность векторов target и origin - вектор, 
-направленный от origin к target */
- double height = diff.magnitude(); // расстояние между origin и target - высота цилиндра 
- Point3D mid = target.midpoint(origin); /* точка, лежащая посередине между target и
-origin - сюда нужно переместить цилиндр (поместить его центр) */
- Translate moveToMidpoint = new Translate(mid.getX(), mid.getY(), mid.getZ());
- Point3D axisOfRotation = diff.crossProduct(yAxis); /* ось, вокруг которой нужно
+  Point3D yAxis = new Point3D(0, 1, 0); /* цилиндр изначально расположен вертикально (высота вдоль оси OY), направляющий вектор для оси OY - (0, 1, 0) */
+  Point3D diff = target.subtract(origin); /* разность векторов target и origin - вектор, направленный от origin к target */
+  double height = diff.magnitude(); // расстояние между origin и target - высота цилиндра 
+  Point3D mid = target.midpoint(origin); /* точка, лежащая посередине между target и origin - сюда нужно переместить цилиндр (поместить его центр) */
+  Translate moveToMidpoint = new Translate(mid.getX(), mid.getY(), mid.getZ());
+  Point3D axisOfRotation = diff.crossProduct(yAxis); /* ось, вокруг которой нужно
 повернуть цилиндр - направлена перпендикулярно плоскости, в которой лежат 
 пересекающиеся вектора diff (направление от origin к target) и yAxis (текущее направление 
 высоты цилиндра), получается как векторное произведение diff и yAxis */
- double angle = Math.acos(diff.normalize().dotProduct(yAxis)); /* угол поворота цилиндра -
-угол между нормализованным (длина равна 1) вектором diff и вектором yAxis */
- Rotate rotateAroundCenter = new Rotate(-Math.toDegrees(angle), axisOfRotation);
- Cylinder line = new Cylinder(1, height); /* радиус цилиндра 1, нужно заменить на свое 
-значение */
- line.getTransforms().addAll(moveToMidpoint, rotateAroundCenter);
- return line;
+  double angle = Math.acos(diff.normalize().dotProduct(yAxis)); /* угол поворота цилиндра - угол между нормализованным (длина равна 1) вектором diff и вектором yAxis */
+  Rotate rotateAroundCenter = new Rotate(-Math.toDegrees(angle), axisOfRotation);
+  Cylinder line = new Cylinder(1, height); /* радиус цилиндра 1, нужно заменить на свое значение */
+  line.getTransforms().addAll(moveToMidpoint, rotateAroundCenter);
+  return line;
 }
 ```
 
