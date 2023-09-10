@@ -200,8 +200,7 @@ C  1.43534   1.08196   -0.425853
 задавать цвет для разных атомов. Кроме того, должна быть 
 возможность сохранять картинку в графическом файле (png, jpg, gif).
 
-Как построить цилиндр по двум 3D-точкам см. 
-https://fooobar.com/questions/12325117/javafx-3d-transforming-cylinder-to-defined-start-and-end-points
+Как построить цилиндр по двум 3D-точкам см. [тут](https://fooobar.com/questions/12325117/javafx-3d-transforming-cylinder-to-defined-start-and-end-points)
 
 ```java
 public Cylinder createConnection(Point3D origin, Point3D target) {
