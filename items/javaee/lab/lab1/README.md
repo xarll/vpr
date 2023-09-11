@@ -17,12 +17,169 @@
 
 <details>
   <summary>Решение</summary>
+
+  ![image](https://github.com/xarll/vpr/assets/76239707/95defb39-b55f-4dff-976c-76cdca700954)
+
   
   <details>
-  <summary>main.java</summary>
+  <summary>Сцена UI</summary>
   
     ```java
+    public class UiMain {
+
+    private final HBox root;
+    ImageView imageView;
+    Pane imagePane;
+    ToggleGroup buttonGroup;
+    VBox toggleButtonLayout;
+
+    Button saveButton;
+
+    UiMain(HBox root) { this.root = root; }
+
+    void setup_ui() {
+
+        // Панель для отображения изображений
+        imagePane = new Pane();
+        imagePane.minHeight(200);
+        imagePane.minWidth(200);
+        imagePane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+        HBox.setHgrow(imagePane, Priority.ALWAYS);
+
+        imageView = new ImageView();
+        imagePane.getChildren().add(imageView);
+        root.getChildren().add(imagePane);
+
+        // Управление
+        VBox control_layout = new VBox();
+        control_layout.setAlignment(Pos.CENTER);
+        control_layout.setMinWidth(120);
+        control_layout.setSpacing(100);
+        root.getChildren().add(control_layout);
+
+
+        // Кнопки с img
+        this.buttonGroup = new ToggleGroup();
+        this.toggleButtonLayout = new VBox();
+        this.toggleButtonLayout.setAlignment(Pos.CENTER);
+        VBox.setMargin(this.toggleButtonLayout, new javafx.geometry.Insets(10, 10, 10, 10));
+        control_layout.getChildren().add(toggleButtonLayout);
+
+
+        saveButton = new Button("Сохранить");
+        saveButton.setAlignment(Pos.CENTER);
+        VBox.setMargin(saveButton, new javafx.geometry.Insets(10, 10, 10, 10));
+        control_layout.getChildren().add(saveButton);
+
+    }
+}
+    ```
   
+  </details>
+
+  <details>
+  <summary>Логика представления</summary>
+  
+    ```java
+package main.views.main;
+
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import main.controllers.MainController;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class MainView extends Scene {
+
+
+    private final UiMain ui;
+    private final MainController controller;
+    private Image selectedImage;
+
+    public MainView(MainController controller) {
+        super(new HBox(), 400, 300);
+        this.controller = controller;
+
+        this.ui = new UiMain((HBox) this.getRoot());
+        this.ui.setup_ui();
+
+        // Регистрация событий
+        this.ui.imagePane.setOnMouseClicked(this::imageViewMouseClicked);
+        this.ui.saveButton.setOnMouseClicked(this::saveButtonMouseClicked);
+    }
+
+    private void imageViewMouseClicked(MouseEvent event) {
+        if ((event.getButton() == MouseButton.SECONDARY) && (this.selectedImage != null)) {
+            ImageView newImageView = new ImageView(selectedImage);
+
+            newImageView.setLayoutX(event.getX() - 15);
+            newImageView.setLayoutY(event.getY() - 15);
+
+            ((Pane)this.ui.imageView.getParent()).getChildren().add(newImageView);
+        }
+    }
+
+    private void saveButtonMouseClicked(MouseEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image files", "*.png"));
+        File file = fc.showSaveDialog(null);
+
+        if (file != null) {
+            WritableImage writableImage = new WritableImage((int) this.ui.imagePane.getWidth(), (int) this.ui.imagePane.getHeight());
+            this.ui.imagePane.snapshot(null, writableImage);
+
+            try {
+                BufferedImage bufferedImage = SwingFXUtils.fromFXImage(writableImage, null);
+                ImageIO.write(bufferedImage, "png", file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    public void loaded() {
+        List<String> images = new ArrayList<String>();
+        images.add("file:/home/jkearnsl/IdeaProjects/lab1_1/src/main/resources/close-32.png");
+        images.add("file:/home/jkearnsl/IdeaProjects/lab1_1/src/main/resources/logo-64.png");
+
+        for (String image_path : images) {
+            Image image = new Image(image_path);
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(32);
+            imageView.setFitHeight(32);
+
+            ToggleButton button = new ToggleButton();
+            button.setGraphic(imageView);
+            button.setToggleGroup(this.ui.buttonGroup);
+            this.ui.toggleButtonLayout.getChildren().add(button);
+
+            button.setOnAction(event -> {
+                if (button.isSelected()) {
+                    this.selectedImage = image;
+                } else
+                    this.selectedImage = null;
+            });
+        }
+
+    }
+}
+
     ```
   
   </details>
