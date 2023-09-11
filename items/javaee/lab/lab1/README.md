@@ -210,89 +210,90 @@
   <summary>main.java</summary>
   
 
-  package main;
-
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
-import javafx.stage.Stage;
-
-import java.util.Random;
-
-public class App extends Application {
-
-    private Shape primitive;
-    private Rectangle boundingBox;
-
-    @Override
-    public void start(Stage primaryStage) {
-        // Генерация случайного примитива
-        Random random = new Random();
-        int primitiveType = random.nextInt(4); // 0: отрезок, 1: окружность, 2: эллипс, 3: прямоугольник
-
-        if (primitiveType == 0) {
-            primitive = new Line(50, 50, 150, 150);
-        } else if (primitiveType == 1) {
-            primitive = new Circle(100, 100, 50);
-        } else if (primitiveType == 2) {
-            primitive = new Ellipse(100, 100, 50, 30);
-        } else {
-            primitive = new Rectangle(50, 50, 100, 80);
-        }
-
-        primitive.setFill(Color.TRANSPARENT);
-        primitive.setStroke(Color.DEEPPINK);
-
-        boundingBox = new Rectangle(primitive.getBoundsInParent().getMinX(),
-                primitive.getBoundsInParent().getMinY(),
-                primitive.getBoundsInParent().getWidth(),
-                primitive.getBoundsInParent().getHeight());
-
-        boundingBox.setFill(Color.TRANSPARENT);
-        boundingBox.setStroke(Color.BLACK);
-        boundingBox.getStrokeDashArray().addAll(5d, 5d);
-
-        Pane root = new Pane();
-        root.getChildren().addAll(primitive, boundingBox);
-
-        Scene scene = new Scene(root, 300, 300);
-
-        scene.setOnKeyPressed(event -> {
-            switch (event.getCode()) {
-                case UP -> {
-                    primitive.setTranslateY(primitive.getTranslateY() - 5);
-                    boundingBox.setY(boundingBox.getY() - 5);
-                }
-                case DOWN -> {
-                    primitive.setTranslateY(primitive.getTranslateY() + 5);
-                    boundingBox.setY(boundingBox.getY() + 5);
-                }
-                case LEFT -> {
-                    primitive.setTranslateX(primitive.getTranslateX() - 5);
-                    boundingBox.setX(boundingBox.getX() - 5);
-                }
-                case RIGHT -> {
-                    primitive.setTranslateX(primitive.getTranslateX() + 5);
-                    boundingBox.setX(boundingBox.getX() + 5);
-                }
-                case NUMPAD8 -> boundingBox.setHeight(boundingBox.getHeight() + 5);
-                case NUMPAD2 -> boundingBox.setHeight(boundingBox.getHeight() - 5);
-                case NUMPAD6 -> boundingBox.setWidth(boundingBox.getWidth() + 5);
-                case NUMPAD4 -> boundingBox.setWidth(boundingBox.getWidth() - 5);
-            }
-        });
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
-  
+      package main;
+      
+      import javafx.application.Application;
+      import javafx.scene.Scene;
+      import javafx.scene.layout.Pane;
+      import javafx.scene.paint.Color;
+      import javafx.scene.shape.*;
+      import javafx.stage.Stage;
+      
+      import java.util.Random;
+      
+      public class App extends Application {
+      
+          private Shape primitive;
+          private Rectangle boundingBox;
+      
+          @Override
+          public void start(Stage primaryStage) {
+              // Генерация случайного примитива
+              Random random = new Random();
+              int primitiveType = random.nextInt(4); // 0: отрезок, 1: окружность, 2: эллипс, 3: прямоугольник
+      
+              if (primitiveType == 0) {
+                  primitive = new Line(50, 50, 150, 150);
+              } else if (primitiveType == 1) {
+                  primitive = new Circle(100, 100, 50);
+              } else if (primitiveType == 2) {
+                  primitive = new Ellipse(100, 100, 50, 30);
+              } else {
+                  primitive = new Rectangle(50, 50, 100, 80);
+              }
+      
+              primitive.setFill(Color.TRANSPARENT);
+              primitive.setStroke(Color.DEEPPINK);
+      
+              boundingBox = new Rectangle(primitive.getBoundsInParent().getMinX(),
+                      primitive.getBoundsInParent().getMinY(),
+                      primitive.getBoundsInParent().getWidth(),
+                      primitive.getBoundsInParent().getHeight());
+      
+              boundingBox.setFill(Color.TRANSPARENT);
+              boundingBox.setStroke(Color.BLACK);
+              boundingBox.getStrokeDashArray().addAll(5d, 5d);
+      
+              Pane root = new Pane();
+              root.getChildren().addAll(primitive, boundingBox);
+      
+              Scene scene = new Scene(root, 300, 300);
+      
+              scene.setOnKeyPressed(event -> {
+                  switch (event.getCode()) {
+                      case UP -> {
+                          primitive.setTranslateY(primitive.getTranslateY() - 5);
+                          boundingBox.setY(boundingBox.getY() - 5);
+                      }
+                      case DOWN -> {
+                          primitive.setTranslateY(primitive.getTranslateY() + 5);
+                          boundingBox.setY(boundingBox.getY() + 5);
+                      }
+                      case LEFT -> {
+                          primitive.setTranslateX(primitive.getTranslateX() - 5);
+                          boundingBox.setX(boundingBox.getX() - 5);
+                      }
+                      case RIGHT -> {
+                          primitive.setTranslateX(primitive.getTranslateX() + 5);
+                          boundingBox.setX(boundingBox.getX() + 5);
+                      }
+                      case NUMPAD8 -> boundingBox.setHeight(boundingBox.getHeight() + 5);
+                      case NUMPAD2 -> boundingBox.setHeight(boundingBox.getHeight() - 5);
+                      case NUMPAD6 -> boundingBox.setWidth(boundingBox.getWidth() + 5);
+                      case NUMPAD4 -> boundingBox.setWidth(boundingBox.getWidth() - 5);
+                  }
+              });
+      
+              primaryStage.setScene(scene);
+              primaryStage.show();
+          }
+      
+          public static void main(String[] args) {
+              launch(args);
+          }
+      }
+      
+          
   </details>
   
 </details>
