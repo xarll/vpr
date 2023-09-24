@@ -200,7 +200,8 @@
 <details>
   <summary>Решение</summary>
 
-  ![image](https://github.com/xarll/vpr/assets/76239707/9b8fcaf5-9cbe-4808-8961-dbaa3c2541d6)
+  ![image](https://github.com/xarll/vpr/assets/76239707/272512ae-d037-4e78-b6e3-0ddaaabd3092)
+
 
   
   Короткий код:
