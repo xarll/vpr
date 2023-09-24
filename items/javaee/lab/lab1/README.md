@@ -211,87 +211,142 @@
   
 
       package main;
-      
-      import javafx.application.Application;
-      import javafx.scene.Scene;
-      import javafx.scene.layout.Pane;
-      import javafx.scene.paint.Color;
-      import javafx.scene.shape.*;
-      import javafx.stage.Stage;
-      
-      import java.util.Random;
-      
-      public class App extends Application {
-      
-          private Shape primitive;
-          private Rectangle boundingBox;
-      
-          @Override
-          public void start(Stage primaryStage) {
-              // Генерация случайного примитива
-              Random random = new Random();
-              int primitiveType = random.nextInt(4); // 0: отрезок, 1: окружность, 2: эллипс, 3: прямоугольник
-      
-              if (primitiveType == 0) {
-                  primitive = new Line(50, 50, 150, 150);
-              } else if (primitiveType == 1) {
-                  primitive = new Circle(100, 100, 50);
-              } else if (primitiveType == 2) {
-                  primitive = new Ellipse(100, 100, 50, 30);
-              } else {
-                  primitive = new Rectangle(50, 50, 100, 80);
-              }
-      
-              primitive.setFill(Color.TRANSPARENT);
-              primitive.setStroke(Color.DEEPPINK);
-      
-              boundingBox = new Rectangle(primitive.getBoundsInParent().getMinX(),
-                      primitive.getBoundsInParent().getMinY(),
-                      primitive.getBoundsInParent().getWidth(),
-                      primitive.getBoundsInParent().getHeight());
-      
-              boundingBox.setFill(Color.TRANSPARENT);
-              boundingBox.setStroke(Color.BLACK);
-              boundingBox.getStrokeDashArray().addAll(5d, 5d);
-      
-              Pane root = new Pane();
-              root.getChildren().addAll(primitive, boundingBox);
-      
-              Scene scene = new Scene(root, 300, 300);
-      
-              scene.setOnKeyPressed(event -> {
-                  switch (event.getCode()) {
-                      case UP -> {
-                          primitive.setTranslateY(primitive.getTranslateY() - 5);
-                          boundingBox.setY(boundingBox.getY() - 5);
-                      }
-                      case DOWN -> {
-                          primitive.setTranslateY(primitive.getTranslateY() + 5);
-                          boundingBox.setY(boundingBox.getY() + 5);
-                      }
-                      case LEFT -> {
-                          primitive.setTranslateX(primitive.getTranslateX() - 5);
-                          boundingBox.setX(boundingBox.getX() - 5);
-                      }
-                      case RIGHT -> {
-                          primitive.setTranslateX(primitive.getTranslateX() + 5);
-                          boundingBox.setX(boundingBox.getX() + 5);
-                      }
-                      case NUMPAD8 -> boundingBox.setHeight(boundingBox.getHeight() + 5);
-                      case NUMPAD2 -> boundingBox.setHeight(boundingBox.getHeight() - 5);
-                      case NUMPAD6 -> boundingBox.setWidth(boundingBox.getWidth() + 5);
-                      case NUMPAD4 -> boundingBox.setWidth(boundingBox.getWidth() - 5);
-                  }
-              });
-      
-              primaryStage.setScene(scene);
-              primaryStage.show();
-          }
-      
-          public static void main(String[] args) {
-              launch(args);
-          }
-      }
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+import java.util.Random;
+
+public class App extends Application {
+    private enum PrimitiveType { LINE, CIRCLE, ELLIPSE, RECTANGLE }
+
+    private PrimitiveType currentPrimitiveType;
+    private double x, y, width, height;
+    private boolean isDragging = false;
+
+    @Override
+    public void start(Stage primaryStage) {
+        // Генерируем случайный тип примитива
+        Random random = new Random();
+        int randomType = random.nextInt(4);
+        currentPrimitiveType = PrimitiveType.values()[randomType];
+
+        // Устанавливаем начальные координаты и размеры примитива
+        x = 100;
+        y = 100;
+        width = 100;
+        height = 100;
+
+        // Создаем холст для отображения примитива и рамки
+        Canvas canvas = new Canvas(800, 600);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        // Обновляем холст при изменении размеров окна
+        primaryStage.widthProperty().addListener((obs, oldVal, newVal) -> draw(gc));
+        primaryStage.heightProperty().addListener((obs, oldVal, newVal) -> draw(gc));
+
+        // Реагируем на нажатия клавиш
+        canvas.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.RIGHT) {
+                x += 10;
+                draw(gc);
+            } else if (e.getCode() == KeyCode.LEFT) {
+                x -= 10;
+                draw(gc);
+            } else if (e.getCode() == KeyCode.UP) {
+                y -= 10;
+                draw(gc);
+            } else if (e.getCode() == KeyCode.DOWN) {
+                y += 10;
+                draw(gc);
+            } else if (e.getCode() == KeyCode.NUMPAD8) {
+                height += 10;
+                draw(gc);
+            } else if (e.getCode() == KeyCode.NUMPAD2) {
+                height -= 10;
+                draw(gc);
+            } else if (e.getCode() == KeyCode.NUMPAD4) {
+                width -= 10;
+                draw(gc);
+            } else if (e.getCode() == KeyCode.NUMPAD6) {
+                width += 10;
+                draw(gc);
+            }
+        });
+
+        // Обрабатываем нажатие и отпускание мыши для перемещения
+        canvas.setOnMousePressed(e -> {
+            if (e.getX() >= x && e.getX() <= x + width && e.getY() >= y && e.getY() <= y + height) {
+                isDragging = true;
+            }
+        });
+
+        canvas.setOnMouseReleased(e -> isDragging = false);
+
+        canvas.setOnMouseDragged(e -> {
+            if (isDragging) {
+                x = e.getX() - width / 2;
+                y = e.getY() - height / 2;
+                draw(gc);
+            }
+        });
+
+        // Создаем сцену и устанавливаем ее в primaryStage
+        Pane root = new Pane(canvas);
+        Scene scene = new Scene(root, 800, 600);
+        primaryStage.setScene(scene);
+
+        // Устанавливаем фокус на сцену для обработки нажатий клавиш
+        canvas.requestFocus();
+
+        // Настраиваем primaryStage и показываем его
+        primaryStage.setTitle("Resizable Primitive App");
+        primaryStage.show();
+
+        // Рисуем начальное состояние
+        draw(gc);
+    }
+
+    // Метод для отрисовки примитива и рамки
+    private void draw(GraphicsContext gc) {
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+
+        switch (currentPrimitiveType) {
+            case LINE:
+                gc.setStroke(Color.BLACK);
+                gc.strokeLine(x, y, x + width, y + height);
+                break;
+            case CIRCLE:
+                gc.setFill(Color.LIGHTBLUE);
+                gc.fillOval(x, y, width, height);
+                break;
+            case ELLIPSE:
+                gc.setFill(Color.LIGHTGREEN);
+                gc.fillOval(x, y, width, height);
+                break;
+            case RECTANGLE:
+                gc.setFill(Color.LIGHTCORAL);
+                gc.fillRect(x, y, width, height);
+                break;
+        }
+
+        // Рисуем рамку
+        gc.setStroke(Color.BLACK);
+        gc.setLineDashes(5);
+        gc.strokeRect(x, y, width, height);
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
       
           
   </details>
