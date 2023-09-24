@@ -1,4 +1,4 @@
-# Лаб 1
+![image](https://github.com/xarll/vpr/assets/76239707/c70fc229-07b2-467c-bf18-3dd77be6534d)# Лаб 1
 
 ## Задание 1
 
@@ -411,15 +411,11 @@ LineChart. Приложение должно позволять
 
 <details>
   <summary>Решение</summary>
+
   
-  <details>
-  <summary>main.java</summary>
-  
-    ```java
-  
-    ```
-  
-  </details>
+  ![image](https://github.com/xarll/vpr/assets/76239707/d929be17-62e2-4375-a769-3ca93fe454f4)
+
+  [lab1_4.zip](./lab1_4.zip)
   
 </details>
 
