@@ -383,14 +383,7 @@
 <details>
   <summary>Решение</summary>
   
-  <details>
-  <summary>main.java</summary>
-  
-    ```java
-  
-    ```
-  
-  </details>
+  [lab1_3.zip](./lab1_3.zip)
   
 </details>
 
