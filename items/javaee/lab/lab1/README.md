@@ -516,14 +516,10 @@ public Cylinder createConnection(Point3D origin, Point3D target) {
 <details>
   <summary>Решение</summary>
   
-  <details>
-  <summary>main.java</summary>
+  ![image](https://github.com/xarll/vpr/assets/76239707/3a3a1eeb-5e84-4ef0-bc36-75c4303d1aa0)
+  [lab1_6.zip](./lab1_6.zip)
   
-    ```java
-  
-    ```
-  
-  </details>
+
   
 </details>
 
