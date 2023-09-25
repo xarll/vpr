@@ -564,14 +564,9 @@ Animation" показывающее различные эффекты анима
 <details>
   <summary>Решение</summary>
   
-  <details>
-  <summary>main.java</summary>
+  ![image](https://github.com/xarll/vpr/assets/76239707/1f27588c-093f-48d4-aea5-d97b12d09857)
   
-    ```java
-  
-    ```
-  
-  </details>
+  [lab1_8.zip](./lab1_8.zip)
   
 </details>
 
