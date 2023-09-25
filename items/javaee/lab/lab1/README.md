@@ -543,6 +543,9 @@ public Cylinder createConnection(Point3D origin, Point3D target) {
   
   ![image](https://github.com/xarll/vpr/assets/76239707/faba4038-7f8c-4fd9-9991-be3a98446ab2)
   [lab1_7.zip](./lab1_7.zip)
+
+  PS: аргументы vm рекомендую использовать следующие:
+  ```--module-path /home/jkearnsl/java_libs/javafx-sdk-20.0.2/lib/ --add-modules=javafx.swing,javafx.graphics,javafx.fxml,javafx.media,javafx.web --add-reads javafx.graphics=ALL-UNNAMED --add-opens javafx.controls/com.sun.javafx.charts=ALL-UNNAMED --add-opens javafx.graphics/com.sun.javafx.iio=ALL-UNNAMED --add-opens javafx.graphics/com.sun.javafx.iio.common=ALL-UNNAMED --add-opens javafx.graphics/com.sun.javafx.css=ALL-UNNAMED --add-opens javafx.base/com.sun.javafx.runtime=ALL-UNNAMED```
   
   
 </details>
