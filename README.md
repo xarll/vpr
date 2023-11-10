@@ -60,7 +60,7 @@
 - [Программирование под платформу dotNET](/items/dotnet/README.md)
 - [JavaEE (OOP)](/items/javaee/README.md)
 - [Базы данных](/items/database/README.md)
-- [Анализ и кодирование информации](/items/encoding/README.md)
+- [Анализ и кодирование информации](/items/encodinginf/README.md)
 
 ---
 
