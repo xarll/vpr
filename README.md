@@ -62,6 +62,9 @@
 - [Базы данных](/items/database/README.md)
 - [Анализ и кодирование информации](/items/encodinginf/README.md)
 
+#### 6 семестр
+- [Scala](/items/scala/README.md)
+
 ---
 
 Большинство разделов пусты, мы будем рады, если вы заполните их!
