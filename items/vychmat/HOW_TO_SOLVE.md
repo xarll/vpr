@@ -331,43 +331,122 @@
 
 ### Численное интегрирование
 
-#### Прямоугольники
+#### Функция: Прямоугольники | Трапеция | Симсон
 
-Вычислить значение определенного интеграла по формулам прямоугольников. Число интервалов n = 5
+Вычислить значение определенного интеграла по формулам прямоугольников, трапеций, Симсона. Число интервалов n = 5
 
-<img src="https://github.com/xarll/vpr/assets/76239707/a659eba2-94dc-4df9-be9b-76eb2482429a" alt="drawing" height="50"/><br>
+<img src="https://github.com/xarll/vpr/assets/76239707/a659eba2-94dc-4df9-be9b-76eb2482429a" alt="drawing" height="75"/><br>
 
-Вычислям ручками эталонное значение
-<img src="https://github.com/xarll/vpr/assets/76239707/1831a7e8-df92-4dcf-964b-1e8f293619fa" alt="drawing" height="100"/>
+<details>
+  <summary>Решение</summary>
+  
+  Вычислям ручками эталонное значение<br>
+  <img src="https://github.com/xarll/vpr/assets/76239707/1831a7e8-df92-4dcf-964b-1e8f293619fa" alt="drawing" height="100"/>
+  
+  Длина каждого прямоугольника h = (b - a)/n = (2 - 0.5)/5 = 0.3
+  
+  **Левые прямоугольники**
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/fb7a50d2-00ac-48c7-a25e-78fd08d6c86d" alt="drawing" height="200"/>
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/014857b8-b890-4a29-8932-d0d923a1e02c" alt="drawing" height="150"/>
+  <br><br>
+  Относительная погрешность: |4.125 - 3.585| = 0.54<br>
+  Абсолютная погрешность: 0.54*100/4.125 = 13%
+  
+  **Правые прямоугольники**
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/cfc6a91d-a80c-441f-aca9-e292cb898866" alt="drawing" height="150"/>
+  
+  <br><br>
+  Относительная погрешность: |4.125 - 4.71| = 0.585<br>
+  Абсолютная погрешность: 0.585*100/4.125 = 14%
+  
+  **Средние прямоугольники**
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/f3456d38-f2e0-471e-a753-d419306756da" alt="drawing" height="150"/>
+  
+  <br><br>
+  Относительная погрешность: |4.125 - 4.114| = 0.011<br>
+  Абсолютная погрешность: 0.011*100/4.125 = 0.26%
+  
+  **Трапеции**
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/0b78e522-3d66-4489-a480-13a4224cd28c" alt="drawing" height="150"/>
+  
+  <br><br>
+  Относительная погрешность: |4.125 - 4.147| = 0.022 <br>
+  Абсолютная погрешность: 0.022*100/4.125 = 0.53%
 
-Длина каждого прямоугольника h = (b - a)/n = (2 - 0.5)/5 = 0.3
+  **Симсон 1**
+  Задан n = 2 <br>
+  тогда h = 0.75<br>
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/f3755a62-1177-42e2-87ec-4249d9b24639" alt="drawing" height="250"/>
+  
+  <br><br>
+  Относительная погрешность: |4.125 - 4.125| = 0 <br>
+  Абсолютная погрешность: 0*100/4.125 = 0%  
+</details>
 
-**Левые прямоугольники**
+#### Таблица
 
-<img src="https://github.com/xarll/vpr/assets/76239707/fb7a50d2-00ac-48c7-a25e-78fd08d6c86d" alt="drawing" height="200"/>
+Дано 
+h = 1<br>
+n = 4<br>
+m = n/2 = 2 - кол-во нечетных значений по индексу
 
-<img src="https://github.com/xarll/vpr/assets/76239707/014857b8-b890-4a29-8932-d0d923a1e02c" alt="drawing" height="150"/>
-<br><br>
-Относительная погрешность: |4.125 - 3.585| = 0.54<br>
-Абсолютная погрешность: 0.54*100/4.125 = 13%
 
-**Правые прямоугольники**
+| x | y |
+|---|---|
+| 2 | 1 |
+| 3 | 4 |
+| 4 | 5 |
+| 5 | 3 |
+| 6 | 2 |
 
-<img src="https://github.com/xarll/vpr/assets/76239707/cfc6a91d-a80c-441f-aca9-e292cb898866" alt="drawing" height="150"/>
+<details>
+  <summary>Решение</summary>
 
-<br><br>
-Относительная погрешность: |4.125 - 4.71| = 0.585<br>
-Абсолютная погрешность: 0.585*100/4.125 = 14%
-
-**Средние прямоугольники**
-
-<img src="https://github.com/xarll/vpr/assets/76239707/f3456d38-f2e0-471e-a753-d419306756da" alt="drawing" height="150"/>
-
-<br><br>
-Относительная погрешность: |4.125 - 4.114| = 0.011<br>
-Абсолютная погрешность: 0.011*100/4.125 = 0.26%
+  **Левые прямоугольники**
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/208510e4-71f4-44bc-a579-aa41747bf5e4" alt="drawing" height="100"/>
+  
+  **Правые прямоугольники**
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/0815a000-3e2d-4b35-b2f5-5902f04bac78" alt="drawing" height="100"/>
+  
+  **Трапеция**
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/d104301d-151f-4170-956c-98972404347e" alt="drawing" height="100"/>
+  
+  **Симсон 2**
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/6e9499af-32bf-4e0f-a257-c9fdd10001f4" alt="drawing" height="100"/>
+  
+  <img src="https://github.com/xarll/vpr/assets/76239707/297d4c5d-432f-437c-b5d2-6e440a0cfcc1" alt="drawing" height="75"/>
+</details>
 
 ### Аппроксимация
+
+Задана табличная функция y=f(x)
+
+| x | y |
+|---|---|
+| 2 | 1 |
+| 3 | 4 |
+| 4 | 5 |
+
+<details>
+  <summary>Решение</summary>
+
+  n = 3<br>
+  
+  raw<br>
+  <img src="https://github.com/xarll/vpr/assets/76239707/97facfa4-d3c9-4d26-a995-af0ac4511a0b" alt="drawing" height="250"/>
+  
+  Решаем систему любым образом, подставляем значения в линейную функцию и строим.
+</details>
 
 Задана табличная функция y=f(x)
 
@@ -379,3 +458,8 @@
 | 4 | 7 |
 
 Найти её линейную аппроксимацию методом наименьших квадратов. Вычислить коэффициент корреляции и сумму квадратов разности. Построить на одном чертеже точечный график и найденную линейную функцию.
+
+
+### Интерполяция
+
+Полиномом Лагранжа
