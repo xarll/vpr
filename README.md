@@ -64,6 +64,7 @@
 
 #### 6 семестр
 - [Scala](/items/scala/README.md)
+- [Эвристические алгоритмы](/items/heuristicalgs/README.md)
 
 ---
 
