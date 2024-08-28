@@ -605,9 +605,10 @@ def print_info(info: dict[str: list[int or str]]) -> None:
 </details>
 
 
+### Программный код Бояршинов
+репо [min-spanning-tree](https://github.com/JKearnsl/algorithms/tree/main/items/graphs/min-spanning-tree)
 
-
-### Программный код
+### Программный код Прокопенко
 Для работы программы потребуется:
 
 - Python 3.11:
