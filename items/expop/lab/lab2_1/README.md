@@ -506,7 +506,7 @@ def print_info(info: dict[str: list[int or str]]) -> None:
 
 ### Программный код (Бояршинов)
 
-Репозиторий: [JKearnsl/search_in_graph](https://github.com/JKearnsl/search_in_graph)
+Репозиторий: [JKearnsl/search_in_graph](https://github.com/JKearnsl/algorithms/tree/main/items/graphs/search)
 
 
 ## Реализация поиска в глубину (ПВГ)
@@ -952,7 +952,7 @@ def print_info(info: dict[str: list[int or str]]) -> None:
 
 ### Программный код (Бояршинов)
   
-Репозиторий: [JKearnsl/search_in_graph](https://github.com/JKearnsl/search_in_graph)
+Репозиторий: [JKearnsl/search_in_graph](https://github.com/JKearnsl/algorithms/tree/main/items/graphs/search)
 
 ## Реализация поиска в глубину (ПВГ) с классификацией дуг
 
