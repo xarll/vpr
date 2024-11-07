@@ -68,7 +68,7 @@ fn make_center_diff_scheme(x: &[f64], original_y: &[f64],  hx: f64, u: f64, ht: 
     shape[t_size - 1].clone()
 }
 
-fn make_kabare_scheme(x: &[f64], original_y: &[f64],  hx: f64, u: f64, ht: f64, t: usize) -> Vec<f64> {
+fn make_kabare_scheme(x: &[f64], original_y: &[f64], hx: f64, u: f64, ht: f64, t: usize) -> Vec<f64> {
     let x_size = x.len();
     let t_size = (0..).map(|i| i as f64 * ht).take_while(|&val| val < t as f64 + ht / 2.0).count();
     let mut shape = vec![vec![0.0; x_size]; t_size];
@@ -86,7 +86,7 @@ fn make_kabare_scheme(x: &[f64], original_y: &[f64],  hx: f64, u: f64, ht: f64, 
     shape[t_size - 1].clone()
 }
 
-fn combine(x: &[f64], original_y: &[f64], center_diff: &[f64],  hx: f64, u: f64, ht: f64, t: usize) -> Vec<f64> {
+fn combine(x: &[f64], original_y: &[f64],  hx: f64, u: f64, ht: f64, t: usize) -> Vec<f64> {
     let x_size = x.len();
     let t_size = (0..).map(|i| i as f64 * ht).take_while(|&val| val < t as f64 + ht / 2.0).count();
     let mut shape = vec![vec![0.0; x_size]; t_size];
@@ -122,8 +122,8 @@ fn main() {
 
     let q1 = make_left_diff_scheme(&x, &original_y,  HX, U, HT, T);
     let q2 = make_center_diff_scheme(&x, &original_y,  HX, U, HT, T);
-    let q3 = make_kabare_scheme(&x, &original_y, &q2,  HX, U, HT, T);
-    let q4 = combine(&x, &original_y, &q2,  HX, U, HT, T);
+    let q3 = make_kabare_scheme(&x, &original_y,  HX, U, HT, T);
+    let q4 = combine(&x, &original_y, HX, U, HT, T);
 
     let plot1 = arena.plot("Правый уголок".to_string(), Mesh { x: 5, y: 5 });
     AddGraph::graph(plot1, &original_y, &x, RGBColor(0, 0, 0), "Исходная функция");
